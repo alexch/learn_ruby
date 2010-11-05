@@ -1,0 +1,46 @@
+#!/usr/bin/env ruby
+
+# to be run by teachers/contributors when developing solutions
+# adds 'solution' to the load path
+
+# todo: support multiple solutions dirs
+# todo: run with or without solution
+
+
+spec_file = ARGV[0]
+puts "Running chapter #{spec_file} with solution"
+puts
+dirs = spec_file.split('/')
+dirs.pop
+dir = if dirs.empty?
+  "solution"
+else
+  "#{dirs.join('/')}/solution"
+end
+$: << "./#{dir}"
+
+require 'rubygems'
+version = "1.3.0"
+gem 'rspec', version
+
+
+# http://wiki.github.com/dchelimsky/rspec/custom-formatters
+require 'spec/runner/formatter/nested_text_formatter'
+class FailFast < Spec::Runner::Formatter::NestedTextFormatter
+  def example_failed(example, counter, failure)
+    super
+    @output.puts
+    where = example.location.gsub(/^.*learn_ruby\//, '')
+    @output.puts "Go check #{blue(where)}"
+    exit 1
+  end
+end
+ARGV.unshift('FailFast')
+ARGV.unshift('--format')
+
+ARGV.unshift('--color')
+
+
+load Gem.bin_path('rspec', 'spec', version)
+
+
