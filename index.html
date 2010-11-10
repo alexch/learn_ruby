@@ -8,10 +8,6 @@ for installing the required software.  You will need Ruby, RubyGems and RSpec to
 <h2>Setup</h2>
 
 <ul>
-<li><p>Check out the git repository</p>
-
-<pre><code>  git clone git://github.com/ultrasaurus/test-first-teaching.git
-</code></pre></li>
 <li><p>Install RSpec</p>
 
 <pre><code>  sudo gem install rspec
@@ -20,25 +16,66 @@ for installing the required software.  You will need Ruby, RubyGems and RSpec to
 
 <pre><code>  alias spec="spec --color --format nested"
 </code></pre></li>
+<li><p>Clone the course repository</p>
+
+<pre><code>  git clone git://github.com/alexch/learn_ruby.git
+</code></pre></li>
 </ul>
 
 
-<h2>Setup again</h2>
+<h2>How To Use These Exercises</h2>
 
-<p>If you work for a while and then notice that this repository has changed and you want the new stuff:</p>
+<p>Your cloned repo has a list of chapter directories. Each directory has a spec file. You will write all the code to make all the specs in it pass.</p>
+
+<p>To get your feet wet in this process, go into the "hello" chapter with <code>cd 00_hello</code> and read the detailed instructions in its <code>index.html</code> file.</p>
+
+<h2>Outline of some of the chapters</h2>
+
+<ul>
+<li><strong>hello</strong>
+gives you a feel of how to use these tests and you will write your first class.  See <a href="hello/index.html">hello/index.html</a> for detailed instructions.</li>
+<li><strong>temperature</strong>
+Write another class and do some basic math.</li>
+<li><strong>calculator</strong> introduces a little more math, and you'll need to iterate.</li>
+<li><strong>pig_latin</strong> lets you manipulate strings.</li>
+<li><strong>in_words</strong> asks a number to say itself in English. Extend a built-in class. By the end you'll use conditionals, arrays, iteration, and maybe even some recursion.</li>
+<li><strong>blocks</strong> introduces block syntax, including <code>yield</code></li>
+</ul>
+
+
+<h2>Pulling changes</h2>
+
+<p>If you've been working for a while and then notice that the course repository has changed and you want the new stuff:</p>
 
 <ul>
 <li><p>View the "status" and make sure you have nothing modified</p>
 
 <pre><code>  git status
 </code></pre></li>
-<li><p>Add a reference to the remote repository</p>
+<li><p>Pull the changes</p>
 
-<pre><code>  git remote add ultrasaurus git://github.com/ultrasaurus/test-first-teaching
+<pre><code>  git pull origin master
+</code></pre></li>
+</ul>
+
+
+<h2>Forking (not cloning)</h2>
+
+<p>To save a copy of your own solutions on your own github repo, you'll have to "fork" the course on Github. This will give you a new git url of your very own, which you can then clone as above. For instance, if your github name is <code>ladyhaha</code>, your clone command is</p>
+
+<pre><code>    git clone git://github.com/ladyhaha/learn_ruby.git
+</code></pre>
+
+<p>To pull changes into this new repo is a little tricky and you should probably ask for help before doing it, but here's the instructions.</p>
+
+<ul>
+<li><p>Add a reference to the original remote repository</p>
+
+<pre><code>  git remote add ultrasaurus git://github.com/ultrasaurus/learn_ruby
 </code></pre></li>
 <li><p>Pull down the remote repository's master branch. This creates a local branch called <code>ultrasaurus/master</code></p>
 
-<pre><code>  git pull ultrasaurus master
+<pre><code>  git pull origin master
 </code></pre></li>
 <li><p>Now merge the <code>ultrasaurus/master</code> stuff into your <code>master</code> branch</p>
 
@@ -51,31 +88,11 @@ for installing the required software.  You will need Ruby, RubyGems and RSpec to
 </ul>
 
 
-<p>If you want to understand all the magical git incantations, watch this great screencast: <a href="http://www.gitcasts.com/posts/railsconf-git-talk">http://www.gitcasts.com/posts/railsconf-git-talk</a></p>
-
-<h2>How To Use These Exercises</h2>
-
-<p>Each directory has a spec file. You will write all the code to make it pass.</p>
-
-<p>To walk through this process there are detailed instructions in the <code>index.md</code> file in the "hello" directory.</p>
-
-<h2>Outline</h2>
-
-<ul>
-<li><strong>hello</strong>
-gives you a feel of how to use these tests and you will write your first class.  See <a href="hello/index.md">hello/index.md</a> for detailed instructions.</li>
-<li><strong>temperature</strong>
-Write another class and do some basic math.</li>
-<li><strong>calculator</strong> introduces a little more math, and you'll need to iterate.</li>
-<li><strong>pig_latin</strong> lets you manipulate strings.</li>
-<li><strong>in_words</strong> asks a number to say itself in English. Extend a built-in class. By the end you'll use conditionals, arrays, iteration, and maybe even some recursion.</li>
-<li><strong>blocks</strong> introduces block syntax, including <code>yield</code></li>
-</ul>
-
+<p>If you want to understand all these magical git incantations, watch this great screencast: <a href="http://blip.tv/file/4094854">http://blip.tv/file/4094854</a> (more at <a href="http://www.gitcasts.com">http://www.gitcasts.com</a>)</p>
 
 <h1>Resources</h1>
 
-<h3>Learning Ruby via Tests</h3>
+<h2>Learning Ruby via Tests</h2>
 
 <ul>
 <li><a href="http://testfirst.org">Test-First Teaching</a> by Sarah Allen and Alex Chaffee
@@ -86,14 +103,14 @@ Write another class and do some basic math.</li>
 </li>
 <li><a href="http://rubyquiz.com/quiz67.html">Metakoans</a> by ara.t.howard</li>
 <li><a href="http://clarkware.com/cgi/blosxom/2005/03/18">Ruby Learning Tests</a> by Mike Clark</li>
-<li><a href="http://rubykoans.com">Ruby Koans</a> by Jim Weirich and Joe O’Brien (inspired by Metakoans and Ruby Learning Tests)</li>
+<li><a href="http://rubykoans.com">Ruby Koans</a> by Jim Weirich and Joe O'Brien (inspired by Metakoans and Ruby Learning Tests)</li>
 <li><a href="http://www.exampler.com/blog/2009/12/17/growing-object-oriented-software-in-ruby/">Growing OO Software In Ruby</a> by Brian Marick - a Ruby version of <a href="http://www.growing-object-oriented-software.com/">Growing Object-Oriented Software Guided by Tests</a></li>
 <li>something by Yehuda Katz</li>
 <li><a href="http://github.com/ryanb/ruby-warrior">ruby-warrior</a> by Ryan Bates - a game written in Ruby for learning Ruby</li>
 </ul>
 
 
-<h3>Learning Ruby and Programming</h3>
+<h2>Learning Ruby and Programming</h2>
 
 <ul>
 <li><a href="http://pine.fm/LearnToProgram/">Learn To Program</a> by Chris Pine - great Ruby tutorial, available online (1st ed.) or in a <a href="http://www.pragprog.com/titles/ltp2/learn-to-program-2nd-edition">PragProg book</a> (2nd ed.)</li>
@@ -109,14 +126,14 @@ Write another class and do some basic math.</li>
 </ul>
 
 
-<h3>Test-Driven Development</h3>
+<h2>Test-Driven Development</h2>
 
 <ul>
 <li><a href="http://www.slideshare.net/alexchaffee/test-driven">Test-Driven</a> - presentation by Alex</li>
 </ul>
 
 
-<h3>Online Ruby References</h3>
+<h2>Online Ruby References</h2>
 
 <ul>
 <li><a href="http://www.ruby-lang.org">http://www.ruby-lang.org</a></li>
@@ -126,29 +143,30 @@ Write another class and do some basic math.</li>
 </ul>
 
 
-<h3>When you have a question...</h3>
+<h2>When you have a question...</h2>
 
 <p>First, search for the answer (keywords, exact error string)</p>
 
 <ul>
-<li>Google</li>
-<li>http://www.ruby-forum.com</li>
-<li>http://stackoverflow.com/</li>
+<li><a href="http://google.com">Google</a></li>
+<li><a href="http://www.ruby-forum.com">http://www.ruby-forum.com</a></li>
+<li><a href="http://stackoverflow.com/">http://stackoverflow.com/</a></li>
 </ul>
 
 
 <p>If you didn't find the answer and you need to ask your question:</p>
 
 <ol>
-<li>Include version numbers:
+<li>Include version numbers: <pre>
  $ ruby -v
- ruby 1.8.6 (2008-08-11 patchlevel 287) [universal-darwin9.0]</li>
+ ruby 1.8.6 (2008-08-11 patchlevel 287) [universal-darwin9.0]
+</pre></li>
 <li>Note where you have already looked for an answer</li>
 <li>If you can, include code snippets that reproduce the problem in isolation</li>
 </ol>
 
 
-<h3>Other good resources</h3>
+<h2>Other good resources</h2>
 
 <ul>
 <li><a href="http://www.rubular.com/">http://www.rubular.com/</a> - an online Ruby regular expression calculator</li>

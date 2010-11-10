@@ -1,13 +1,13 @@
 <h2>Open a terminal in this directory</h2>
 
-<pre><code>cd hello
+<pre><code>cd 00_hello
 </code></pre>
 
 <p>This directory is the starting point for this exercise. It contains a spec file and you'll be adding a ruby file to (eventually) make the specs pass.</p>
 
 <h2>Run the spec</h2>
 
-<pre><code>spec hello_spec.rb
+<pre><code>rake
 </code></pre>
 
 <h2>Watch it fail</h2>
@@ -23,7 +23,7 @@
 
 <p>Open up <code>hello.rb</code> in a text editor. Save it. Run the spec again.</p>
 
-<pre><code>spec hello_spec.rb
+<pre><code>rake
 </code></pre>
 
 <h2>Watch it fail</h2>
@@ -47,7 +47,7 @@ end
 
 <p>Now you should see an error like this:</p>
 
-<pre><code>$ spec hello_spec.rb 
+<pre><code>$ rake 
 F
 
 1)
@@ -114,3 +114,7 @@ expected: "hello",
 <h2>Give yourself a high five</h2>
 
 <p>Also, sing a song and do a little dance.</p>
+
+<h2>And then...</h2>
+
+<p>Fix the next failure! :-)</p>
