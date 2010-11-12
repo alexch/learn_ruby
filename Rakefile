@@ -6,7 +6,8 @@ task :default => :spec
 
 desc "run tests for this chapter"
 RSpec::Core::RakeTask.new do |task|
-  task.pattern = "*_spec.rb"
-  task.rspec_opts = [ '-I..', '-I.', '-Isolution', '-f documentation', '-r ../rspec_config', '--color']
+  chapter = Rake.application.original_dir
+  task.pattern = "#{chapter}/*_spec.rb"
+  task.rspec_opts = [ "-I#{chapter}", "-I#{chapter}/solution", '-f documentation', '-r ./rspec_config', '--color']
   task.verbose = false
 end
