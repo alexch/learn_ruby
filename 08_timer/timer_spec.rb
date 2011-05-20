@@ -2,7 +2,7 @@ require 'timer'
 
 describe "Timer" do
   before(:each) do
-    @timer = Timer.new()
+    @timer = Timer.new
   end
 
   it "should initialize to 0 seconds" do
