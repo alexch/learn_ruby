@@ -1,0 +1,104 @@
+/* Solarized Palette http://ethanschoonover.com/solarized */
+/* Font Stacks http://www.artsiteframework.com/guide/fontstacks.php */
+body {
+  background-color: white;
+  font-family: Optima, Candara, "Trebuchet MS", sans-serif;
+  margin: 0px;
+  font-size: 15px;
+  line-height: 19px; }
+
+a, a:visited {
+  color: #268bd2; }
+
+a:hover {
+  text-decoration: underline; }
+
+a {
+  text-decoration: none; }
+
+.content {
+  padding: 0 18em;
+  max-width: 44em;
+  margin: 1em auto;
+  min-height: 30em; }
+  .content h1, .content h2, .content h3 {
+    font-family: "Lucida Sans", "Lucida Grande", "Lucida Sans Unicode", Verdana, sans-serif;
+    margin-left: -1em; }
+  .content h1 {
+    text-shadow: #999 1px 1px 1px;
+    padding: .5em .25em;
+    margin-top: 1em; }
+  .content h2 {
+    margin-top: 1em;
+    border-bottom: #268bd2 1px dotted; }
+
+.header, .footer {
+  font-size: 80%;
+  padding: .25em;
+  background-color: #f2f2f2; }
+
+.header {
+  border-bottom: 1px solid #002b36;
+  text-align: left; }
+  .header h1 {
+    color: #800000;
+    margin: 0 0 -8px 0;
+    padding: 0;
+    font: 30px/48px Optima, Candara, "Trebuchet MS", sans-serif;
+    letter-spacing: 0; }
+  .header h2 {
+    margin: 0 0 4px 13px;
+    padding: 0;
+    font: 10pt Optima, Candara, "Trebuchet MS", sans-serif;
+    color: #686868;
+    letter-spacing: 0;
+    font-variant: small-caps; }
+  .header a, .header a:visited {
+    color: #800000;
+    text-decoration: none; }
+  .header a:hover {
+    color: #37030B;
+    text-decoration: none; }
+
+.footer {
+  border-top: 1px solid #002b36;
+  text-align: center; }
+
+.nav {
+  float: left;
+  margin: 1em;
+  padding: 0 1em 1em;
+  width: 14em;
+  font-size: 75%; }
+
+.nav, .info {
+  background: -webkit-gradient(linear, left bottom, left top, color-stop(0.15, white), color-stop(0.85, #f2f2f2));
+  background: -moz-linear-gradient(center bottom, white 15%, #f2f2f2 85%);
+  -moz-border-radius: 10px;
+  border-radius: 10px; }
+
+.info {
+  float: right;
+  margin: 1em;
+  padding: 0 1em 1em;
+  font-size: 75%; }
+
+pre {
+  font-family: "Lucida Sans Typewriter Regular", "lucida console", monaco, "andale mono", "bitstream vera sans mono", consolas, "DejaVu Sans Mono", Courier, "Courier New", monospace;
+  background-color: #e9e9ff;
+  padding: .5em 1em;
+  border: 1px solid #93a1a1; }
+
+code {
+  font-family: "Lucida Sans Typewriter Regular", "lucida console", monaco, "andale mono", "bitstream vera sans mono", consolas, "DejaVu Sans Mono", Courier, "Courier New", monospace;
+  background-color: #efefff; }
+
+pre > code {
+  background-color: #e9e9ff; }
+
+li > p:nth-child(0) {
+  margin: 0; }
+
+ul li ul li {
+  margin-top: .1em;
+  margin-bottom: 1em; }

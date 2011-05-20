@@ -1,0 +1,67 @@
+<html>
+<head>
+  <title>Test-First Teaching: learn_ruby: learn_ruby</title>
+  <link href="assets/style.css" media="screen" rel="stylesheet" type="text/css" />
+</head>
+<body>
+  <div class='header'>
+    <h1><a href="http://testfirst.org">TestFirst.org</a></h1>
+    <h2>the home of test-first teaching</h2>
+  </div>
+  <div class="nav"><h2><a href="index.html">learn_ruby</a></h2><b>Chapters:</b><ul><li><a href="00_hello/index.html">hello</a></li><li><a href="01_hello_friend/index.html">hello_friend</a></li><li><a href="02_calculator/index.html">calculator</a></li><li><a href="03_temperature/index.html">temperature</a></li><li><a href="04_simon_says/index.html">simon_says</a></li><li><a href="05_book_titles/index.html">book_titles</a></li><li><a href="06_pig_latin/index.html">pig_latin</a></li><li><a href="07_in_words/index.html">in_words</a></li><li><a href="08_timer/index.html">timer</a></li><li><a href="09_array/index.html">array</a></li><li><a href="10_blocks/index.html">blocks</a></li><li><a href="11_performance_monitor/index.html">performance_monitor</a></li><li><a href="12_builder/index.html">builder</a></li><li><a href="13_dictionary/index.html">dictionary</a></li><li><a href="14_regex_screen_scrape_cnn/index.html">regex_screen_scrape_cnn</a></li><li><a href="15_fiftynames/index.html">fiftynames</a></li><li><a href="16_orange_tree/index.html">orange_tree</a></li><li><a href="17_roster/index.html">roster</a></li><li><a href="18_sample_data/index.html">sample_data</a></li></ul></div>
+  <div class="info"><h1>learn_ruby</h1><ul><li><a href="Rakefile">Rakefile</a></li><li><a href="rspec_config.rb">rspec_config.rb</a></li></ul></div>
+  <div class='content'>
+<h1>Advanced Setup</h1>
+
+<h2>Pulling changes</h2>
+
+<p>If you've been working for a while and then notice that the course repository has changed and you want the new stuff:</p>
+
+<ul>
+<li><p>View the "status" and make sure you have nothing modified</p>
+
+<pre><code>  git status
+</code></pre></li>
+<li><p>Pull the changes</p>
+
+<pre><code>  git pull origin master
+</code></pre></li>
+</ul>
+
+
+<h2>Forking (not cloning)</h2>
+
+<p>To save a copy of your own solutions in your own github repo, you'll have to "fork" the course on Github. This will give you a new git url of your very own, which you can then clone as above. For instance, if your github name is <code>ladyhaha</code>, your clone command is</p>
+
+<pre><code>    git clone git://github.com/ladyhaha/learn_ruby.git
+</code></pre>
+
+<p>To pull changes into this new repo is a little tricky and you should probably ask for help before doing it, but here's the instructions.</p>
+
+<ul>
+<li><p>Add a reference to the original remote repository</p>
+
+<pre><code>  git remote add ultrasaurus git://github.com/ultrasaurus/learn_ruby
+</code></pre></li>
+<li><p>Pull down the remote repository's master branch. This creates a local branch called <code>ultrasaurus/master</code></p>
+
+<pre><code>  git pull origin master
+</code></pre></li>
+<li><p>Now merge the <code>ultrasaurus/master</code> stuff into your <code>master</code> branch</p>
+
+<pre><code>  git merge ultrasaurus/master
+</code></pre></li>
+<li><p>Finally push your own <code>master</code> branch back to your <code>origin</code> remote github repository.</p>
+
+<pre><code>  git push origin master
+</code></pre></li>
+</ul>
+
+
+<p>If you want to understand all these magical git incantations, watch this great screencast: <a href="http://blip.tv/file/4094854">http://blip.tv/file/4094854</a> (more at <a href="http://www.gitcasts.com">http://www.gitcasts.com</a>)</p>
+  </div>
+  <div class='footer'>
+    <a href="http://testfirst.org">TestFirst.org</a>
+  </div>
+</body>
+</html>

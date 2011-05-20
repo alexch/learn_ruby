@@ -1,3 +1,20 @@
+<html>
+<head>
+  <title>Test-First Teaching: learn_ruby: hello</title>
+  <link href="../assets/style.css" media="screen" rel="stylesheet" type="text/css" />
+</head>
+<body>
+  <div class='header'>
+    <h1><a href="http://testfirst.org">TestFirst.org</a></h1>
+    <h2>the home of test-first teaching</h2>
+  </div>
+  <div class="nav"><h2><a href="../index.html">learn_ruby</a></h2><b>Chapters:</b><ul><li>hello</li><li><a href="../01_hello_friend/index.html">hello_friend</a></li><li><a href="../02_calculator/index.html">calculator</a></li><li><a href="../03_temperature/index.html">temperature</a></li><li><a href="../04_simon_says/index.html">simon_says</a></li><li><a href="../05_book_titles/index.html">book_titles</a></li><li><a href="../06_pig_latin/index.html">pig_latin</a></li><li><a href="../07_in_words/index.html">in_words</a></li><li><a href="../08_timer/index.html">timer</a></li><li><a href="../09_array/index.html">array</a></li><li><a href="../10_blocks/index.html">blocks</a></li><li><a href="../11_performance_monitor/index.html">performance_monitor</a></li><li><a href="../12_builder/index.html">builder</a></li><li><a href="../13_dictionary/index.html">dictionary</a></li><li><a href="../14_regex_screen_scrape_cnn/index.html">regex_screen_scrape_cnn</a></li><li><a href="../15_fiftynames/index.html">fiftynames</a></li><li><a href="../16_orange_tree/index.html">orange_tree</a></li><li><a href="../17_roster/index.html">roster</a></li><li><a href="../18_sample_data/index.html">sample_data</a></li></ul></div>
+  <div class="info"><h1>hello</h1><ul><li><a href="hello_spec.rb">hello_spec.rb</a></li></ul></div>
+  <div class='content'>
+<h1>Hello!</h1>
+
+<p>This chapter teaches basic Ruby function syntax.</p>
+
 <h2>Open a terminal in this directory</h2>
 
 <pre><code>cd 00_hello
@@ -30,14 +47,23 @@
 
 <p>Now you should see an error like this:</p>
 
-<pre><code>./hello_spec.rb:3: uninitialized constant Hello (NameError)
+<pre><code>the hello function
+  says hello (FAILED - 1)
+
+Failures:
+
+  1) the hello function says hello
+     Failure/Error: hello.should == "Hello!"
+     NameError:
+       undefined local variable or method `hello' for #&lt;RSpec::Core::ExampleGroup::Nested_1:0x000001009b8808&gt;
+     # ./hello/hello_spec.rb:5:in `block (2 levels) in &lt;top (required)&gt;'
 </code></pre>
 
 <h2>Create the Hello class</h2>
 
-<p>Fix this by opening <code>hello.rb</code> and creating an empty class:</p>
+<p>Fix this by opening <code>hello.rb</code> and creating an empty function:</p>
 
-<pre><code>class Hello
+<pre><code>def hello
 end
 </code></pre>
 
@@ -47,48 +73,25 @@ end
 
 <p>Now you should see an error like this:</p>
 
-<pre><code>$ rake 
-F
+<pre><code>the hello function
+  says hello (FAILED - 1)
 
-1)
-NoMethodError in 'Hello says hello'
-undefined method `message' for #&lt;Hello:0x1180f3c&gt;
-./hello_spec.rb:5:
+Failures:
 
-Finished in 0.002132 seconds
-
-1 example, 1 failure
+  1) the hello function says hello
+     Failure/Error: hello().should == "Hello!"
+       expected: "Hello!"
+            got: nil (using ==)
+     # ./hello/hello_spec.rb:5:in `block (2 levels) in &lt;top (required)&gt;'
 </code></pre>
 
-<p>This means that while it found the file, and it found the class, it couldn't find the method named "message".</p>
-
-<h2>Define the "message" method</h2>
-
-<p>In <code>hello.rb</code>, add the following inside the class (before the "end").</p>
-
-<pre><code>def message
-end
-</code></pre>
-
-<p>Save it. Run the spec again.</p>
-
-<h2>Watch it fail</h2>
-
-<p>Now you should see an error like this:</p>
-
-<pre><code>'Hello says hello' FAILED
-expected: "hello",
-     got: nil (using ==)
-./hello_spec.rb:5:
-</code></pre>
-
-<p>This means that there is a method, but it's not returning anything! ("nil" is the Ruby way of saying "not anything".)</p>
+<p>This means that while it found the file, and it found the function, it's not returning anything! ("nil" is the Ruby way of saying "not anything".)</p>
 
 <h2>Make it return something</h2>
 
-<p>Inside the "message" method, put a single line containing a string that is <em>not</em> "hello". (Here we are simulating you making an honest mistake, so we can see what the error message looks like.)</p>
+<p>Inside the "greeting" function, put a single line containing a string that is <em>not</em> "hello". (Here we are simulating you making an honest mistake, so we can see what the error message looks like.)</p>
 
-<pre><code>def message
+<pre><code>def greeting
   "whuh?"
 end
 </code></pre>
@@ -99,13 +102,14 @@ end
 
 <p>Now you should see an error like this:</p>
 
-<pre><code>'Hello says hello' FAILED
-expected: "hello",
-     got: "whuh?" (using ==)
-./hello_spec.rb:5:
+<pre><code>1) the hello function says hello
+   Failure/Error: hello().should == "Hello!"
+     expected: "Hello!"
+          got: "whuh?" (using ==)
+   # ./hello/hello_spec.rb:5:in `block (2 levels) in &lt;top (required)&gt;'
 </code></pre>
 
-<p>Correct this by changing "whuh?" to "hello". Save it. Run the spec again.</p>
+<p>Correct this by changing "whuh?" to "Hello!". Save it. Run the spec again.</p>
 
 <h2>Watch it pass!</h2>
 
@@ -117,4 +121,25 @@ expected: "hello",
 
 <h2>And then...</h2>
 
-<p>Fix the next failure! :-)</p>
+<p>Fix the next failure! <code>:-)</code></p>
+
+<pre><code>the hello function
+  says hello
+  says hello to someone (FAILED - 1)
+</code></pre>
+
+<p>Hint 1: in order to get the next test to pass, you will need to pass a <em>parameter</em>:</p>
+
+<pre><code>def greeting(who)
+</code></pre>
+
+<p>Hint 2: once you do that, the <strong>first</strong> test might start failing again. And that means you need to provide a <strong>default value</strong> for that parameter:</p>
+
+<pre><code>def greeting(who = nil)
+</code></pre>
+  </div>
+  <div class='footer'>
+    <a href="http://testfirst.org">TestFirst.org</a>
+  </div>
+</body>
+</html>

@@ -1,41 +1,73 @@
-<h1>Instructions</h1>
-
-<h2>Installation</h2>
-
-<p>Here are some <a href="http://wiki.devchix.com/index.php?title=Workshop_Installation_Notes">good instructions</a>
-for installing the required software.  You will need Ruby, RubyGems and RSpec to Learn Ruby.</p>
+<html>
+<head>
+  <title>Test-First Teaching: learn_ruby: learn_ruby</title>
+  <link href="assets/style.css" media="screen" rel="stylesheet" type="text/css" />
+</head>
+<body>
+  <div class='header'>
+    <h1><a href="http://testfirst.org">TestFirst.org</a></h1>
+    <h2>the home of test-first teaching</h2>
+  </div>
+  <div class="nav"><h2><a href="index.html">learn_ruby</a></h2><b>Chapters:</b><ul><li><a href="00_hello/index.html">hello</a></li><li><a href="01_hello_friend/index.html">hello_friend</a></li><li><a href="02_calculator/index.html">calculator</a></li><li><a href="03_temperature/index.html">temperature</a></li><li><a href="04_simon_says/index.html">simon_says</a></li><li><a href="05_book_titles/index.html">book_titles</a></li><li><a href="06_pig_latin/index.html">pig_latin</a></li><li><a href="07_in_words/index.html">in_words</a></li><li><a href="08_timer/index.html">timer</a></li><li><a href="09_array/index.html">array</a></li><li><a href="10_blocks/index.html">blocks</a></li><li><a href="11_performance_monitor/index.html">performance_monitor</a></li><li><a href="12_builder/index.html">builder</a></li><li><a href="13_dictionary/index.html">dictionary</a></li><li><a href="14_regex_screen_scrape_cnn/index.html">regex_screen_scrape_cnn</a></li><li><a href="15_fiftynames/index.html">fiftynames</a></li><li><a href="16_orange_tree/index.html">orange_tree</a></li><li><a href="17_roster/index.html">roster</a></li><li><a href="18_sample_data/index.html">sample_data</a></li></ul></div>
+  <div class="info"><h1>learn_ruby</h1><ul><li><a href="Rakefile">Rakefile</a></li><li><a href="rspec_config.rb">rspec_config.rb</a></li></ul></div>
+  <div class='content'>
+<h1>Learn Ruby Test-First</h1>
 
 <h2>Setup</h2>
 
 <ul>
+<li><p>Install Ruby</p>
+
+<ul>
+<li>You will need Ruby, RubyGems and RSpec to Learn Ruby.</li>
+<li>We recommend using <a href="http://rvm.beginrescueend.com">rvm</a> but you can use any Ruby you want. We officially support Ruby 1.9 but probably work with 1.8.7 as well.</li>
+<li>Here are some <a href="http://www.wiki.devchix.com/index.php?title=Workshop_Installation_Notes_Rails_3">good instructions</a> for installing the required software.</li>
+<li>Here are some <a href="http://ruby.railstutorial.org/ruby-on-rails-tutorial-book#sec:rubygems">other good instructions</a>, using rvm.</li>
+</ul>
+</li>
 <li><p>Install RSpec</p>
 
-<pre><code>  sudo gem install rspec
-</code></pre></li>
+<pre><code>  gem install rspec
+</code></pre>
+
+<ul>
 <li><p>Configure RSpec (optional). If you're running a bash shell, you can put the following in your .bash_profile to make the output a bit nicer.</p>
 
-<pre><code>  alias spec="spec --color --format nested"
+<pre><code>    alias spec="spec --color --format nested"
 </code></pre></li>
-<li><p>Clone the course repository</p>
+</ul>
+</li>
+<li><p>Open a terminal window. (On Mac OS X you can use the <code>Terminal</code> app.)</p></li>
+<li><p>Enter the course directory. (That's the same directory that this <code>index.html</code> file is in.)</p>
 
-<pre><code>  git clone git://github.com/alexch/learn_ruby.git
+<pre><code>  cd learn_ruby
 </code></pre></li>
 </ul>
 
 
-<h2>How To Use These Exercises</h2>
+<h2>Using These Exercises</h2>
 
-<p>Your cloned repo has a list of chapter directories. Each directory has a spec file. You will write all the code to make all the specs in it pass.</p>
+<p>Your course directory has a list of chapter directories. Each
+directory has a spec file. You will write all the code to make all the specs
+in it pass.</p>
 
-<p>To get your feet wet in this process, go into the "hello" chapter with <code>cd 00_hello</code> and read the detailed instructions in its <code>index.html</code> file.</p>
+<p>To get your feet wet in this process, go into the "hello" chapter with <code>cd
+00_hello</code> and read the detailed instructions in its <code>index.html</code> file.</p>
 
-<h2>Outline of some of the chapters</h2>
+<p>If you got through "hello", then congratulations! Now it's time to go to the
+next directory (whose name begins with <code>01_</code>) and start learning Ruby!</p>
+
+<h2>Course Outline</h2>
+
+<p>Each course is different, so check with your instructor for details on the
+curriculum he or she has chosen. Here is a survey of a few of the chapters:</p>
 
 <ul>
 <li><strong>hello</strong>
-gives you a feel of how to use these tests and you will write your first class.  See <a href="hello/index.html">hello/index.html</a> for detailed instructions.</li>
+Gives you a feel for how to use these tests.
+See <a href="00_hello/index.html">00_hello/index.html</a> for detailed instructions.</li>
 <li><strong>temperature</strong>
-Write another class and do some basic math.</li>
+Write and class and do some basic math.</li>
 <li><strong>calculator</strong> introduces a little more math, and you'll need to iterate.</li>
 <li><strong>pig_latin</strong> lets you manipulate strings.</li>
 <li><strong>in_words</strong> asks a number to say itself in English. Extend a built-in class. By the end you'll use conditionals, arrays, iteration, and maybe even some recursion.</li>
@@ -43,69 +75,52 @@ Write another class and do some basic math.</li>
 </ul>
 
 
-<h2>Pulling changes</h2>
+<h1>Advanced Setup</h1>
 
-<p>If you've been working for a while and then notice that the course repository has changed and you want the new stuff:</p>
+<p>After you're in the swing of things, you can read about <a href="advanced_setup.html">advanced setup techniques</a> like pulling changes and forking. But don't worry about it at first.</p>
+
+<h1>Problems? Questions?</h1>
+
+<p>First, ask your neighbor. Then, ask your instructor.</p>
+
+<p>Then ask Google (seriously!). If there's an error, try copying the error string and pasting it into a <a href="http://google.com">Google</a> search box. If that doesn't help, do a search on one of these sites:</p>
 
 <ul>
-<li><p>View the "status" and make sure you have nothing modified</p>
-
-<pre><code>  git status
-</code></pre></li>
-<li><p>Pull the changes</p>
-
-<pre><code>  git pull origin master
-</code></pre></li>
+<li><a href="http://stackoverflow.com/">http://stackoverflow.com/</a></li>
+<li><a href="http://www.ruby-forum.com">http://www.ruby-forum.com</a></li>
 </ul>
 
 
-<h2>Forking (not cloning)</h2>
+<p>You can also find help at the <a href="http://testfirst.org">TestFirst.org</a> site or the <a href="http://groups.google.com/group/test-first-teaching">Test-First Teaching mailing list</a>.</p>
 
-<p>To save a copy of your own solutions on your own github repo, you'll have to "fork" the course on Github. This will give you a new git url of your very own, which you can then clone as above. For instance, if your github name is <code>ladyhaha</code>, your clone command is</p>
+<p>Remember, if you post a technical question online, you should</p>
 
-<pre><code>    git clone git://github.com/ladyhaha/learn_ruby.git
-</code></pre>
+<ol>
+<li><p>Include version numbers:</p>
 
-<p>To pull changes into this new repo is a little tricky and you should probably ask for help before doing it, but here's the instructions.</p>
-
-<ul>
-<li><p>Add a reference to the original remote repository</p>
-
-<pre><code>  git remote add ultrasaurus git://github.com/ultrasaurus/learn_ruby
+<pre><code> $ ruby -v
+ ruby 1.8.6 (2008-08-11 patchlevel 287) [universal-darwin9.0]
 </code></pre></li>
-<li><p>Pull down the remote repository's master branch. This creates a local branch called <code>ultrasaurus/master</code></p>
+<li><p>Note where you have already looked for an answer</p></li>
+<li>If you can, include code snippets that reproduce the problem in isolation</li>
+</ol>
 
-<pre><code>  git pull origin master
-</code></pre></li>
-<li><p>Now merge the <code>ultrasaurus/master</code> stuff into your <code>master</code> branch</p>
-
-<pre><code>  git merge ultrasaurus/master
-</code></pre></li>
-<li><p>Finally push your own <code>master</code> branch back to your <code>origin</code> remote github repository.</p>
-
-<pre><code>  git push origin master
-</code></pre></li>
-</ul>
-
-
-<p>If you want to understand all these magical git incantations, watch this great screencast: <a href="http://blip.tv/file/4094854">http://blip.tv/file/4094854</a> (more at <a href="http://www.gitcasts.com">http://www.gitcasts.com</a>)</p>
 
 <h1>Resources</h1>
+
+<p>Here is a broad survey of many resources you may find useful. Don't try to read them all! Just browse around when you feel like learning more about Ruby.</p>
 
 <h2>Learning Ruby via Tests</h2>
 
 <ul>
+<li><a href="http://rubykoans.com">Ruby Koans</a> by Jim Weirich and Joe O'Brien (inspired by <a href="http://rubyquiz.com/quiz67.html">Metakoans</a> by ara.t.howard and <a href="http://clarkware.com/cgi/blosxom/2005/03/18">Ruby Learning Tests</a> by Mike Clark)</li>
 <li><a href="http://testfirst.org">Test-First Teaching</a> by Sarah Allen and Alex Chaffee
 
 <ul>
 <li><a href="http://www.youtube.com/watch?v=KgfdlZuVz7I">Learning TDD Through Test First Teaching</a> talk by Sarah Allen at East Bay Ruby Meetup</li>
 </ul>
 </li>
-<li><a href="http://rubyquiz.com/quiz67.html">Metakoans</a> by ara.t.howard</li>
-<li><a href="http://clarkware.com/cgi/blosxom/2005/03/18">Ruby Learning Tests</a> by Mike Clark</li>
-<li><a href="http://rubykoans.com">Ruby Koans</a> by Jim Weirich and Joe O'Brien (inspired by Metakoans and Ruby Learning Tests)</li>
 <li><a href="http://www.exampler.com/blog/2009/12/17/growing-object-oriented-software-in-ruby/">Growing OO Software In Ruby</a> by Brian Marick - a Ruby version of <a href="http://www.growing-object-oriented-software.com/">Growing Object-Oriented Software Guided by Tests</a></li>
-<li>something by Yehuda Katz</li>
 <li><a href="http://github.com/ryanb/ruby-warrior">ruby-warrior</a> by Ryan Bates - a game written in Ruby for learning Ruby</li>
 </ul>
 
@@ -113,16 +128,23 @@ Write another class and do some basic math.</li>
 <h2>Learning Ruby and Programming</h2>
 
 <ul>
-<li><a href="http://pine.fm/LearnToProgram/">Learn To Program</a> by Chris Pine - great Ruby tutorial, available online (1st ed.) or in a <a href="http://www.pragprog.com/titles/ltp2/learn-to-program-2nd-edition">PragProg book</a> (2nd ed.)</li>
+<li><a href="http://pine.fm/LearnToProgram/">Learn To Program</a> by <strong>Chris Pine</strong> - great Ruby tutorial, available online (1st ed.) or in a <a href="http://www.pragprog.com/titles/ltp2/learn-to-program-2nd-edition">PragProg book</a> (2nd ed.)</li>
 <li><a href="http://rubylearning.com/satishtalim/tutorial.html">Ruby Learning</a> - Ruby tutorial</li>
 <li><a href="http://tryruby.org">Try Ruby</a> runs a Ruby interpreter in your browser, with hints and advice</li>
+<li><a href="http://railsforzombies.org">Rails for Zombies</a> - learn Ruby and Rails in your browser, no setup required</li>
+<li><a href="http://ruby.runpaint.org/">Read Ruby</a> a book about Ruby, quite technical but well written. Free online.</li>
 <li><a href="http://github.com/alexch/mission">Ruby Mission</a></li>
 <li><a href="http://groups.google.com/group/railsbridge">RailsBridge</a></li>
 <li><a href="http://www.csunplugged.org/">CS Unplugged</a> - "CS Unplugged provides an extensive collection of free resources that teach principles of Computer Science such as binary numbers, algorithms and data compression through engaging games and puzzles that use cards, string, crayons and lots of running around."</li>
 <li><a href="http://pragprog.com/titles/bmsft/everyday-scripting-with-ruby">Everyday Scripting with Ruby</a> by Brian Marick</li>
 <li><a href="http://pragprog.com/titles/ruby/programming-ruby">Programming Ruby (the Pick Axe)</a> by Dave Thomas</li>
-<li><a href="http://github.com/liahhansen/learn-to-program">learn to program</a> by Liah Hansen</li>
 <li>Nice User's Guide: <a href="http://www.rubyist.net/~slagell/ruby/">http://www.rubyist.net/~slagell/ruby/</a></li>
+<li>Michael Hartl's <a href="http://railstutorial.org">Rails Tutorial</a></li>
+<li><a href="http://ruby4kids.com">http://ruby4kids.com</a></li>
+<li><a href="http://jumpstartlab.com/resources/ruby-jumpstart/ruby/">Ruby in 100 Minutes</a> by <a href="http://jumpstartlab.com">Jeff Casimir</a></li>
+<li><a href="http://university.rubymendicant.com">Ruby Mendicant University</a></li>
+<li>Trainer on Rails <a href="http://www.public.traineronrails.com/courses/ruby/">"Ruby For Rails" tutorial</a></li>
+<li><a href="http://yehudakatz.com/2009/08/24/my-10-favorite-things-about-the-ruby-language/">"My 10 Favorite Things About Ruby"</a> by Yehuda Katz</li>
 </ul>
 
 
@@ -143,34 +165,12 @@ Write another class and do some basic math.</li>
 </ul>
 
 
-<h2>When you have a question...</h2>
-
-<p>First, search for the answer (keywords, exact error string)</p>
-
-<ul>
-<li><a href="http://google.com">Google</a></li>
-<li><a href="http://www.ruby-forum.com">http://www.ruby-forum.com</a></li>
-<li><a href="http://stackoverflow.com/">http://stackoverflow.com/</a></li>
-</ul>
-
-
-<p>If you didn't find the answer and you need to ask your question:</p>
-
-<ol>
-<li>Include version numbers: <pre>
- $ ruby -v
- ruby 1.8.6 (2008-08-11 patchlevel 287) [universal-darwin9.0]
-</pre></li>
-<li>Note where you have already looked for an answer</li>
-<li>If you can, include code snippets that reproduce the problem in isolation</li>
-</ol>
-
-
 <h2>Other good resources</h2>
 
 <ul>
-<li><a href="http://www.rubular.com/">http://www.rubular.com/</a> - an online Ruby regular expression calculator</li>
 <li><code>irb</code> - when in doubt, try it out!</li>
+<li><a href="http://rvm.beginrescueend.com/">Ruby Version Manager</a> (aka <code>rvm</code>) - cleanly manages multiple Ruby installations</li>
+<li><a href="http://www.rubular.com/">http://www.rubular.com/</a> - an online Ruby regular expression calculator</li>
 </ul>
 
 
@@ -182,3 +182,9 @@ Write another class and do some basic math.</li>
 <li>Early quality assurance by Sumiki, Dimitri, Liah, Michael, and Brendan</li>
 </ul>
 
+  </div>
+  <div class='footer'>
+    <a href="http://testfirst.org">TestFirst.org</a>
+  </div>
+</body>
+</html>

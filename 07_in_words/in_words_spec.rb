@@ -1,6 +1,4 @@
 require "in_words"
-require "rubygems"
-require "spec"
 
 describe Fixnum do
 
@@ -76,11 +74,9 @@ describe Fixnum do
   end
   
   it "reads trillions" do
-    pending do
-      1000000000000.in_words.should == 'one trillion'
-      1000000000001.in_words.should == 'one trillion one'
-      1888259040036.in_words.should == 'one trillion eight hundred eighty eight billion two hundred fifty nine million forty thousand thirty six'
-    end
+    1000000000000.in_words.should == 'one trillion'
+    1000000000001.in_words.should == 'one trillion one'
+    1888259040036.in_words.should == 'one trillion eight hundred eighty eight billion two hundred fifty nine million forty thousand thirty six'
   end
   
 end

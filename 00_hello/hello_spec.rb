@@ -1,11 +1,11 @@
 require "hello"
 
-describe Hello do
+describe "the hello function" do
   it "says hello" do
-    Hello.new.message.should == "hello"
+    hello.should == "Hello!"
   end
   
   it "says hello to someone" do
-    Hello.new("Bob").message.should == "hello, Bob"
+    hello("Bob").should == "Hello, Bob!"
   end
 end

@@ -1,4 +1,4 @@
-require "#{File.dirname(__FILE__)}/calculator"
+require "calculator"
 
 describe Calculator do
   
@@ -6,6 +6,22 @@ describe Calculator do
     @calculator = Calculator.new
   end
 
+  it "adds 0 and 0" do
+    @calculator.add(0,0).should == 0
+  end
+
+  it "adds 2 and 2" do
+    @calculator.add(2,2).should == 4
+  end
+
+  it "adds positive numbers" do
+    @calculator.add(2,6).should == 8
+  end
+
+  it "subtracts numbers" do
+    @calculator.subtract(10,4).should == 6
+  end
+  
   describe "#sum" do
     it "computes the sum of an empty array" do
       @calculator.sum([]).should == 0
@@ -41,5 +57,5 @@ describe Calculator do
     it "computes the factorial of 5"
     it "computes the factorial of 10"
   end
-
+  
 end

@@ -1,68 +1,33 @@
+<html>
+<head>
+  <title>Test-First Teaching: learn_ruby: learn_ruby</title>
+  <link href="assets/style.css" media="screen" rel="stylesheet" type="text/css" />
+</head>
+<body>
+  <div class='header'>
+    <h1><a href="http://testfirst.org">TestFirst.org</a></h1>
+    <h2>the home of test-first teaching</h2>
+  </div>
+  <div class="nav"><h2><a href="index.html">learn_ruby</a></h2><b>Chapters:</b><ul><li><a href="00_hello/index.html">hello</a></li><li><a href="01_hello_friend/index.html">hello_friend</a></li><li><a href="02_calculator/index.html">calculator</a></li><li><a href="03_temperature/index.html">temperature</a></li><li><a href="04_simon_says/index.html">simon_says</a></li><li><a href="05_book_titles/index.html">book_titles</a></li><li><a href="06_pig_latin/index.html">pig_latin</a></li><li><a href="07_in_words/index.html">in_words</a></li><li><a href="08_timer/index.html">timer</a></li><li><a href="09_array/index.html">array</a></li><li><a href="10_blocks/index.html">blocks</a></li><li><a href="11_performance_monitor/index.html">performance_monitor</a></li><li><a href="12_builder/index.html">builder</a></li><li><a href="13_dictionary/index.html">dictionary</a></li><li><a href="14_regex_screen_scrape_cnn/index.html">regex_screen_scrape_cnn</a></li><li><a href="15_fiftynames/index.html">fiftynames</a></li><li><a href="16_orange_tree/index.html">orange_tree</a></li><li><a href="17_roster/index.html">roster</a></li><li><a href="18_sample_data/index.html">sample_data</a></li></ul></div>
+  <div class="info"><h1>learn_ruby</h1><ul><li><a href="Rakefile">Rakefile</a></li><li><a href="rspec_config.rb">rspec_config.rb</a></li></ul></div>
+  <div class='content'>
 <h1>Teacher Notes</h1>
 
-<h2>key ruby concepts</h2>
+<h2>Slides</h2>
 
-<ul>
-<li>objects
+<p>Some slides are in test-first-teaching/ruby_notes. They're in Markdown+Showoff format, which means they should be usable either as slides</p>
 
-<ul>
-<li>methods (functions)</li>
-<li>Everything has a value</li>
-</ul>
-</li>
-<li>arithmetic operations</li>
-<li>string</li>
-<li>array</li>
-<li>hash</li>
-<li>symbols</li>
-<li>loops &amp; iterators</li>
-<li>modules</li>
-<li>blocks, Proc</li>
-<li>regexps</li>
-<li>dynamic method definition
+<pre><code>cd ruby_notes
+showoff ruby_notes
+</code></pre>
 
-<ul>
-<li>on classes</li>
-<li>on instances</li>
-<li>method_missing</li>
-</ul>
-</li>
-<li>exceptions
+<p>or plain HTML</p>
 
-<ul>
-<li>rescue</li>
-<li>ensure</li>
-</ul>
-</li>
-</ul>
+<pre><code>cd ruby_notes
+rdiscount *.md &gt; index.html
+</code></pre>
 
-
-<h2>key rails concepts</h2>
-
-<ul>
-<li>Exceptions and reading the logs</li>
-<li>MVC</li>
-<li>REST</li>
-<li>Migrations</li>
-<li>Routes</li>
-<li>Environments</li>
-<li>Scaffolding</li>
-<li>Generators</li>
-<li>ActiveRecord
-
-<ul>
-<li>Base WTF</li>
-<li>find method</li>
-<li>Associations</li>
-<li>what's the SQL?</li>
-</ul>
-</li>
-<li>Plugins</li>
-<li>will_paginate</li>
-</ul>
-
-
-<h2>Rules</h2>
+<h2>Rules (for students)</h2>
 
 <ul>
 <li>Always read the error!</li>
@@ -73,19 +38,30 @@
 
 <p>The <code>solutions</code> branch is dead; long live the <code>solution</code> directory.</p>
 
-<p>To add a solution, you must put your Ruby file(s) in a directory <strong>inside</strong> the current module directory with the name <code>solution</code>.</p>
+<p>To add a solution, you must put your Ruby file(s) in a directory <strong>inside</strong> the chapter directory with the name <code>solution</code>, e.g. <code>learn_ruby/hello/solution/hello.rb</code>.</p>
 
-<p>To test your solution, you must use <code>../sspec foo_spec.rb</code>. <code>sspec</code> is a custom version of <code>spec</code> that adds the solution subdirectory to the load path.</p>
+<p>Solutions only appear in the teacher repository (<code>test-first-teaching</code>) not the generated student repo (<code>learn_ruby</code>). When you run <code>rake</code> the tests will be run against the solutions, to assure that your code is correct.</p>
 
-<p>Make sure not to check in any cruft in the original module directory, since that will be seen by (and surely befuddle) students.</p>
+<p>Make sure not to check in any cruft in the chapter directory, since that will be seen by (and surely befuddle) students.</p>
 
-<p>Multiple solutions aren't supported quite yet. Keep watching.</p>
+<p>Multiple solutions aren't supported yet.</p>
 
 <h2>Notes and instructions</h2>
 
-<p>Every module has (or can have) a <code>index.md</code> file that the students can read.</p>
+<p>Every chapter has (or can have) a <code>index.md</code> file that the students can read. This is a good place for background, instructions and hints for solving the exercises.</p>
 
-<p>The HTML files are all generated from Markdown, so restrict your edits to the <code>.md</code> files.</p>
+<p>Files ending with <code>.md</code> (Markdown) are converted to HTML and given a <code>.html</code> suffix, and files ending with <code>.scss</code> (Sass/SCSS) are converted to CSS and given a <code>.css</code> suffix. Any other files will be copied over to the student repo as is.</p>
+
+<p>Chapter directories become numbered; e.g. <code>hello</code> will become <code>00_hello</code>.</p>
+
+<p>Each curriculum contains an <code>assets</code> directory, which is a good place to put shared files like <code>.js</code> and <code>.css</code> and images. You can refer to them using <code>..</code> in your markdown files, e.g.</p>
+
+<pre><code>![logo](../assets/logo.gif)
+</code></pre>
+
+<p>This works in "preview mode" too, though it's a little weird, since <code>.scss</code> isn't converted into <code>.css</code> until the course is built using <code>rake build</code>.</p>
+
+<p>There's also a <code>ubiquitous</code> directory, whose contents are copied into each and every generated chapter directory.</p>
 
 <h2>Tricks</h2>
 
@@ -96,4 +72,12 @@ git config --global alias.ci commit
 git config --global alias.co checkout
 git config --global alias.br branch
 git config --global push.default matching
+git config --global alias.unadd "reset HEAD"
+git config --global alias.l "log --oneline --decorate --graph"
 </code></pre>
+  </div>
+  <div class='footer'>
+    <a href="http://testfirst.org">TestFirst.org</a>
+  </div>
+</body>
+</html>

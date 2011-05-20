@@ -1,0 +1,143 @@
+<html>
+<head>
+  <title>Test-First Teaching: learn_ruby: hello_friend</title>
+  <link href="../assets/style.css" media="screen" rel="stylesheet" type="text/css" />
+</head>
+<body>
+  <div class='header'>
+    <h1><a href="http://testfirst.org">TestFirst.org</a></h1>
+    <h2>the home of test-first teaching</h2>
+  </div>
+  <div class="nav"><h2><a href="../index.html">learn_ruby</a></h2><b>Chapters:</b><ul><li><a href="../00_hello/index.html">hello</a></li><li>hello_friend</li><li><a href="../02_calculator/index.html">calculator</a></li><li><a href="../03_temperature/index.html">temperature</a></li><li><a href="../04_simon_says/index.html">simon_says</a></li><li><a href="../05_book_titles/index.html">book_titles</a></li><li><a href="../06_pig_latin/index.html">pig_latin</a></li><li><a href="../07_in_words/index.html">in_words</a></li><li><a href="../08_timer/index.html">timer</a></li><li><a href="../09_array/index.html">array</a></li><li><a href="../10_blocks/index.html">blocks</a></li><li><a href="../11_performance_monitor/index.html">performance_monitor</a></li><li><a href="../12_builder/index.html">builder</a></li><li><a href="../13_dictionary/index.html">dictionary</a></li><li><a href="../14_regex_screen_scrape_cnn/index.html">regex_screen_scrape_cnn</a></li><li><a href="../15_fiftynames/index.html">fiftynames</a></li><li><a href="../16_orange_tree/index.html">orange_tree</a></li><li><a href="../17_roster/index.html">roster</a></li><li><a href="../18_sample_data/index.html">sample_data</a></li></ul></div>
+  <div class="info"><h1>hello_friend</h1><ul><li><a href="friend_spec.rb">friend_spec.rb</a></li></ul></div>
+  <div class='content'>
+<h1>Hello, friend!</h1>
+
+<p>This chapter teaches basic Ruby Object syntax.</p>
+
+<h2>Open a terminal in this directory</h2>
+
+<pre><code>cd 01_hello_friend
+</code></pre>
+
+<p>This directory is the starting point for this exercise. It contains a spec file and you'll be adding a ruby file to (eventually) make the specs pass.</p>
+
+<h2>Run the spec</h2>
+
+<pre><code>rake
+</code></pre>
+
+<h2>Watch it fail</h2>
+
+<p>You should see an error. <strong>Don't get scared!</strong> Try to read it and figure out what the computer wants to tell you. Somewhere on the first line it should say something like</p>
+
+<pre><code>no such file to load -- test-first-teaching/hello_friend/friend (LoadError)
+</code></pre>
+
+<p>That means that it is looking for a file called <code>friend.rb</code> and can't find it.</p>
+
+<h2>Create friend.rb</h2>
+
+<p>Open up <code>friend.rb</code> in a text editor. Save it. Run the spec again.</p>
+
+<pre><code>rake
+</code></pre>
+
+<h2>Watch it fail</h2>
+
+<p>Now you should see an error like this:</p>
+
+<pre><code>./friend_spec.rb:3: uninitialized constant Friend (NameError)
+</code></pre>
+
+<h2>Create the Friend class</h2>
+
+<p>Fix this by opening <code>friend.rb</code> and creating an empty class:</p>
+
+<pre><code>class Friend
+end
+</code></pre>
+
+<p>Save it. Run the spec again.</p>
+
+<h2>Watch it fail</h2>
+
+<p>Now you should see an error like this:</p>
+
+<pre><code>$ rake
+F
+
+1)
+NoMethodError in 'Friend says hello'
+undefined method `greeting' for #&lt;Friend:0x1180f3c&gt;
+./friend_spec.rb:5:
+
+Finished in 0.002132 seconds
+
+1 example, 1 failure
+</code></pre>
+
+<p>This means that while it found the file, and it found the class, it couldn't find the method named "greeting".</p>
+
+<h2>Define the "greeting" method</h2>
+
+<p>In <code>friend.rb</code>, add the following inside the class (before the "end").</p>
+
+<pre><code>def greeting
+end
+</code></pre>
+
+<p>Save it. Run the spec again.</p>
+
+<h2>Watch it fail</h2>
+
+<p>Now you should see an error like this:</p>
+
+<pre><code>'Friend says hello' FAILED
+expected: "Hello!",
+     got: nil (using ==)
+./friend_spec.rb:5:
+</code></pre>
+
+<p>This means that there is a method, but it's not returning anything! ("nil" is the Ruby way of saying "not anything".)</p>
+
+<h2>Make it return something</h2>
+
+<p>Inside the "greeting" method, put a single line containing a string that is <em>not</em> "Hello!". (Here we are simulating you making an honest mistake, so we can see what the error message looks like.)</p>
+
+<pre><code>def greeting
+  "whuh?"
+end
+</code></pre>
+
+<p>Save it. Run the spec again.</p>
+
+<h2>Watch it fail</h2>
+
+<p>Now you should see an error like this:</p>
+
+<pre><code>'Friend says hello' FAILED
+expected: "Hello!",
+     got: "whuh?" (using ==)
+./friend_spec.rb:5:
+</code></pre>
+
+<p>Correct this by changing "whuh?" to "Hello!". Save it. Run the spec again.</p>
+
+<h2>Watch it pass!</h2>
+
+<p>Hooray! Finally! It works!</p>
+
+<h2>Give yourself a high five</h2>
+
+<p>Also, sing a song and do a little dance.</p>
+
+<h2>And then...</h2>
+
+<p>Fix the next failure! :-)</p>
+  </div>
+  <div class='footer'>
+    <a href="http://testfirst.org">TestFirst.org</a>
+  </div>
+</body>
+</html>
