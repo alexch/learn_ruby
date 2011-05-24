@@ -89,9 +89,9 @@ Failures:
 
 <h2>Make it return something</h2>
 
-<p>Inside the "greeting" function, put a single line containing a string that is <em>not</em> "hello". (Here we are simulating you making an honest mistake, so we can see what the error message looks like.)</p>
+<p>Inside the "hello" function, put a single line containing a string that is <em>not</em> "Hello!". (Here we are simulating you making an honest mistake, so we can see what the error message looks like.)</p>
 
-<pre><code>def greeting
+<pre><code>def hello
   "whuh?"
 end
 </code></pre>
@@ -130,12 +130,12 @@ end
 
 <p>Hint 1: in order to get the next test to pass, you will need to pass a <em>parameter</em>:</p>
 
-<pre><code>def greeting(who)
+<pre><code>def hello(who)
 </code></pre>
 
 <p>Hint 2: once you do that, the <strong>first</strong> test might start failing again. And that means you need to provide a <strong>default value</strong> for that parameter:</p>
 
-<pre><code>def greeting(who = nil)
+<pre><code>def hello(who = nil)
 </code></pre>
   </div>
   <div class='footer'>

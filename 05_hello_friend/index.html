@@ -135,6 +135,16 @@ expected: "Hello!",
 <h2>And then...</h2>
 
 <p>Fix the next failure! :-)</p>
+
+<p>Hint 1: in order to get the next test to pass, you will need to pass a <em>parameter</em>:</p>
+
+<pre><code>def greeting(who)
+</code></pre>
+
+<p>Hint 2: once you do that, the <strong>first</strong> test might start failing again. And that means you need to provide a <strong>default value</strong> for that parameter:</p>
+
+<pre><code>def greeting(who = nil)
+</code></pre>
   </div>
   <div class='footer'>
     <a href="http://testfirst.org">TestFirst.org</a>
