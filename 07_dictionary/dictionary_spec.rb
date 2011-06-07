@@ -12,10 +12,12 @@ describe Dictionary do
   it 'can add whole entries with keyword and definition' do
     @d.add('fish' => 'aquatic animal')
     @d.entries.should == {'fish' => 'aquatic animal'}
+    @d.keywords.should == ['fish']
   end
 
-  it 'add keywords (without definition) and can report them back' do
+  it 'add keywords (without definition)' do
     @d.add('fish')
+    @d.entries.should == {'fish' => nil}
     @d.keywords.should == ['fish']
   end
 
