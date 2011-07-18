@@ -18,9 +18,10 @@ a {
 
 .content {
   padding: 0 18em;
+  min-height: 30em;
+  min-width: 20em;
   max-width: 44em;
-  margin: 1em auto;
-  min-height: 30em; }
+  margin: 1em auto; }
   .content h1, .content h2, .content h3 {
     font-family: "Lucida Sans", "Lucida Grande", "Lucida Sans Unicode", Verdana, sans-serif;
     margin-left: -1em; }
@@ -75,7 +76,8 @@ a {
   background: -webkit-gradient(linear, left bottom, left top, color-stop(0.15, white), color-stop(0.85, #f2f2f2));
   background: -moz-linear-gradient(center bottom, white 15%, #f2f2f2 85%);
   -moz-border-radius: 10px;
-  border-radius: 10px; }
+  border-radius: 10px;
+  border: 1px solid black; }
 
 .info {
   float: right;
