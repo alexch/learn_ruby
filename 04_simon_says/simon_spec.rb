@@ -4,7 +4,7 @@ describe "Simon says" do
   it "should echo hello" do
     echo("hello").should == "hello"
   end
-  
+
   it "should echo bye" do
     echo("bye").should == "bye"
   end
@@ -12,7 +12,7 @@ describe "Simon says" do
   it "should shout hello" do
     shout("hello").should == "HELLO"
   end
-  
+
   it "should shout multiple words" do
     shout("hello world").should == "HELLO WORLD"
   end
@@ -28,7 +28,7 @@ describe "Simon says" do
   it "should return the first letter" do
     start_of_word("hello", 1).should == "h"
   end
-  
+
   it "should return the first two letters" do
     start_of_word("Bob", 2).should == "Bo"
   end
@@ -40,4 +40,13 @@ describe "Simon says" do
   it "should tell us the first word of 'oh dear' is 'oh'" do
     first_word("oh dear").should == "oh"
   end
+
+  it "should capitalize a word" do
+    capitalize("obama").should == "Obama"
+  end
+
+  it "should capitalize every word (aka title case)" do
+    titleize("barack obama").should == "Barack Obama"
+  end
+
 end
