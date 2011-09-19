@@ -1,7 +1,6 @@
 require "pig_latin"
 
 describe "#translate" do
-  include PigLatinTranslator
 
   it "translates a simple word" do
     s = translate("nix")

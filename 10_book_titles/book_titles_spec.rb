@@ -17,25 +17,38 @@ describe Book do
       @book.title.should == "Stuart Little"
     end
 
-    # let's pretend that the rule is for words of 3 characters or less
-    it 'should capitalize every word except small words, like the' do
-      @book.title = "alexander the great"
-      @book.title.should == "Alexander the Great"
+    describe 'should capitalize every word except...' do
+      it 'the' do
+        @book.title = "alexander the great"
+        @book.title.should == "Alexander the Great"
+      end
+
+      it 'a' do
+        @book.title = "to kill a mockingbird"
+        @book.title.should == "To Kill a Mockingbird"
+      end
+
+      it 'an' do
+        @book.title = "to eat an apple a day"
+        @book.title.should == "To Eat an Apple a Day"
+      end
+
+      it 'and' do
+        @book.title = "war and peace"
+        @book.title.should == "War and Peace"
+      end
     end
 
-    it 'should capitalize every word except small words, like a' do
-      @book.title = "to kill a mockingbird"
-      @book.title.should == "To Kill a Mockingbird"
-    end
+    describe 'should always capitalize' do
+      it 'I' do
+        @book.title = "what i wish i knew when i was 20"
+        @book.title.should == "What I Wish I Knew When I Was 20"
+      end
 
-    it 'should always capitalize I' do
-      @book.title = "what i wish"
-      @book.title.should == "What I Wish"
-    end
-
-    it 'should always capitalize I' do
-      @book.title = "what i wish i knew when i was 20"
-      @book.title.should == "What I Wish I Knew When I was 20"
+      it 'the first word' do
+        @book.title = "the man in the iron mask"
+        @book.title.should == "The Man in the Iron Mask"
+      end
     end
   end
 end
