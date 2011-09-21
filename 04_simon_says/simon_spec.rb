@@ -25,24 +25,35 @@ describe "Simon says" do
     repeat("hello", 3).should == "hello hello hello"
   end
 
-  it "should return the first letter" do
+  it "returns the first letter" do
     start_of_word("hello", 1).should == "h"
   end
 
-  it "should return the first two letters" do
+  it "returns the first two letters" do
     start_of_word("Bob", 2).should == "Bo"
   end
 
-  it "should tell us the first word of 'Hello World' is 'Hello'" do
+  it "returns the first several letters" do
+    s = "abcdefg"
+    start_of_word(s, 1).should == "a"
+    start_of_word(s, 2).should == "ab"
+    start_of_word(s, 3).should == "abc"
+  end
+
+  it "tells us the first word of 'Hello World' is 'Hello'" do
     first_word("Hello World").should == "Hello"
   end
 
-  it "should tell us the first word of 'oh dear' is 'oh'" do
+  it "tells us the first word of 'oh dear' is 'oh'" do
     first_word("oh dear").should == "oh"
   end
 
-  it "should capitalize a word" do
+  it "capitalizes a word" do
     capitalize("obama").should == "Obama"
+  end
+
+  it "only capitalizes the first letter of a multi-word string" do
+    capitalize("barack obama").should == "Barack obama"
   end
 
   it "should capitalize every word (aka title case)" do

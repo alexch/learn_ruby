@@ -31,6 +31,11 @@ describe "#translate" do
     s.should == "ietquay"
   end
 
+  it "counts 'sch' as a single phoneme" do
+    s = translate("school")
+    s.should == "oolschay"
+  end
+
   it "translates many words" do
     s = translate("the quick brown fox")
     s.should == "ethay ickquay ownbray oxfay"

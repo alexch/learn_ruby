@@ -18,6 +18,8 @@
 <li>objects</li>
 <li>constructors</li>
 <li>class methods</li>
+<li>factory methods</li>
+<li>options hashes</li>
 </ul>
 
 
@@ -25,7 +27,9 @@
 
 <p>Remember that one degree fahrenheit is 5/9 of one degree celsius, and that the freezing point of water is 0 degrees celsius but 32 degrees fahrenheit.</p>
 
-<p>Remember to define <code>from_celsius</code> as a <em>class</em> method, not an <em>instance</em> method.</p>
+<p>Remember to define the <code>from_celsius</code> factory method as a <em>class</em> method, not an <em>instance</em> method.</p>
+
+<p>The temperature object's constructor should accept an <em>options hash</em> which contains either a <code>:celcius</code> entry or a <code>:fahrenheit</code> entry.</p>
   </div>
   <div class='footer'>
     <a href="http://testfirst.org">TestFirst.org</a>
