@@ -128,22 +128,19 @@ end
   says hello to someone (FAILED - 1)
 </code></pre>
 
-<p>Hint 1: in order to get the next test to pass, you will need to pass a <em>parameter</em>:</p>
-
-<pre><code>def hello(who)
-</code></pre>
-
-<p>Hint 2: once you do that, the <strong>first</strong> test might start failing again. And that means you need to provide a <strong>default value</strong> for that parameter:</p>
+<p>In order to get the next test to pass, you will need to pass a <em>parameter</em> and give it a <em>default value</em>:</p>
 
 <pre><code>def hello(who = nil)
-</code></pre>
-
-<p>Hint 3: to distinguish the cases, you'll need to use branching</p>
-
-<pre><code>if who.nil?
-  ...
+  if who.nil?
+    "Hello!"
+  else
+    "Hello, #{who}!"
+  end
 end
 </code></pre>
+
+<!--  -->
+
   </div>
   <div class='footer'>
     <a href="http://testfirst.org">TestFirst.org</a>
