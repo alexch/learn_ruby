@@ -46,7 +46,7 @@ describe "#multiply" do
 
   it "multiplies two numbers"
 
-  it "multiplies an array of numbers"
+  it "multiplies several numbers"
 
 end
 
