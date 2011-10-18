@@ -2,7 +2,7 @@ require "temperature"
 
 describe Temperature do
 
-  describe "can be constructed" do
+  describe "can be constructed with an options hash" do
     describe "in degrees fahrenheit" do
       it "at 50 degrees" do
         Temperature.new(:f => 50).in_fahrenheit.should == 50
@@ -52,6 +52,10 @@ describe Temperature do
     end
   end
 
+  # Factory Method is a design pattern, not a Ruby language feature.
+  # One way to implement this pattern in Ruby is via class methods --
+  # that is, methods defined on the class (Temperature) rather than
+  # on individual instances of the class.
   describe "can be constructed via factory methods" do
 
     it "in degrees celsius" do
@@ -77,5 +81,29 @@ describe Temperature do
 
   end
 
+  # Here's another way to solve the problem!
+  describe "Temperature subclasses" do
+    describe Celsius do
+      it "is constructed in degrees celsius" do
+        Celsius.new(50).in_celsius.should == 50
+        Celsius.new(50).in_fahrenheit.should == 122
+      end
+
+      it "is a Temperature subclass" do
+        Celsius.new(0).should be_a(Temperature)
+      end
+    end
+
+    describe Fahrenheit do
+      it "is constructed in degrees fahrenheit" do
+        Fahrenheit.new(50).in_fahrenheit.should == 50
+        Fahrenheit.new(50).in_celsius.should == 10
+      end
+
+      it "is a Temperature subclass" do
+        Fahrenheit.new(0).should be_a(Temperature)
+      end
+    end
+  end
 
 end
