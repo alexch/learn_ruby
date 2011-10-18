@@ -83,7 +83,7 @@ describe Temperature do
 
   # Here's another way to solve the problem!
   describe "Temperature subclasses" do
-    describe Celsius do
+    describe "Celsius subclass" do
       it "is constructed in degrees celsius" do
         Celsius.new(50).in_celsius.should == 50
         Celsius.new(50).in_fahrenheit.should == 122
@@ -94,7 +94,7 @@ describe Temperature do
       end
     end
 
-    describe Fahrenheit do
+    describe "Fahrenheit subclass" do
       it "is constructed in degrees fahrenheit" do
         Fahrenheit.new(50).in_fahrenheit.should == 50
         Fahrenheit.new(50).in_celsius.should == 10
