@@ -22,8 +22,11 @@ describe Dictionary do
   end
 
   it 'can check whether a given keyword exists' do
-    @d.include?('fish').should be_false
-  end
+    @d.include?('fish').should be_false # if the method is empty, this test passes with nil returned
+    @d.add('fish')
+    @d.include?('fish').should be_true # confirms that it actually checks
+    @d.include?('bird').should be_false # confirms not always returning true after add
+end
 
   it "doesn't include a prefix that wasn't added as a word in and of itself" do
     @d.add('fish')
