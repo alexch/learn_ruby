@@ -9,26 +9,26 @@ describe XmlDocument do
   before do
     @xml = XmlDocument.new
   end
-  
+
   it "renders an empty tag" do
     @xml.hello.should == "<hello/>"
   end
-  
+
   it "renders a tag with attributes" do
     @xml.hello(:name => 'dolly').should == "<hello name='dolly'/>"
   end
-  
+
   it "renders a randomly named tag" do
     tag_name = (1..8).map{|i| ('a'..'z').to_a[rand(26)]}.join
     @xml.send(tag_name).should == "<#{tag_name}/>"
   end
-  
+
   it "renders block with text inside" do
     @xml.hello do
       "dolly"
     end.should == "<hello>dolly</hello>"
   end
-  
+
   it "nests one level" do
     @xml.hello do
       @xml.goodbye
@@ -54,13 +54,13 @@ describe XmlDocument do
           @xml.ok_fine(:be => "that_way")
         end
       end
-    end.should == 
-    "<hello>\n" + 
-    "  <goodbye>\n" + 
-    "    <come_back>\n" + 
-    "      <ok_fine be='that_way'/>\n" + 
-    "    </come_back>\n" + 
-    "  </goodbye>\n" + 
+    end.should ==
+    "<hello>\n" +
+    "  <goodbye>\n" +
+    "    <come_back>\n" +
+    "      <ok_fine be='that_way'/>\n" +
+    "    </come_back>\n" +
+    "  </goodbye>\n" +
     "</hello>\n"
   end
 end

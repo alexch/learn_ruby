@@ -11,9 +11,3 @@ describe "the greet function" do
     greet("Bob").should == "Hello, Bob!"
   end
 end
-
-# Test-driving bonus!
-#
-# Use a *default value* so that the hello function says "Hello!"
-# if no parameter is passed, but "Hello, Bob!" if the parameter "Bob"
-# is passed.

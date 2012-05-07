@@ -1,4 +1,4 @@
-require "array_ext" # we don't call it "array.rb" since that would be confusing
+require "array_extensions" # we don't call it "array.rb" since that would be confusing
 
 describe Array do
 
