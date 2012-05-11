@@ -29,8 +29,8 @@ describe RPNCalculator do
 
   it "adds and subtracts" do
     calculator.push(2)
-    calculator.push(3)
     calculator.push(4)
+    calculator.push(3)
     calculator.minus
     calculator.value.should == -1
     calculator.plus
@@ -39,12 +39,12 @@ describe RPNCalculator do
 
   it "multiplies and divides" do
     calculator.push(2)
-    calculator.push(3)
     calculator.push(4)
+    calculator.push(3)
     calculator.divide
     calculator.value.should == 0.75
     calculator.times
-    calculator.value.should == 1.5
+    calculator.value.should == 0.375
   end
 
   it "resolves operator precedence unambiguously" do
