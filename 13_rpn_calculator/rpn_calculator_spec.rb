@@ -1,5 +1,7 @@
-# See http://en.wikipedia.org/wiki/Reverse_Polish_notation
-
+# See
+# * <http://en.wikipedia.org/wiki/Reverse_Polish_notation>
+# * <http://www.calculator.org/rpn.aspx>
+#
 require "rpn_calculator"
 
 describe RPNCalculator do
@@ -32,9 +34,9 @@ describe RPNCalculator do
     calculator.push(3)
     calculator.push(4)
     calculator.minus
-    calculator.value.should == -1
-    calculator.plus
     calculator.value.should == 1
+    calculator.plus
+    calculator.value.should == 3
   end
 
   it "multiplies and divides" do
@@ -42,9 +44,9 @@ describe RPNCalculator do
     calculator.push(3)
     calculator.push(4)
     calculator.divide
-    calculator.value.should == 0.75
+    calculator.value.should == (4.0 / 3.0)
     calculator.times
-    calculator.value.should == 1.5
+    calculator.value.should == (4.0 / 3.0) * 2
   end
 
   it "resolves operator precedence unambiguously" do
@@ -83,14 +85,22 @@ describe RPNCalculator do
     }.to raise_error("calculator is empty")
   end
 
+  # extra credit
   it "tokenizes a string" do
     calculator.tokens("1 2 3 * + 4 5 - /").should ==
       [1, 2, 3, :*, :+, 4, 5, :-, :/]
   end
 
+  # extra credit
   it "evaluates a string" do
+    calculator.evaluate("1 2 3 * +").should ==
+      ((2 * 3) + 1)
+
+    calculator.evaluate("4 5 -").should ==
+      (5 - 4)
+
     calculator.evaluate("1 2 3 * + 4 5 - /").should ==
-      (1 + (2 * 3)) / (4 - 5)
+      (5.0 - 4) / ((2 * 3) + 1)
   end
 
 end
