@@ -1,0 +1,128 @@
+<html>
+  <head>
+    <title>Test-First Teaching: learn_ruby: dictionary</title>
+    <link href="../assets/style.css" media="screen" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <div class="header">
+      <h1><a href="http://testfirst.org">TestFirst.org</a></h1>
+      <h2>the home of test-first teaching</h2>
+    </div>
+    <div class="nav">
+      <h2><a href="../index.html">learn_ruby</a></h2>
+      <b>Labs:</b>
+      <ul>
+        <li><a href="../00_hello/index.html">00 Hello</a></li>
+        <li><a href="../01_temperature/index.html">01 Temperature</a></li>
+        <li><a href="../02_calculator/index.html">02 Calculator</a></li>
+        <li><a href="../03_simon_says/index.html">03 Simon Says</a></li>
+        <li><a href="../04_pig_latin/index.html">04 Pig Latin</a></li>
+        <li><a href="../05_silly_blocks/index.html">05 Silly Blocks</a></li>
+        <li><a href="../06_performance_monitor/index.html">06 Performance Monitor</a></li>
+        <li><a href="../07_hello_friend/index.html">07 Hello Friend</a></li>
+        <li><a href="../08_temperature_object/index.html">08 Temperature Object</a></li>
+        <li><a href="../09_book_titles/index.html">09 Book Titles</a></li>
+        <li><a href="../10_timer/index.html">10 Timer</a></li>
+        <li>11 Dictionary</li>
+        <li><a href="../12_rpn_calculator/index.html">12 Rpn Calculator</a></li>
+        <li><a href="../13_xml_document/index.html">13 Xml Document</a></li>
+        <li><a href="../14_array_extensions/index.html">14 Array Extensions</a></li>
+        <li><a href="../15_in_words/index.html">15 In Words</a></li>
+      </ul>
+    </div>
+    <h1>dictionary</h1>
+    <div class="content"><div class="rspec_file">  <div class="intro"><h1>Topics</h1>
+
+<ul>
+<li>Hash</li>
+<li>Array</li>
+<li>instance variables</li>
+<li>regular expressions</li>
+</ul>
+
+</div>
+  <div class="tests">
+    <h1>Tests</h1>
+<a class="raw_file" href="dictionary_spec.rb">dictionary_spec.rb</a>
+    <pre>
+require 'dictionary'
+
+describe Dictionary do
+  before do
+    @d = Dictionary.new
+  end
+
+  it 'is empty when created' do
+    @d.entries.should == {}
+  end
+
+  it 'can add whole entries with keyword and definition' do
+    @d.add('fish' =&gt; 'aquatic animal')
+    @d.entries.should == {'fish' =&gt; 'aquatic animal'}
+    @d.keywords.should == ['fish']
+  end
+
+  it 'add keywords (without definition)' do
+    @d.add('fish')
+    @d.entries.should == {'fish' =&gt; nil}
+    @d.keywords.should == ['fish']
+  end
+
+  it 'can check whether a given keyword exists' do
+    @d.include?('fish').should be_false
+  end
+
+  it &quot;doesn't cheat when checking whether a given keyword exists&quot; do
+    @d.include?('fish').should be_false # if the method is empty, this test passes with nil returned
+    @d.add('fish')
+    @d.include?('fish').should be_true # confirms that it actually checks
+    @d.include?('bird').should be_false # confirms not always returning true after add
+  end
+
+  it &quot;doesn't include a prefix that wasn't added as a word in and of itself&quot; do
+    @d.add('fish')
+    @d.include?('fi').should be_false
+  end
+
+  it &quot;doesn't find a word in empty dictionary&quot; do
+    @d.find('fi').should be_empty # {}
+  end
+
+  it 'finds nothing if the prefix matches nothing' do
+    @d.add('fiend')
+    @d.add('great')
+    @d.find('nothing').should be_empty
+  end
+
+  it &quot;finds an entry&quot; do
+    @d.add('fish' =&gt; 'aquatic animal')
+    @d.find('fish').should == {'fish' =&gt; 'aquatic animal'}
+  end
+
+  it 'finds multiple matches from a prefix and returns the entire entry (keyword + definition)' do
+    @d.add('fish' =&gt; 'aquatic animal')
+    @d.add('fiend' =&gt; 'wicked person')
+    @d.add('great' =&gt; 'remarkable')
+    @d.find('fi').should == {'fish' =&gt; 'aquatic animal', 'fiend' =&gt; 'wicked person'}
+  end
+
+  it 'lists keywords alphabetically' do
+    @d.add('zebra' =&gt; 'African land animal with stripes')
+    @d.add('fish' =&gt; 'aquatic animal')
+    @d.add('apple' =&gt; 'fruit')
+    @d.keywords.should == %w(apple fish zebra)
+  end
+
+  it 'can produce printable output like so: [keyword] &quot;definition&quot;' do
+    @d.add('zebra' =&gt; 'African land animal with stripes')
+    @d.add('fish' =&gt; 'aquatic animal')
+    @d.add('apple' =&gt; 'fruit')
+    @d.printable.should == %Q{[apple] &quot;fruit&quot;\n[fish] &quot;aquatic animal&quot;\n[zebra] &quot;African land animal with stripes&quot;}
+  end
+end</pre>
+  </div>
+</div>
+</div>
+    <div class="footer"><a href="http://testfirst.org">TestFirst.org</a></div>
+  </body>
+</html>

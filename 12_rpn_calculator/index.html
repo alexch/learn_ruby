@@ -1,0 +1,186 @@
+<html>
+  <head>
+    <title>Test-First Teaching: learn_ruby: rpn_calculator</title>
+    <link href="../assets/style.css" media="screen" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <div class="header">
+      <h1><a href="http://testfirst.org">TestFirst.org</a></h1>
+      <h2>the home of test-first teaching</h2>
+    </div>
+    <div class="nav">
+      <h2><a href="../index.html">learn_ruby</a></h2>
+      <b>Labs:</b>
+      <ul>
+        <li><a href="../00_hello/index.html">00 Hello</a></li>
+        <li><a href="../01_temperature/index.html">01 Temperature</a></li>
+        <li><a href="../02_calculator/index.html">02 Calculator</a></li>
+        <li><a href="../03_simon_says/index.html">03 Simon Says</a></li>
+        <li><a href="../04_pig_latin/index.html">04 Pig Latin</a></li>
+        <li><a href="../05_silly_blocks/index.html">05 Silly Blocks</a></li>
+        <li><a href="../06_performance_monitor/index.html">06 Performance Monitor</a></li>
+        <li><a href="../07_hello_friend/index.html">07 Hello Friend</a></li>
+        <li><a href="../08_temperature_object/index.html">08 Temperature Object</a></li>
+        <li><a href="../09_book_titles/index.html">09 Book Titles</a></li>
+        <li><a href="../10_timer/index.html">10 Timer</a></li>
+        <li><a href="../11_dictionary/index.html">11 Dictionary</a></li>
+        <li>12 Rpn Calculator</li>
+        <li><a href="../13_xml_document/index.html">13 Xml Document</a></li>
+        <li><a href="../14_array_extensions/index.html">14 Array Extensions</a></li>
+        <li><a href="../15_in_words/index.html">15 In Words</a></li>
+      </ul>
+    </div>
+    <h1>rpn_calculator</h1>
+    <div class="content"><div class="rspec_file">  <div class="intro"><h1>Topics</h1>
+
+<ul>
+<li>arrays</li>
+<li>arithmetic</li>
+<li>strings</li>
+</ul>
+
+
+<h1>RPN Calculator</h1>
+
+<p>"RPN" stands for "Reverse Polish Notation". (See <a href="http://en.wikipedia.org/wiki/Reverse_Polish_notation">the wikipedia entry</a> for more information on this colorful term.) Briefly, in an RPN world, instead of using normal "infix" notation, e.g.</p>
+
+<pre><code>2 + 2
+</code></pre>
+
+<p>you use "postfix" notation, e.g.</p>
+
+<pre><code>2 2 +
+</code></pre>
+
+<p>While this may seem bizarre, there are some advantages to doing things this way. For one, you never need to use parentheses, since there is never any ambiguity as to what order to perform operations in. The rule is, you always go from the back, or the left side.</p>
+
+<pre><code>1 + 2 * 3 =&gt;
+(1 + 2) * 3 or
+1 + (2 * 3)
+
+1 2 + 3 * =&gt; (1 + 2) * 3
+1 2 3 * + =&gt; 1 + (2 * 3)
+</code></pre>
+
+<p>Another advantage is that you can represent any mathematical formula using a simple and elegant data structure, called a <a href="http://en.wikipedia.org/wiki/Stack_(data_structure">stack</a>).</p>
+
+<h1>Hints</h1>
+
+<p>Ruby doesn't have a built-in stack, but the standard Array has all the methods you need to emulate one (namely, <code>push</code> and <code>pop</code>, and optionally <code>size</code>).</p>
+</div>
+  <div class="tests">
+    <h1>Tests</h1>
+<a class="raw_file" href="rpn_calculator_spec.rb">rpn_calculator_spec.rb</a>
+    <pre>
+# See
+# * &lt;http://en.wikipedia.org/wiki/Reverse_Polish_notation&gt;
+# * &lt;http://www.calculator.org/rpn.aspx&gt;
+#
+require &quot;rpn_calculator&quot;
+
+describe RPNCalculator do
+
+  attr_accessor :calculator
+
+  before do
+    @calculator = RPNCalculator.new
+  end
+
+  it &quot;adds two numbers&quot; do
+    calculator.push(2)
+    calculator.push(3)
+    calculator.plus
+    calculator.value.should == 5
+  end
+
+  it &quot;adds three numbers&quot; do
+    calculator.push(2)
+    calculator.push(3)
+    calculator.push(4)
+    calculator.plus
+    calculator.value.should == 7
+    calculator.plus
+    calculator.value.should == 9
+  end
+
+  it &quot;adds and subtracts&quot; do
+    calculator.push(2)
+    calculator.push(3)
+    calculator.push(4)
+    calculator.minus
+    calculator.value.should == 1
+    calculator.plus
+    calculator.value.should == 3
+  end
+
+  it &quot;multiplies and divides&quot; do
+    calculator.push(2)
+    calculator.push(3)
+    calculator.push(4)
+    calculator.divide
+    calculator.value.should == (4.0 / 3.0)
+    calculator.times
+    calculator.value.should == (4.0 / 3.0) * 2
+  end
+
+  it &quot;resolves operator precedence unambiguously&quot; do
+    # 1 2 + 3 * =&gt; (1 + 2) * 3
+    calculator.push(1)
+    calculator.push(2)
+    calculator.plus
+    calculator.push(3)
+    calculator.times
+    calculator.value.should == (1+2)*3
+
+    # 1 2 3 * + =&gt; 1 + (2 * 3)
+    calculator.push(1)
+    calculator.push(2)
+    calculator.push(3)
+    calculator.times
+    calculator.plus
+    calculator.value.should == 1+(2*3)
+  end
+
+  it &quot;fails informatively when there's not enough values stacked away&quot; do
+    expect {
+      calculator.plus
+    }.to raise_error(&quot;calculator is empty&quot;)
+
+    expect {
+      calculator.minus
+    }.to raise_error(&quot;calculator is empty&quot;)
+
+    expect {
+      calculator.times
+    }.to raise_error(&quot;calculator is empty&quot;)
+
+    expect {
+      calculator.divide
+    }.to raise_error(&quot;calculator is empty&quot;)
+  end
+
+  # extra credit
+  it &quot;tokenizes a string&quot; do
+    calculator.tokens(&quot;1 2 3 * + 4 5 - /&quot;).should ==
+      [1, 2, 3, :*, :+, 4, 5, :-, :/]
+  end
+
+  # extra credit
+  it &quot;evaluates a string&quot; do
+    calculator.evaluate(&quot;1 2 3 * +&quot;).should ==
+      ((2 * 3) + 1)
+
+    calculator.evaluate(&quot;4 5 -&quot;).should ==
+      (5 - 4)
+
+    calculator.evaluate(&quot;1 2 3 * + 4 5 - /&quot;).should ==
+      (5.0 - 4) / ((2 * 3) + 1)
+  end
+
+end</pre>
+  </div>
+</div>
+</div>
+    <div class="footer"><a href="http://testfirst.org">TestFirst.org</a></div>
+  </body>
+</html>

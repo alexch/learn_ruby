@@ -1,0 +1,123 @@
+<html>
+  <head>
+    <title>Test-First Teaching: learn_ruby: xml_document</title>
+    <link href="../assets/style.css" media="screen" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <div class="header">
+      <h1><a href="http://testfirst.org">TestFirst.org</a></h1>
+      <h2>the home of test-first teaching</h2>
+    </div>
+    <div class="nav">
+      <h2><a href="../index.html">learn_ruby</a></h2>
+      <b>Labs:</b>
+      <ul>
+        <li><a href="../00_hello/index.html">00 Hello</a></li>
+        <li><a href="../01_temperature/index.html">01 Temperature</a></li>
+        <li><a href="../02_calculator/index.html">02 Calculator</a></li>
+        <li><a href="../03_simon_says/index.html">03 Simon Says</a></li>
+        <li><a href="../04_pig_latin/index.html">04 Pig Latin</a></li>
+        <li><a href="../05_silly_blocks/index.html">05 Silly Blocks</a></li>
+        <li><a href="../06_performance_monitor/index.html">06 Performance Monitor</a></li>
+        <li><a href="../07_hello_friend/index.html">07 Hello Friend</a></li>
+        <li><a href="../08_temperature_object/index.html">08 Temperature Object</a></li>
+        <li><a href="../09_book_titles/index.html">09 Book Titles</a></li>
+        <li><a href="../10_timer/index.html">10 Timer</a></li>
+        <li><a href="../11_dictionary/index.html">11 Dictionary</a></li>
+        <li><a href="../12_rpn_calculator/index.html">12 Rpn Calculator</a></li>
+        <li>13 Xml Document</li>
+        <li><a href="../14_array_extensions/index.html">14 Array Extensions</a></li>
+        <li><a href="../15_in_words/index.html">15 In Words</a></li>
+      </ul>
+    </div>
+    <h1>xml_document</h1>
+    <div class="content"><div class="rspec_file">  <div class="intro"><h1>Topics</h1>
+
+<ul>
+<li>method_missing</li>
+<li>blocks</li>
+<li>strings</li>
+<li>hashes</li>
+</ul>
+
+
+<h1>Builder</h1>
+
+<p>Here we will implement the so-called Builder Pattern: we will make an object, XmlDocument, that <em>builds</em> an XML file, which can contain arbitrary tags.</p>
+</div>
+  <div class="tests">
+    <h1>Tests</h1>
+<a class="raw_file" href="xml_document_spec.rb">xml_document_spec.rb</a>
+    <pre>
+# Stuff you'll learn:
+# method_missing
+# nested closures
+# &quot;builder pattern&quot;
+
+require &quot;xml_document&quot;
+
+describe XmlDocument do
+  before do
+    @xml = XmlDocument.new
+  end
+
+  it &quot;renders an empty tag&quot; do
+    @xml.hello.should == &quot;&lt;hello/&gt;&quot;
+  end
+
+  it &quot;renders a tag with attributes&quot; do
+    @xml.hello(:name =&gt; 'dolly').should == &quot;&lt;hello name='dolly'/&gt;&quot;
+  end
+
+  it &quot;renders a randomly named tag&quot; do
+    tag_name = (1..8).map{|i| ('a'..'z').to_a[rand(26)]}.join
+    @xml.send(tag_name).should == &quot;&lt;#{tag_name}/&gt;&quot;
+  end
+
+  it &quot;renders block with text inside&quot; do
+    @xml.hello do
+      &quot;dolly&quot;
+    end.should == &quot;&lt;hello&gt;dolly&lt;/hello&gt;&quot;
+  end
+
+  it &quot;nests one level&quot; do
+    @xml.hello do
+      @xml.goodbye
+    end.should == &quot;&lt;hello&gt;&lt;goodbye/&gt;&lt;/hello&gt;&quot;
+  end
+
+  it &quot;nests several levels&quot; do
+    xml = XmlDocument.new
+    xml.hello do
+      xml.goodbye do
+        xml.come_back do
+          xml.ok_fine(:be =&gt; &quot;that_way&quot;)
+        end
+      end
+    end.should == &quot;&lt;hello&gt;&lt;goodbye&gt;&lt;come_back&gt;&lt;ok_fine be='that_way'/&gt;&lt;/come_back&gt;&lt;/goodbye&gt;&lt;/hello&gt;&quot;
+  end
+
+  it &quot;indents&quot; do
+    @xml = XmlDocument.new(true)
+    @xml.hello do
+      @xml.goodbye do
+        @xml.come_back do
+          @xml.ok_fine(:be =&gt; &quot;that_way&quot;)
+        end
+      end
+    end.should ==
+    &quot;&lt;hello&gt;\n&quot; +
+    &quot;  &lt;goodbye&gt;\n&quot; +
+    &quot;    &lt;come_back&gt;\n&quot; +
+    &quot;      &lt;ok_fine be='that_way'/&gt;\n&quot; +
+    &quot;    &lt;/come_back&gt;\n&quot; +
+    &quot;  &lt;/goodbye&gt;\n&quot; +
+    &quot;&lt;/hello&gt;\n&quot;
+  end
+end</pre>
+  </div>
+</div>
+</div>
+    <div class="footer"><a href="http://testfirst.org">TestFirst.org</a></div>
+  </body>
+</html>

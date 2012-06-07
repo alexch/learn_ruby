@@ -1,0 +1,113 @@
+<html>
+  <head>
+    <title>Test-First Teaching: learn_ruby: book_titles</title>
+    <link href="../assets/style.css" media="screen" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <div class="header">
+      <h1><a href="http://testfirst.org">TestFirst.org</a></h1>
+      <h2>the home of test-first teaching</h2>
+    </div>
+    <div class="nav">
+      <h2><a href="../index.html">learn_ruby</a></h2>
+      <b>Labs:</b>
+      <ul>
+        <li><a href="../00_hello/index.html">00 Hello</a></li>
+        <li><a href="../01_temperature/index.html">01 Temperature</a></li>
+        <li><a href="../02_calculator/index.html">02 Calculator</a></li>
+        <li><a href="../03_simon_says/index.html">03 Simon Says</a></li>
+        <li><a href="../04_pig_latin/index.html">04 Pig Latin</a></li>
+        <li><a href="../05_silly_blocks/index.html">05 Silly Blocks</a></li>
+        <li><a href="../06_performance_monitor/index.html">06 Performance Monitor</a></li>
+        <li><a href="../07_hello_friend/index.html">07 Hello Friend</a></li>
+        <li><a href="../08_temperature_object/index.html">08 Temperature Object</a></li>
+        <li>09 Book Titles</li>
+        <li><a href="../10_timer/index.html">10 Timer</a></li>
+        <li><a href="../11_dictionary/index.html">11 Dictionary</a></li>
+        <li><a href="../12_rpn_calculator/index.html">12 Rpn Calculator</a></li>
+        <li><a href="../13_xml_document/index.html">13 Xml Document</a></li>
+        <li><a href="../14_array_extensions/index.html">14 Array Extensions</a></li>
+        <li><a href="../15_in_words/index.html">15 In Words</a></li>
+      </ul>
+    </div>
+    <h1>book_titles</h1>
+    <div class="content"><div class="rspec_file">  <div class="intro"><h1>Book Titles</h1>
+
+<h1>Topics</h1>
+
+<ul>
+<li>classes and objects</li>
+<li>instance variables</li>
+<li>setter methods</li>
+<li>strings</li>
+</ul>
+
+
+<h1>Notes</h1>
+
+<p>Book Titles in English obey some strange capitalization rules. For example, "and" is lowercase in "War and Peace". This test attempts to make sense of some of those rules.</p>
+</div>
+  <div class="tests">
+    <h1>Tests</h1>
+<a class="raw_file" href="book_titles_spec.rb">book_titles_spec.rb</a>
+    <pre>
+require 'book'
+
+describe Book do
+
+  before do
+    @book = Book.new
+  end
+
+  describe 'title' do
+    it 'should capitalize the first letter' do
+      @book.title = &quot;inferno&quot;
+      @book.title.should == &quot;Inferno&quot;
+    end
+
+    it 'should capitalize every word' do
+      @book.title = &quot;stuart little&quot;
+      @book.title.should == &quot;Stuart Little&quot;
+    end
+
+    describe 'should capitalize every word except...' do
+      it 'the' do
+        @book.title = &quot;alexander the great&quot;
+        @book.title.should == &quot;Alexander the Great&quot;
+      end
+
+      it 'a' do
+        @book.title = &quot;to kill a mockingbird&quot;
+        @book.title.should == &quot;To Kill a Mockingbird&quot;
+      end
+
+      it 'an' do
+        @book.title = &quot;to eat an apple a day&quot;
+        @book.title.should == &quot;To Eat an Apple a Day&quot;
+      end
+
+      it 'and' do
+        @book.title = &quot;war and peace&quot;
+        @book.title.should == &quot;War and Peace&quot;
+      end
+    end
+
+    describe 'should always capitalize' do
+      it 'I' do
+        @book.title = &quot;what i wish i knew when i was 20&quot;
+        @book.title.should == &quot;What I Wish I Knew When I Was 20&quot;
+      end
+
+      it 'the first word' do
+        @book.title = &quot;the man in the iron mask&quot;
+        @book.title.should == &quot;The Man in the Iron Mask&quot;
+      end
+    end
+  end
+end</pre>
+  </div>
+</div>
+</div>
+    <div class="footer"><a href="http://testfirst.org">TestFirst.org</a></div>
+  </body>
+</html>

@@ -1,17 +1,37 @@
 <html>
-<head>
-  <title>Test-First Teaching: learn_ruby: calculator</title>
-  <link href="../assets/style.css" media="screen" rel="stylesheet" type="text/css" />
-</head>
-<body>
-  <div class='header'>
-    <h1><a href="http://testfirst.org">TestFirst.org</a></h1>
-    <h2>the home of test-first teaching</h2>
-  </div>
-  <div class="nav"><h2><a href="../index.html">learn_ruby</a></h2><b>Labs:</b><ul><li><a href="../00_hello/index.html">00 Hello</a></li><li><a href="../01_temperature/index.html">01 Temperature</a></li><li>02 Calculator</li><li><a href="../03_mega_calculator/index.html">03 Mega Calculator</a></li><li><a href="../04_simon_says/index.html">04 Simon Says</a></li><li><a href="../05_pig_latin/index.html">05 Pig Latin</a></li><li><a href="../06_silly_blocks/index.html">06 Silly Blocks</a></li><li><a href="../07_performance_monitor/index.html">07 Performance Monitor</a></li><li><a href="../08_hello_friend/index.html">08 Hello Friend</a></li><li><a href="../09_temperature_object/index.html">09 Temperature Object</a></li><li><a href="../10_book_titles/index.html">10 Book Titles</a></li><li><a href="../11_timer/index.html">11 Timer</a></li><li><a href="../12_dictionary/index.html">12 Dictionary</a></li><li><a href="../13_rpn_calculator/index.html">13 Rpn Calculator</a></li><li><a href="../14_xml_document/index.html">14 Xml Document</a></li><li><a href="../15_array_extensions/index.html">15 Array Extensions</a></li><li><a href="../16_in_words/index.html">16 In Words</a></li></ul></div>
-  <div class="info"><h1>calculator</h1><ul><li><a href="calculator_spec.rb">calculator_spec.rb</a></li></ul></div>
-  <div class='content'>
-<h1>Topics</h1>
+  <head>
+    <title>Test-First Teaching: learn_ruby: calculator</title>
+    <link href="../assets/style.css" media="screen" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <div class="header">
+      <h1><a href="http://testfirst.org">TestFirst.org</a></h1>
+      <h2>the home of test-first teaching</h2>
+    </div>
+    <div class="nav">
+      <h2><a href="../index.html">learn_ruby</a></h2>
+      <b>Labs:</b>
+      <ul>
+        <li><a href="../00_hello/index.html">00 Hello</a></li>
+        <li><a href="../01_temperature/index.html">01 Temperature</a></li>
+        <li>02 Calculator</li>
+        <li><a href="../03_simon_says/index.html">03 Simon Says</a></li>
+        <li><a href="../04_pig_latin/index.html">04 Pig Latin</a></li>
+        <li><a href="../05_silly_blocks/index.html">05 Silly Blocks</a></li>
+        <li><a href="../06_performance_monitor/index.html">06 Performance Monitor</a></li>
+        <li><a href="../07_hello_friend/index.html">07 Hello Friend</a></li>
+        <li><a href="../08_temperature_object/index.html">08 Temperature Object</a></li>
+        <li><a href="../09_book_titles/index.html">09 Book Titles</a></li>
+        <li><a href="../10_timer/index.html">10 Timer</a></li>
+        <li><a href="../11_dictionary/index.html">11 Dictionary</a></li>
+        <li><a href="../12_rpn_calculator/index.html">12 Rpn Calculator</a></li>
+        <li><a href="../13_xml_document/index.html">13 Xml Document</a></li>
+        <li><a href="../14_array_extensions/index.html">14 Array Extensions</a></li>
+        <li><a href="../15_in_words/index.html">15 In Words</a></li>
+      </ul>
+    </div>
+    <h1>calculator</h1>
+    <div class="content"><div class="rspec_file">  <div class="intro"><h1>Topics</h1>
 
 <ul>
 <li>functions</li>
@@ -29,6 +49,8 @@
 
 <p><code>subtract</code> takes two parameters and subtracts the second from the first</p>
 
+<p><code>sum</code> takes an <em>array</em> of parameters and adds them all together</p>
+
 <h1>Bonus</h1>
 
 <p>There are also some bonus exercises for when you finish the regular ones. The bonus round will help teach you test-driven <em>development</em>, not simply test-guided <em>learning</em>.</p>
@@ -38,11 +60,81 @@
 <ul>
 <li><code>multiply</code> which multiplies two numbers together</li>
 <li><code>power</code> which raises one number to the power of another number</li>
+<li><code>[factorial](http://en.wikipedia.org/wiki/Factorial)</code> (check Wikipedia if you forgot your high school math).</li>
 </ul>
 
+</div>
+  <div class="tests">
+    <h1>Tests</h1>
+<a class="raw_file" href="calculator_spec.rb">calculator_spec.rb</a>
+    <pre>
+require &quot;calculator&quot;
+
+describe &quot;add&quot; do
+  it &quot;adds 0 and 0&quot; do
+    add(0,0).should == 0
+  end
+
+  it &quot;adds 2 and 2&quot; do
+    add(2,2).should == 4
+  end
+
+  it &quot;adds positive numbers&quot; do
+    add(2,6).should == 8
+  end
+end
+
+describe &quot;subtract&quot; do
+  it &quot;subtracts numbers&quot; do
+    subtract(10,4).should == 6
+  end
+end
+
+describe &quot;sum&quot; do
+  it &quot;computes the sum of an empty array&quot; do
+    sum([]).should == 0
+  end
+
+  it &quot;computes the sum of an array of one number&quot; do
+    sum([7]).should == 7
+  end
+
+  it &quot;computes the sum of an array of two numbers&quot; do
+    sum([7,11]).should == 18
+  end
+
+  it &quot;computes the sum of an array of many numbers&quot; do
+    sum([1,3,5,7,9]).should == 25
+  end
+end
+
+# Extra Credit Test-Driving Bonus:
+# once the above tests pass,
+# write tests and code for the following:
+
+describe &quot;#multiply&quot; do
+
+  it &quot;multiplies two numbers&quot;
+
+  it &quot;multiplies several numbers&quot;
+
+end
+
+describe &quot;#power&quot; do
+  it &quot;raises one number to the power of another number&quot;
+end
+
+# http://en.wikipedia.org/wiki/Factorial
+describe &quot;#factorial&quot; do
+  it &quot;computes the factorial of 0&quot;
+  it &quot;computes the factorial of 1&quot;
+  it &quot;computes the factorial of 2&quot;
+  it &quot;computes the factorial of 5&quot;
+  it &quot;computes the factorial of 10&quot;
+end</pre>
   </div>
-  <div class='footer'>
-    <a href="http://testfirst.org">TestFirst.org</a>
-  </div>
-</body>
+</div>
+</div>
+    <div class="footer"><a href="http://testfirst.org">TestFirst.org</a></div>
+  </body>
 </html>

@@ -1,0 +1,118 @@
+<html>
+  <head>
+    <title>Test-First Teaching: learn_ruby: performance_monitor</title>
+    <link href="../assets/style.css" media="screen" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <div class="header">
+      <h1><a href="http://testfirst.org">TestFirst.org</a></h1>
+      <h2>the home of test-first teaching</h2>
+    </div>
+    <div class="nav">
+      <h2><a href="../index.html">learn_ruby</a></h2>
+      <b>Labs:</b>
+      <ul>
+        <li><a href="../00_hello/index.html">00 Hello</a></li>
+        <li><a href="../01_temperature/index.html">01 Temperature</a></li>
+        <li><a href="../02_calculator/index.html">02 Calculator</a></li>
+        <li><a href="../03_simon_says/index.html">03 Simon Says</a></li>
+        <li><a href="../04_pig_latin/index.html">04 Pig Latin</a></li>
+        <li><a href="../05_silly_blocks/index.html">05 Silly Blocks</a></li>
+        <li>06 Performance Monitor</li>
+        <li><a href="../07_hello_friend/index.html">07 Hello Friend</a></li>
+        <li><a href="../08_temperature_object/index.html">08 Temperature Object</a></li>
+        <li><a href="../09_book_titles/index.html">09 Book Titles</a></li>
+        <li><a href="../10_timer/index.html">10 Timer</a></li>
+        <li><a href="../11_dictionary/index.html">11 Dictionary</a></li>
+        <li><a href="../12_rpn_calculator/index.html">12 Rpn Calculator</a></li>
+        <li><a href="../13_xml_document/index.html">13 Xml Document</a></li>
+        <li><a href="../14_array_extensions/index.html">14 Array Extensions</a></li>
+        <li><a href="../15_in_words/index.html">15 In Words</a></li>
+      </ul>
+    </div>
+    <h1>performance_monitor</h1>
+    <div class="content"><div class="rspec_file">  <div class="intro"><h1>Topics</h1>
+
+<ul>
+<li>stubs</li>
+<li>blocks</li>
+<li>yield</li>
+</ul>
+
+
+<h1>Performance Monitor</h1>
+
+<p>This is (a stripped down version of) an actual useful concept: a function that runs a block of code and then tells you how long it took to run.</p>
+</div>
+  <div class="tests">
+    <h1>Tests</h1>
+<a class="raw_file" href="performance_monitor_spec.rb">performance_monitor_spec.rb</a>
+    <pre>
+require &quot;performance_monitor&quot;
+require &quot;time&quot;
+
+describe &quot;Performance Monitor&quot; do
+  before do
+    @eleven_am = Time.parse(&quot;2011-1-2 11:00:00&quot;)
+  end
+
+  it &quot;takes about 0 seconds to run an empty block&quot; do
+    measure do
+    end.should be_within(0.1).of(0)
+  end
+
+  it &quot;takes exactly 0 seconds to run an empty block (with stubs)&quot; do
+    Time.stub(:now) { @eleven_am }
+    measure do
+    end.should == 0
+  end
+
+  it &quot;takes about 1 second to run a block that sleeps for 1 second&quot; do
+    measure do
+      sleep 1
+    end.should be_within(0.1).of(1)
+  end
+
+  it &quot;takes exactly 1 second to run a block that sleeps for 1 second (with stubs)&quot; do
+    fake_time = @eleven_am
+    Time.stub(:now) { fake_time }
+    measure do
+      fake_time += 60  # adds one minute to fake_time
+    end.should == 60
+  end
+
+  it &quot;runs a block N times&quot; do
+    n = 0
+    measure(4) do
+      n += 1
+    end
+    n.should == 4
+  end
+
+  it &quot;returns the average time, not the total time, when running multiple times&quot; do
+    run_times = [8,6,5,7]
+    fake_time = @eleven_am
+    Time.stub(:now) { fake_time }
+    measure(4) do
+      fake_time += run_times.pop
+    end.should == 6.5
+  end
+
+  it &quot;returns the average time when running a random number of times for random lengths of time&quot; do
+    fake_time = @eleven_am
+    Time.stub(:now) { fake_time }
+    number_of_times = rand(10) + 2
+    average_time = measure(number_of_times) do
+      delay = rand(10)
+      fake_time += delay
+    end
+    average_time.should == (fake_time - @eleven_am).to_f/number_of_times
+  end
+
+end</pre>
+  </div>
+</div>
+</div>
+    <div class="footer"><a href="http://testfirst.org">TestFirst.org</a></div>
+  </body>
+</html>

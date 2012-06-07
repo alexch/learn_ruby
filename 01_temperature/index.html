@@ -1,17 +1,37 @@
 <html>
-<head>
-  <title>Test-First Teaching: learn_ruby: temperature</title>
-  <link href="../assets/style.css" media="screen" rel="stylesheet" type="text/css" />
-</head>
-<body>
-  <div class='header'>
-    <h1><a href="http://testfirst.org">TestFirst.org</a></h1>
-    <h2>the home of test-first teaching</h2>
-  </div>
-  <div class="nav"><h2><a href="../index.html">learn_ruby</a></h2><b>Labs:</b><ul><li><a href="../00_hello/index.html">00 Hello</a></li><li>01 Temperature</li><li><a href="../02_calculator/index.html">02 Calculator</a></li><li><a href="../03_mega_calculator/index.html">03 Mega Calculator</a></li><li><a href="../04_simon_says/index.html">04 Simon Says</a></li><li><a href="../05_pig_latin/index.html">05 Pig Latin</a></li><li><a href="../06_silly_blocks/index.html">06 Silly Blocks</a></li><li><a href="../07_performance_monitor/index.html">07 Performance Monitor</a></li><li><a href="../08_hello_friend/index.html">08 Hello Friend</a></li><li><a href="../09_temperature_object/index.html">09 Temperature Object</a></li><li><a href="../10_book_titles/index.html">10 Book Titles</a></li><li><a href="../11_timer/index.html">11 Timer</a></li><li><a href="../12_dictionary/index.html">12 Dictionary</a></li><li><a href="../13_rpn_calculator/index.html">13 Rpn Calculator</a></li><li><a href="../14_xml_document/index.html">14 Xml Document</a></li><li><a href="../15_array_extensions/index.html">15 Array Extensions</a></li><li><a href="../16_in_words/index.html">16 In Words</a></li></ul></div>
-  <div class="info"><h1>temperature</h1><ul><li><a href="temperature_spec.rb">temperature_spec.rb</a></li></ul></div>
-  <div class='content'>
-<h1>Topics:</h1>
+  <head>
+    <title>Test-First Teaching: learn_ruby: temperature</title>
+    <link href="../assets/style.css" media="screen" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <div class="header">
+      <h1><a href="http://testfirst.org">TestFirst.org</a></h1>
+      <h2>the home of test-first teaching</h2>
+    </div>
+    <div class="nav">
+      <h2><a href="../index.html">learn_ruby</a></h2>
+      <b>Labs:</b>
+      <ul>
+        <li><a href="../00_hello/index.html">00 Hello</a></li>
+        <li>01 Temperature</li>
+        <li><a href="../02_calculator/index.html">02 Calculator</a></li>
+        <li><a href="../03_simon_says/index.html">03 Simon Says</a></li>
+        <li><a href="../04_pig_latin/index.html">04 Pig Latin</a></li>
+        <li><a href="../05_silly_blocks/index.html">05 Silly Blocks</a></li>
+        <li><a href="../06_performance_monitor/index.html">06 Performance Monitor</a></li>
+        <li><a href="../07_hello_friend/index.html">07 Hello Friend</a></li>
+        <li><a href="../08_temperature_object/index.html">08 Temperature Object</a></li>
+        <li><a href="../09_book_titles/index.html">09 Book Titles</a></li>
+        <li><a href="../10_timer/index.html">10 Timer</a></li>
+        <li><a href="../11_dictionary/index.html">11 Dictionary</a></li>
+        <li><a href="../12_rpn_calculator/index.html">12 Rpn Calculator</a></li>
+        <li><a href="../13_xml_document/index.html">13 Xml Document</a></li>
+        <li><a href="../14_array_extensions/index.html">14 Array Extensions</a></li>
+        <li><a href="../15_in_words/index.html">15 In Words</a></li>
+      </ul>
+    </div>
+    <h1>temperature</h1>
+    <div class="content"><div class="rspec_file">  <div class="intro"><h1>Topics:</h1>
 
 <ul>
 <li>functions</li>
@@ -30,9 +50,64 @@
 <p>In floating point math, there <strong>are</strong> fractions. So...</p>
 
 <p>   1.0 / 2.0 => 0.5</p>
+</div>
+  <div class="tests">
+    <h1>Tests</h1>
+<a class="raw_file" href="temperature_spec.rb">temperature_spec.rb</a>
+    <pre>
+require &quot;temperature&quot;
+
+describe &quot;temperature conversion functions&quot; do
+
+  describe &quot;#ftoc&quot; do
+
+    it &quot;converts freezing temperature&quot; do
+      ftoc(32).should == 0
+    end
+
+    it &quot;converts boiling temperature&quot; do
+      ftoc(212).should == 100
+    end
+
+    it &quot;converts body temperature&quot; do
+      ftoc(98.6).should == 37
+    end
+
+    it &quot;converts arbitrary temperature&quot; do
+      ftoc(68).should == 20
+    end
+
+  end
+
+  describe &quot;#ctof&quot; do
+
+    it &quot;converts freezing temperature&quot; do
+      ctof(0).should == 32
+    end
+
+    it &quot;converts boiling temperature&quot; do
+      ctof(100).should == 212
+    end
+
+    it &quot;converts arbitrary temperature&quot; do
+      ctof(20).should == 68
+    end
+
+    it &quot;converts body temperature&quot; do
+      ctof(37).should be_within(0.1).of(98.6)
+      # Why do we need to use be_within?
+      # See http://www.ruby-forum.com/topic/169330
+      # and http://en.wikipedia.org/wiki/IEEE_754-2008
+      # and http://en.wikipedia.org/wiki/Double_precision_floating-point_format
+      # Also, try &quot;puts 0.5 - 0.4 - 0.1&quot; -- pretty crazy, right?
+    end
+
+  end
+
+end</pre>
   </div>
-  <div class='footer'>
-    <a href="http://testfirst.org">TestFirst.org</a>
-  </div>
-</body>
+</div>
+</div>
+    <div class="footer"><a href="http://testfirst.org">TestFirst.org</a></div>
+  </body>
 </html>

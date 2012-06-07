@@ -1,0 +1,115 @@
+<html>
+  <head>
+    <title>Test-First Teaching: learn_ruby: silly_blocks</title>
+    <link href="../assets/style.css" media="screen" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <div class="header">
+      <h1><a href="http://testfirst.org">TestFirst.org</a></h1>
+      <h2>the home of test-first teaching</h2>
+    </div>
+    <div class="nav">
+      <h2><a href="../index.html">learn_ruby</a></h2>
+      <b>Labs:</b>
+      <ul>
+        <li><a href="../00_hello/index.html">00 Hello</a></li>
+        <li><a href="../01_temperature/index.html">01 Temperature</a></li>
+        <li><a href="../02_calculator/index.html">02 Calculator</a></li>
+        <li><a href="../03_simon_says/index.html">03 Simon Says</a></li>
+        <li><a href="../04_pig_latin/index.html">04 Pig Latin</a></li>
+        <li>05 Silly Blocks</li>
+        <li><a href="../06_performance_monitor/index.html">06 Performance Monitor</a></li>
+        <li><a href="../07_hello_friend/index.html">07 Hello Friend</a></li>
+        <li><a href="../08_temperature_object/index.html">08 Temperature Object</a></li>
+        <li><a href="../09_book_titles/index.html">09 Book Titles</a></li>
+        <li><a href="../10_timer/index.html">10 Timer</a></li>
+        <li><a href="../11_dictionary/index.html">11 Dictionary</a></li>
+        <li><a href="../12_rpn_calculator/index.html">12 Rpn Calculator</a></li>
+        <li><a href="../13_xml_document/index.html">13 Xml Document</a></li>
+        <li><a href="../14_array_extensions/index.html">14 Array Extensions</a></li>
+        <li><a href="../15_in_words/index.html">15 In Words</a></li>
+      </ul>
+    </div>
+    <h1>silly_blocks</h1>
+    <div class="content"><div class="rspec_file">  <div class="intro"><h1>Topics</h1>
+
+<ul>
+<li>blocks</li>
+<li>closures</li>
+<li>yield</li>
+<li>loops</li>
+</ul>
+
+</div>
+  <div class="tests">
+    <h1>Tests</h1>
+<a class="raw_file" href="silly_blocks_spec.rb">silly_blocks_spec.rb</a>
+    <pre>
+require &quot;silly_blocks&quot;
+
+describe &quot;some silly block functions&quot; do
+
+  describe &quot;reverser&quot; do
+    it &quot;reverses the string returned by the default block&quot; do
+      result = reverser do
+        &quot;hello&quot;
+      end
+      result.should == &quot;olleh&quot;
+    end
+
+    it &quot;reverses each word in the string returned by the default block&quot; do
+      result = reverser do
+        &quot;hello dolly&quot;
+      end
+      result.should == &quot;olleh yllod&quot;
+    end
+  end
+
+  describe &quot;adder&quot; do
+    it &quot;adds one to the value returned by the default block&quot; do
+      adder do
+        5
+      end.should == 6
+    end
+
+    it &quot;adds 3 to the value returned by the default block&quot; do
+      adder(3) do
+        5
+      end.should == 8
+    end
+  end
+
+  describe &quot;repeater&quot; do
+    it &quot;executes the default block&quot; do
+      block_was_executed = false
+      repeater do
+        block_was_executed = true
+      end
+      block_was_executed.should == true
+    end
+
+    it &quot;executes the default block 3 times&quot; do
+      n = 0
+      repeater(3) do
+        n += 1
+      end
+      n.should == 3
+    end
+
+    it &quot;executes the default block 10 times&quot; do
+      n = 0
+      repeater(10) do
+        n += 1
+      end
+      n.should == 10
+    end
+
+  end
+
+end</pre>
+  </div>
+</div>
+</div>
+    <div class="footer"><a href="http://testfirst.org">TestFirst.org</a></div>
+  </body>
+</html>

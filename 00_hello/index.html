@@ -1,17 +1,37 @@
 <html>
-<head>
-  <title>Test-First Teaching: learn_ruby: hello</title>
-  <link href="../assets/style.css" media="screen" rel="stylesheet" type="text/css" />
-</head>
-<body>
-  <div class='header'>
-    <h1><a href="http://testfirst.org">TestFirst.org</a></h1>
-    <h2>the home of test-first teaching</h2>
-  </div>
-  <div class="nav"><h2><a href="../index.html">learn_ruby</a></h2><b>Labs:</b><ul><li>00 Hello</li><li><a href="../01_temperature/index.html">01 Temperature</a></li><li><a href="../02_calculator/index.html">02 Calculator</a></li><li><a href="../03_mega_calculator/index.html">03 Mega Calculator</a></li><li><a href="../04_simon_says/index.html">04 Simon Says</a></li><li><a href="../05_pig_latin/index.html">05 Pig Latin</a></li><li><a href="../06_silly_blocks/index.html">06 Silly Blocks</a></li><li><a href="../07_performance_monitor/index.html">07 Performance Monitor</a></li><li><a href="../08_hello_friend/index.html">08 Hello Friend</a></li><li><a href="../09_temperature_object/index.html">09 Temperature Object</a></li><li><a href="../10_book_titles/index.html">10 Book Titles</a></li><li><a href="../11_timer/index.html">11 Timer</a></li><li><a href="../12_dictionary/index.html">12 Dictionary</a></li><li><a href="../13_rpn_calculator/index.html">13 Rpn Calculator</a></li><li><a href="../14_xml_document/index.html">14 Xml Document</a></li><li><a href="../15_array_extensions/index.html">15 Array Extensions</a></li><li><a href="../16_in_words/index.html">16 In Words</a></li></ul></div>
-  <div class="info"><h1>hello</h1><ul><li><a href="hello_spec.rb">hello_spec.rb</a></li></ul></div>
-  <div class='content'>
-<h1>Hello!</h1>
+  <head>
+    <title>Test-First Teaching: learn_ruby: hello</title>
+    <link href="../assets/style.css" media="screen" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <div class="header">
+      <h1><a href="http://testfirst.org">TestFirst.org</a></h1>
+      <h2>the home of test-first teaching</h2>
+    </div>
+    <div class="nav">
+      <h2><a href="../index.html">learn_ruby</a></h2>
+      <b>Labs:</b>
+      <ul>
+        <li>00 Hello</li>
+        <li><a href="../01_temperature/index.html">01 Temperature</a></li>
+        <li><a href="../02_calculator/index.html">02 Calculator</a></li>
+        <li><a href="../03_simon_says/index.html">03 Simon Says</a></li>
+        <li><a href="../04_pig_latin/index.html">04 Pig Latin</a></li>
+        <li><a href="../05_silly_blocks/index.html">05 Silly Blocks</a></li>
+        <li><a href="../06_performance_monitor/index.html">06 Performance Monitor</a></li>
+        <li><a href="../07_hello_friend/index.html">07 Hello Friend</a></li>
+        <li><a href="../08_temperature_object/index.html">08 Temperature Object</a></li>
+        <li><a href="../09_book_titles/index.html">09 Book Titles</a></li>
+        <li><a href="../10_timer/index.html">10 Timer</a></li>
+        <li><a href="../11_dictionary/index.html">11 Dictionary</a></li>
+        <li><a href="../12_rpn_calculator/index.html">12 Rpn Calculator</a></li>
+        <li><a href="../13_xml_document/index.html">13 Xml Document</a></li>
+        <li><a href="../14_array_extensions/index.html">14 Array Extensions</a></li>
+        <li><a href="../15_in_words/index.html">15 In Words</a></li>
+      </ul>
+    </div>
+    <h1>hello</h1>
+    <div class="content"><div class="rspec_file">  <div class="intro"><h1>Hello!</h1>
 
 <p>This lab teaches basic Ruby function syntax.</p>
 
@@ -22,7 +42,7 @@
 
 <p>This directory is the starting point for this exercise. It contains a spec file and you'll be adding a ruby file to (eventually) make the specs pass.</p>
 
-<h2>Run the spec</h2>
+<h2>Run the test</h2>
 
 <pre><code>rake
 </code></pre>
@@ -38,7 +58,7 @@
 
 <h2>Create hello.rb</h2>
 
-<p>Open up <code>hello.rb</code> in a text editor. Save it. Run the spec again.</p>
+<p>Open up <code>hello.rb</code> in a text editor. Save it. Run the test again.</p>
 
 <pre><code>rake
 </code></pre>
@@ -67,7 +87,7 @@ Failures:
 end
 </code></pre>
 
-<p>Save it. Run the spec again.</p>
+<p>Save it. Run the test again.</p>
 
 <h2>Watch it fail</h2>
 
@@ -96,7 +116,7 @@ Failures:
 end
 </code></pre>
 
-<p>Save it. Run the spec again.</p>
+<p>Save it. Run the test again.</p>
 
 <h2>Watch it fail</h2>
 
@@ -109,7 +129,7 @@ end
    # ./hello/hello_spec.rb:5:in `block (2 levels) in &lt;top (required)&gt;'
 </code></pre>
 
-<p>Correct this by changing "whuh?" to "Hello!". Save it. Run the spec again.</p>
+<p>Correct this by changing "whuh?" to "Hello!". Save it. Run the test again.</p>
 
 <h2>Watch it pass!</h2>
 
@@ -139,9 +159,26 @@ end
 
 <!--  -->
 
+</div>
+  <div class="tests">
+    <h1>Tests</h1>
+<a class="raw_file" href="hello_spec.rb">hello_spec.rb</a>
+    <pre>require &quot;hello&quot;
+
+describe &quot;the hello function&quot; do
+  it &quot;says hello&quot; do
+    hello.should == &quot;Hello!&quot;
+  end
+end
+
+describe &quot;the greet function&quot; do
+  it &quot;says hello to someone&quot; do
+    greet(&quot;Bob&quot;).should == &quot;Hello, Bob!&quot;
+  end
+end</pre>
   </div>
-  <div class='footer'>
-    <a href="http://testfirst.org">TestFirst.org</a>
-  </div>
-</body>
+</div>
+</div>
+    <div class="footer"><a href="http://testfirst.org">TestFirst.org</a></div>
+  </body>
 </html>

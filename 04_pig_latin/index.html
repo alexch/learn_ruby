@@ -1,0 +1,111 @@
+<html>
+  <head>
+    <title>Test-First Teaching: learn_ruby: pig_latin</title>
+    <link href="../assets/style.css" media="screen" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <div class="header">
+      <h1><a href="http://testfirst.org">TestFirst.org</a></h1>
+      <h2>the home of test-first teaching</h2>
+    </div>
+    <div class="nav">
+      <h2><a href="../index.html">learn_ruby</a></h2>
+      <b>Labs:</b>
+      <ul>
+        <li><a href="../00_hello/index.html">00 Hello</a></li>
+        <li><a href="../01_temperature/index.html">01 Temperature</a></li>
+        <li><a href="../02_calculator/index.html">02 Calculator</a></li>
+        <li><a href="../03_simon_says/index.html">03 Simon Says</a></li>
+        <li>04 Pig Latin</li>
+        <li><a href="../05_silly_blocks/index.html">05 Silly Blocks</a></li>
+        <li><a href="../06_performance_monitor/index.html">06 Performance Monitor</a></li>
+        <li><a href="../07_hello_friend/index.html">07 Hello Friend</a></li>
+        <li><a href="../08_temperature_object/index.html">08 Temperature Object</a></li>
+        <li><a href="../09_book_titles/index.html">09 Book Titles</a></li>
+        <li><a href="../10_timer/index.html">10 Timer</a></li>
+        <li><a href="../11_dictionary/index.html">11 Dictionary</a></li>
+        <li><a href="../12_rpn_calculator/index.html">12 Rpn Calculator</a></li>
+        <li><a href="../13_xml_document/index.html">13 Xml Document</a></li>
+        <li><a href="../14_array_extensions/index.html">14 Array Extensions</a></li>
+        <li><a href="../15_in_words/index.html">15 In Words</a></li>
+      </ul>
+    </div>
+    <h1>pig_latin</h1>
+    <div class="content"><div class="rspec_file">  <div class="intro"><h1>Topics</h1>
+
+<ul>
+<li>modules</li>
+<li>strings</li>
+</ul>
+
+
+<h1>Pig Latin</h1>
+
+<p>Pig Latin is a made-up children's language that's intended to be confusing. It obeys a few simple rules (below) but when it's spoken quickly it's really difficult for non-children (and non-native speakers) to understand.</p>
+
+<p>Rule 1: If a word begins with a vowel sound, add an "ay" sound to the end of the word.</p>
+
+<p>Rule 2: If a word begins with a consonant sound, move it to the end of the word, and then add an "ay" sound to the end of the word.</p>
+
+<p>(There are a few more rules for edge cases, and there are regional variants too, but that should be enough to understand the tests.)</p>
+
+<p>See <a href="http://en.wikipedia.org/wiki/Pig_latin">http://en.wikipedia.org/wiki/Pig_latin</a> for more details.</p>
+</div>
+  <div class="tests">
+    <h1>Tests</h1>
+<a class="raw_file" href="pig_latin_spec.rb">pig_latin_spec.rb</a>
+    <pre>
+require &quot;pig_latin&quot;
+
+describe &quot;#translate&quot; do
+
+  it &quot;translates a simple word&quot; do
+    s = translate(&quot;nix&quot;)
+    s.should == &quot;ixnay&quot;
+  end
+
+  it &quot;translates a word beginning with a vowel&quot; do
+    s = translate(&quot;apple&quot;)
+    s.should == &quot;appleay&quot;
+  end
+
+  it &quot;translates two words&quot; do
+    s = translate(&quot;eat pie&quot;)
+    s.should == &quot;eatay iepay&quot;
+  end
+
+  it &quot;translates a word with two consonants&quot; do
+    s = translate(&quot;stupid&quot;)
+    s.should == &quot;upidstay&quot;
+  end
+
+  it &quot;gloms several consonants in a row&quot; do
+    translate(&quot;three&quot;).should == &quot;eethray&quot;
+  end
+
+  it &quot;counts 'qu' as a single phoneme&quot; do
+    s = translate(&quot;quiet&quot;)
+    s.should == &quot;ietquay&quot;
+  end
+
+  it &quot;counts 'sch' as a single phoneme&quot; do
+    s = translate(&quot;school&quot;)
+    s.should == &quot;oolschay&quot;
+  end
+
+  it &quot;translates many words&quot; do
+    s = translate(&quot;the quick brown fox&quot;)
+    s.should == &quot;ethay ickquay ownbray oxfay&quot;
+  end
+
+  # Test-driving bonus:
+  # * write a test asserting that capitalized words are still capitalized (but with a different initial capital letter, of course)
+  # * retain the punctuation from the original phrase
+
+end</pre>
+  </div>
+</div>
+</div>
+    <div class="footer"><a href="http://testfirst.org">TestFirst.org</a></div>
+  </body>
+</html>

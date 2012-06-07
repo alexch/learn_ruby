@@ -1,0 +1,172 @@
+<html>
+  <head>
+    <title>Test-First Teaching: learn_ruby: temperature_object</title>
+    <link href="../assets/style.css" media="screen" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <div class="header">
+      <h1><a href="http://testfirst.org">TestFirst.org</a></h1>
+      <h2>the home of test-first teaching</h2>
+    </div>
+    <div class="nav">
+      <h2><a href="../index.html">learn_ruby</a></h2>
+      <b>Labs:</b>
+      <ul>
+        <li><a href="../00_hello/index.html">00 Hello</a></li>
+        <li><a href="../01_temperature/index.html">01 Temperature</a></li>
+        <li><a href="../02_calculator/index.html">02 Calculator</a></li>
+        <li><a href="../03_simon_says/index.html">03 Simon Says</a></li>
+        <li><a href="../04_pig_latin/index.html">04 Pig Latin</a></li>
+        <li><a href="../05_silly_blocks/index.html">05 Silly Blocks</a></li>
+        <li><a href="../06_performance_monitor/index.html">06 Performance Monitor</a></li>
+        <li><a href="../07_hello_friend/index.html">07 Hello Friend</a></li>
+        <li>08 Temperature Object</li>
+        <li><a href="../09_book_titles/index.html">09 Book Titles</a></li>
+        <li><a href="../10_timer/index.html">10 Timer</a></li>
+        <li><a href="../11_dictionary/index.html">11 Dictionary</a></li>
+        <li><a href="../12_rpn_calculator/index.html">12 Rpn Calculator</a></li>
+        <li><a href="../13_xml_document/index.html">13 Xml Document</a></li>
+        <li><a href="../14_array_extensions/index.html">14 Array Extensions</a></li>
+        <li><a href="../15_in_words/index.html">15 In Words</a></li>
+      </ul>
+    </div>
+    <h1>temperature_object</h1>
+    <div class="content"><div class="rspec_file">  <div class="intro"><h1>Topics:</h1>
+
+<ul>
+<li>floating-point math</li>
+<li>objects</li>
+<li>constructors</li>
+<li>class methods</li>
+<li>factory methods</li>
+<li>options hashes</li>
+</ul>
+
+
+<h1>Hints</h1>
+
+<p>Remember that one degree fahrenheit is 5/9 of one degree celsius, and that the freezing point of water is 0 degrees celsius but 32 degrees fahrenheit.</p>
+
+<p>Remember to define the <code>from_celsius</code> factory method as a <em>class</em> method, not an <em>instance</em> method.</p>
+
+<p>The temperature object's constructor should accept an <em>options hash</em> which contains either a <code>:celcius</code> entry or a <code>:fahrenheit</code> entry.</p>
+</div>
+  <div class="tests">
+    <h1>Tests</h1>
+<a class="raw_file" href="temperature_object_spec.rb">temperature_object_spec.rb</a>
+    <pre>
+require &quot;temperature&quot;
+
+describe Temperature do
+
+  describe &quot;can be constructed with an options hash&quot; do
+    describe &quot;in degrees fahrenheit&quot; do
+      it &quot;at 50 degrees&quot; do
+        Temperature.new(:f =&gt; 50).in_fahrenheit.should == 50
+      end
+
+      describe &quot;and correctly convert to celsius&quot; do
+        it &quot;at freezing&quot; do
+          Temperature.new(:f =&gt; 32).in_celsius.should == 0
+        end
+
+        it &quot;at boiling&quot; do
+          Temperature.new(:f =&gt; 212).in_celsius.should == 100
+        end
+
+        it &quot;at body temperature&quot; do
+          Temperature.new(:f =&gt; 98.6).in_celsius.should == 37
+        end
+
+        it &quot;at an arbitrary temperature&quot; do
+          Temperature.new(:f =&gt; 68).in_celsius.should == 20
+        end
+      end
+
+      describe &quot;in degrees celsius&quot; do
+        it &quot;at 50 degrees&quot; do
+          Temperature.new(:c =&gt; 50).in_celsius.should == 50
+        end
+
+        describe &quot;and correctly convert to fahrenheit&quot; do
+          it &quot;at freezing&quot; do
+            Temperature.new(:c =&gt; 0).in_fahrenheit.should == 32
+          end
+
+          it &quot;at boiling&quot; do
+            Temperature.new(:c =&gt; 100).in_fahrenheit.should == 212
+          end
+
+          it &quot;at body temperature&quot; do
+            Temperature.new(:c =&gt; 37).in_fahrenheit.should be_within(0.1).of(98.6)
+            # Why do we need to use be_within here?
+            # See http://www.ruby-forum.com/topic/169330
+            # and http://groups.google.com/group/rspec/browse_thread/thread/f3ebbe3c313202bb
+            # Also, try &quot;puts 0.5 - 0.4 - 0.1&quot; -- pretty crazy, right?
+          end
+        end
+      end
+    end
+  end
+
+  # Factory Method is a design pattern, not a Ruby language feature.
+  # One way to implement this pattern in Ruby is via class methods --
+  # that is, methods defined on the class (Temperature) rather than
+  # on individual instances of the class.
+  describe &quot;can be constructed via factory methods&quot; do
+
+    it &quot;in degrees celsius&quot; do
+      Temperature.from_celsius(50).in_celsius.should == 50
+      Temperature.from_celsius(50).in_fahrenheit.should == 122
+    end
+
+    it &quot;in degrees fahrenheit&quot; do
+      Temperature.from_fahrenheit(50).in_fahrenheit.should == 50
+      Temperature.from_fahrenheit(50).in_celsius.should == 10
+    end
+
+  end
+
+  # test-driving bonus:
+  #
+  # 1. make two class methods -- ftoc and ctof
+  # 2. refactor to call those methods from the rest of the object
+  #
+  # run *all* the tests during your refactoring, to make sure you did it right
+  #
+  describe &quot;utility class methods&quot; do
+
+  end
+
+  # Here's another way to solve the problem!
+  describe &quot;Temperature subclasses&quot; do
+    describe &quot;Celsius subclass&quot; do
+      it &quot;is constructed in degrees celsius&quot; do
+        Celsius.new(50).in_celsius.should == 50
+        Celsius.new(50).in_fahrenheit.should == 122
+      end
+
+      it &quot;is a Temperature subclass&quot; do
+        Celsius.new(0).should be_a(Temperature)
+      end
+    end
+
+    describe &quot;Fahrenheit subclass&quot; do
+      it &quot;is constructed in degrees fahrenheit&quot; do
+        Fahrenheit.new(50).in_fahrenheit.should == 50
+        Fahrenheit.new(50).in_celsius.should == 10
+      end
+
+      it &quot;is a Temperature subclass&quot; do
+        Fahrenheit.new(0).should be_a(Temperature)
+      end
+    end
+  end
+
+end</pre>
+  </div>
+</div>
+</div>
+    <div class="footer"><a href="http://testfirst.org">TestFirst.org</a></div>
+  </body>
+</html>

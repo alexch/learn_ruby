@@ -1,0 +1,106 @@
+<html>
+  <head>
+    <title>Test-First Teaching: learn_ruby: timer</title>
+    <link href="../assets/style.css" media="screen" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <div class="header">
+      <h1><a href="http://testfirst.org">TestFirst.org</a></h1>
+      <h2>the home of test-first teaching</h2>
+    </div>
+    <div class="nav">
+      <h2><a href="../index.html">learn_ruby</a></h2>
+      <b>Labs:</b>
+      <ul>
+        <li><a href="../00_hello/index.html">00 Hello</a></li>
+        <li><a href="../01_temperature/index.html">01 Temperature</a></li>
+        <li><a href="../02_calculator/index.html">02 Calculator</a></li>
+        <li><a href="../03_simon_says/index.html">03 Simon Says</a></li>
+        <li><a href="../04_pig_latin/index.html">04 Pig Latin</a></li>
+        <li><a href="../05_silly_blocks/index.html">05 Silly Blocks</a></li>
+        <li><a href="../06_performance_monitor/index.html">06 Performance Monitor</a></li>
+        <li><a href="../07_hello_friend/index.html">07 Hello Friend</a></li>
+        <li><a href="../08_temperature_object/index.html">08 Temperature Object</a></li>
+        <li><a href="../09_book_titles/index.html">09 Book Titles</a></li>
+        <li>10 Timer</li>
+        <li><a href="../11_dictionary/index.html">11 Dictionary</a></li>
+        <li><a href="../12_rpn_calculator/index.html">12 Rpn Calculator</a></li>
+        <li><a href="../13_xml_document/index.html">13 Xml Document</a></li>
+        <li><a href="../14_array_extensions/index.html">14 Array Extensions</a></li>
+        <li><a href="../15_in_words/index.html">15 In Words</a></li>
+      </ul>
+    </div>
+    <h1>timer</h1>
+    <div class="content"><div class="rspec_file">  <div class="intro"><h1>Topics</h1>
+
+<ul>
+<li>classes</li>
+<li>instance variables</li>
+<li>string formats</li>
+<li>modular arithmetic</li>
+</ul>
+
+
+<h1>Timer</h1>
+</div>
+  <div class="tests">
+    <h1>Tests</h1>
+<a class="raw_file" href="timer_spec.rb">timer_spec.rb</a>
+    <pre>
+require 'timer'
+
+describe &quot;Timer&quot; do
+  before(:each) do
+    @timer = Timer.new
+  end
+
+  it &quot;should initialize to 0 seconds&quot; do
+    @timer.seconds.should == 0
+  end
+
+  describe 'time_string' do
+    it &quot;should display 0 seconds as 00:00:00&quot; do
+      @timer.seconds = 0
+      @timer.time_string.should == &quot;00:00:00&quot;
+    end
+
+    it &quot;should display 12 seconds as 00:00:12&quot; do
+      @timer.seconds = 12
+      @timer.time_string.should == &quot;00:00:12&quot;
+    end
+
+    it &quot;should display 66 seconds as 00:01:06&quot; do
+      @timer.seconds = 66
+      @timer.time_string.should == &quot;00:01:06&quot;
+    end
+
+    it &quot;should display 4000 seconds as 01:06:40&quot; do
+      @timer.seconds = 4000
+      @timer.time_string.should == &quot;01:06:40&quot;
+    end
+  end
+
+
+  # One way to implement the Timer is with a helper method.
+  # Uncomment these specs if you want to test-drive that
+  # method, then call that method from inside of time_string.
+  #
+  # describe 'padded' do
+  #   it 'pads zero' do
+  #     @timer.padded(0).should == '00'
+  #   end
+  #   it 'pads one' do
+  #     @timer.padded(1).should == '01'
+  #   end
+  #   it &quot;doesn't pad a two-digit number&quot; do
+  #     @timer.padded(12).should == '12'
+  #   end
+  # end
+
+end</pre>
+  </div>
+</div>
+</div>
+    <div class="footer"><a href="http://testfirst.org">TestFirst.org</a></div>
+  </body>
+</html>

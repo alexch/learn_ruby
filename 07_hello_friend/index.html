@@ -1,0 +1,151 @@
+<html>
+  <head>
+    <title>Test-First Teaching: learn_ruby: hello_friend</title>
+    <link href="../assets/style.css" media="screen" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <div class="header">
+      <h1><a href="http://testfirst.org">TestFirst.org</a></h1>
+      <h2>the home of test-first teaching</h2>
+    </div>
+    <div class="nav">
+      <h2><a href="../index.html">learn_ruby</a></h2>
+      <b>Labs:</b>
+      <ul>
+        <li><a href="../00_hello/index.html">00 Hello</a></li>
+        <li><a href="../01_temperature/index.html">01 Temperature</a></li>
+        <li><a href="../02_calculator/index.html">02 Calculator</a></li>
+        <li><a href="../03_simon_says/index.html">03 Simon Says</a></li>
+        <li><a href="../04_pig_latin/index.html">04 Pig Latin</a></li>
+        <li><a href="../05_silly_blocks/index.html">05 Silly Blocks</a></li>
+        <li><a href="../06_performance_monitor/index.html">06 Performance Monitor</a></li>
+        <li>07 Hello Friend</li>
+        <li><a href="../08_temperature_object/index.html">08 Temperature Object</a></li>
+        <li><a href="../09_book_titles/index.html">09 Book Titles</a></li>
+        <li><a href="../10_timer/index.html">10 Timer</a></li>
+        <li><a href="../11_dictionary/index.html">11 Dictionary</a></li>
+        <li><a href="../12_rpn_calculator/index.html">12 Rpn Calculator</a></li>
+        <li><a href="../13_xml_document/index.html">13 Xml Document</a></li>
+        <li><a href="../14_array_extensions/index.html">14 Array Extensions</a></li>
+        <li><a href="../15_in_words/index.html">15 In Words</a></li>
+      </ul>
+    </div>
+    <h1>hello_friend</h1>
+    <div class="content"><div class="rspec_file">  <div class="intro"><h1>Hello, friend!</h1>
+
+<p>This lab teaches basic Ruby Object syntax.</p>
+
+<h2>Watch it fail</h2>
+
+<p>Your first real failure should be something like this:</p>
+
+<pre><code>./friend_spec.rb:3: uninitialized constant Friend (NameError)
+</code></pre>
+
+<p>Fix this by opening <code>friend.rb</code> and creating an empty class:</p>
+
+<pre><code>class Friend
+end
+</code></pre>
+
+<p>Save it. Run the test again.</p>
+
+<h2>Watch it fail again</h2>
+
+<p>Now you should see an error like this:</p>
+
+<pre><code>NoMethodError in 'Friend says hello'
+undefined method `greeting' for #&lt;Friend:0x1180f3c&gt;
+./friend_spec.rb:5:
+</code></pre>
+
+<p>This means that while it found the file, and it found the class, it couldn't find the method named "greeting".</p>
+
+<h2>Define the "greeting" method</h2>
+
+<p>In <code>friend.rb</code>, add the following inside the class (before the "end").</p>
+
+<pre><code>def greeting
+end
+</code></pre>
+
+<p>Save it. Run the test again.</p>
+
+<h2>Watch it fail some more</h2>
+
+<p>Now you should see an error like this:</p>
+
+<pre><code>'Friend says hello' FAILED
+expected: "Hello!",
+     got: nil (using ==)
+./friend_spec.rb:5:
+</code></pre>
+
+<p>This means that there is a method, but it's not returning anything! ("nil" is the Ruby way of saying "not anything".)</p>
+
+<h2>Make it return something</h2>
+
+<p>Inside the "greeting" method, put a single line containing a string that is <em>not</em> "Hello!". (Here we are simulating you making an honest mistake, so we can see what the error message looks like.)</p>
+
+<pre><code>def greeting
+  "whuh?"
+end
+</code></pre>
+
+<p>Save it. Run the test again.</p>
+
+<h2>Watch it fail yet again</h2>
+
+<p>Now you should see an error like this:</p>
+
+<pre><code>'Friend says hello' FAILED
+expected: "Hello!",
+     got: "whuh?" (using ==)
+./friend_spec.rb:5:
+</code></pre>
+
+<p>Correct this by changing "whuh?" to "Hello!". Save it. Run the test again.</p>
+
+<h2>Watch it pass!</h2>
+
+<p>Hooray! Finally! It works!</p>
+
+<h2>Give yourself a high five</h2>
+
+<p>Also, sing a song and do a little dance.</p>
+
+<h2>And then...</h2>
+
+<p>Fix the next failure! :-)</p>
+
+<p>Hint 1: in order to get the next test to pass, you will need to pass a <em>parameter</em>:</p>
+
+<pre><code>def greeting(who)
+</code></pre>
+
+<p>Hint 2: once you do that, the <strong>first</strong> test might start failing again. To fix both at the same time, you need to provide a <strong>default value</strong> for that parameter:</p>
+
+<pre><code>def greeting(who = nil)
+</code></pre>
+</div>
+  <div class="tests">
+    <h1>Tests</h1>
+<a class="raw_file" href="hello_friend_spec.rb">hello_friend_spec.rb</a>
+    <pre>
+require &quot;friend&quot;
+
+describe Friend do
+  it &quot;says hello&quot; do
+    Friend.new.greeting.should == &quot;Hello!&quot;
+  end
+
+  it &quot;says hello to someone&quot; do
+    Friend.new.greeting(&quot;Bob&quot;).should == &quot;Hello, Bob!&quot;
+  end
+end</pre>
+  </div>
+</div>
+</div>
+    <div class="footer"><a href="http://testfirst.org">TestFirst.org</a></div>
+  </body>
+</html>

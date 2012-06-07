@@ -1,0 +1,90 @@
+<html>
+  <head>
+    <title>Test-First Teaching: learn_ruby: array_extensions</title>
+    <link href="../assets/style.css" media="screen" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <div class="header">
+      <h1><a href="http://testfirst.org">TestFirst.org</a></h1>
+      <h2>the home of test-first teaching</h2>
+    </div>
+    <div class="nav">
+      <h2><a href="../index.html">learn_ruby</a></h2>
+      <b>Labs:</b>
+      <ul>
+        <li><a href="../00_hello/index.html">00 Hello</a></li>
+        <li><a href="../01_temperature/index.html">01 Temperature</a></li>
+        <li><a href="../02_calculator/index.html">02 Calculator</a></li>
+        <li><a href="../03_simon_says/index.html">03 Simon Says</a></li>
+        <li><a href="../04_pig_latin/index.html">04 Pig Latin</a></li>
+        <li><a href="../05_silly_blocks/index.html">05 Silly Blocks</a></li>
+        <li><a href="../06_performance_monitor/index.html">06 Performance Monitor</a></li>
+        <li><a href="../07_hello_friend/index.html">07 Hello Friend</a></li>
+        <li><a href="../08_temperature_object/index.html">08 Temperature Object</a></li>
+        <li><a href="../09_book_titles/index.html">09 Book Titles</a></li>
+        <li><a href="../10_timer/index.html">10 Timer</a></li>
+        <li><a href="../11_dictionary/index.html">11 Dictionary</a></li>
+        <li><a href="../12_rpn_calculator/index.html">12 Rpn Calculator</a></li>
+        <li><a href="../13_xml_document/index.html">13 Xml Document</a></li>
+        <li>14 Array Extensions</li>
+        <li><a href="../15_in_words/index.html">15 In Words</a></li>
+      </ul>
+    </div>
+    <h1>array_extensions</h1>
+    <div class="content"><div class="rspec_file">  <div class="intro"><h1>Array Extension</h1>
+
+<h1>Topics</h1>
+
+<ul>
+<li>objects, methods, classes</li>
+<li>reopening classes</li>
+</ul>
+
+</div>
+  <div class="tests">
+    <h1>Tests</h1>
+<a class="raw_file" href="array_extensions_spec.rb">array_extensions_spec.rb</a>
+    <pre>
+require &quot;array_extensions&quot; # we don't call it &quot;array.rb&quot; since that would be confusing
+
+describe Array do
+
+  describe &quot;#sum&quot; do
+    it &quot;has a #sum method&quot; do
+      [].should respond_to(:sum)
+    end
+
+    it &quot;should be 0 for an empty array&quot; do
+      [].sum.should == 0
+    end
+
+    it &quot;should add all of the elements&quot; do
+      [1,2,4].sum.should == 7
+    end
+  end
+
+  describe '#square' do
+    it &quot;does nothing to an empty array&quot; do
+      [].square.should == []
+    end
+
+    it &quot;returns a new array containing the squares of each element&quot; do
+      [1,2,3].square.should == [1,4,9]
+    end
+  end
+
+  describe '#square!' do
+    it &quot;squares each element of the original array&quot; do
+      array = [1,2,3]
+      array.square!
+      array.should == [1,4,9]
+    end
+  end
+
+end</pre>
+  </div>
+</div>
+</div>
+    <div class="footer"><a href="http://testfirst.org">TestFirst.org</a></div>
+  </body>
+</html>

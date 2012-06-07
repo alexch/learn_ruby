@@ -17,7 +17,7 @@ a {
   text-decoration: none; }
 
 .content {
-  padding: 0 18em;
+  padding: 0 2em 0 18em;
   min-height: 30em;
   min-width: 20em;
   max-width: 44em;
@@ -32,6 +32,8 @@ a {
   .content h2 {
     margin-top: 1em;
     border-bottom: #268bd2 1px dotted; }
+  .content pre {
+    overflow-x: auto; }
 
 .header, .footer {
   font-size: 80%;
@@ -72,18 +74,23 @@ a {
   width: 14em;
   font-size: 75%; }
 
-.nav, .info {
+.nav {
   background: -webkit-gradient(linear, left bottom, left top, color-stop(0.15, white), color-stop(0.85, #f2f2f2));
   background: -moz-linear-gradient(center bottom, white 15%, #f2f2f2 85%);
   -moz-border-radius: 10px;
   border-radius: 10px;
   border: 1px solid black; }
 
-.info {
-  float: right;
-  margin: 1em;
-  padding: 0 1em 1em;
-  font-size: 75%; }
+.rspec_file > .tests {
+  position: relative; }
+  .rspec_file > .tests a.raw_file {
+    float: right;
+    position: absolute;
+    right: 0;
+    padding: 2px 4px;
+    margin: 3px;
+    border: 1px solid #666;
+    background: #ddd; }
 
 pre {
   font-family: "Lucida Sans Typewriter Regular", "lucida console", monaco, "andale mono", "bitstream vera sans mono", consolas, "DejaVu Sans Mono", Courier, "Courier New", monospace;

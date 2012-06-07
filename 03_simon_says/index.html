@@ -1,0 +1,137 @@
+<html>
+  <head>
+    <title>Test-First Teaching: learn_ruby: simon_says</title>
+    <link href="../assets/style.css" media="screen" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <div class="header">
+      <h1><a href="http://testfirst.org">TestFirst.org</a></h1>
+      <h2>the home of test-first teaching</h2>
+    </div>
+    <div class="nav">
+      <h2><a href="../index.html">learn_ruby</a></h2>
+      <b>Labs:</b>
+      <ul>
+        <li><a href="../00_hello/index.html">00 Hello</a></li>
+        <li><a href="../01_temperature/index.html">01 Temperature</a></li>
+        <li><a href="../02_calculator/index.html">02 Calculator</a></li>
+        <li>03 Simon Says</li>
+        <li><a href="../04_pig_latin/index.html">04 Pig Latin</a></li>
+        <li><a href="../05_silly_blocks/index.html">05 Silly Blocks</a></li>
+        <li><a href="../06_performance_monitor/index.html">06 Performance Monitor</a></li>
+        <li><a href="../07_hello_friend/index.html">07 Hello Friend</a></li>
+        <li><a href="../08_temperature_object/index.html">08 Temperature Object</a></li>
+        <li><a href="../09_book_titles/index.html">09 Book Titles</a></li>
+        <li><a href="../10_timer/index.html">10 Timer</a></li>
+        <li><a href="../11_dictionary/index.html">11 Dictionary</a></li>
+        <li><a href="../12_rpn_calculator/index.html">12 Rpn Calculator</a></li>
+        <li><a href="../13_xml_document/index.html">13 Xml Document</a></li>
+        <li><a href="../14_array_extensions/index.html">14 Array Extensions</a></li>
+        <li><a href="../15_in_words/index.html">15 In Words</a></li>
+      </ul>
+    </div>
+    <h1>simon_says</h1>
+    <div class="content"><div class="rspec_file">  <div class="intro"><h1>Simon Says</h1>
+
+<h2>Topics</h2>
+
+<ul>
+<li>functions</li>
+<li>strings</li>
+<li>default parameter values</li>
+</ul>
+
+
+<h2>Hints</h2>
+
+<p>When you make the second <code>repeat</code> test pass, you might break the <strong>first</strong></p>
+</div>
+  <div class="tests">
+    <h1>Tests</h1>
+<a class="raw_file" href="simon_says_spec.rb">simon_says_spec.rb</a>
+    <pre>
+require &quot;simon_says&quot;
+
+describe &quot;Simon says&quot; do
+  describe &quot;echo&quot; do
+    it &quot;should echo hello&quot; do
+      echo(&quot;hello&quot;).should == &quot;hello&quot;
+    end
+
+    it &quot;should echo bye&quot; do
+      echo(&quot;bye&quot;).should == &quot;bye&quot;
+    end
+  end
+
+  describe &quot;shout&quot; do
+    it &quot;should shout hello&quot; do
+      shout(&quot;hello&quot;).should == &quot;HELLO&quot;
+    end
+
+    it &quot;should shout multiple words&quot; do
+      shout(&quot;hello world&quot;).should == &quot;HELLO WORLD&quot;
+    end
+  end
+
+  describe &quot;repeat&quot; do
+    it &quot;should repeat&quot; do
+      repeat(&quot;hello&quot;).should == &quot;hello hello&quot;
+    end
+
+    # Wait a second! How can you make the &quot;repeat&quot; method
+    # take one *or* two arguments?
+    #
+    # Hint: *default values*
+    it &quot;should repeat a number of times&quot; do
+      repeat(&quot;hello&quot;, 3).should == &quot;hello hello hello&quot;
+    end
+  end
+
+  describe &quot;start_of_word&quot; do
+    it &quot;returns the first letter&quot; do
+      start_of_word(&quot;hello&quot;, 1).should == &quot;h&quot;
+    end
+
+    it &quot;returns the first two letters&quot; do
+      start_of_word(&quot;Bob&quot;, 2).should == &quot;Bo&quot;
+    end
+
+    it &quot;returns the first several letters&quot; do
+      s = &quot;abcdefg&quot;
+      start_of_word(s, 1).should == &quot;a&quot;
+      start_of_word(s, 2).should == &quot;ab&quot;
+      start_of_word(s, 3).should == &quot;abc&quot;
+    end
+  end
+
+  describe &quot;first_word&quot; do
+    it &quot;tells us the first word of 'Hello World' is 'Hello'&quot; do
+      first_word(&quot;Hello World&quot;).should == &quot;Hello&quot;
+    end
+
+    it &quot;tells us the first word of 'oh dear' is 'oh'&quot; do
+      first_word(&quot;oh dear&quot;).should == &quot;oh&quot;
+    end
+  end
+
+  describe &quot;capitalize and titleize&quot; do
+    it &quot;capitalizes a word&quot; do
+      capitalize(&quot;obama&quot;).should == &quot;Obama&quot;
+    end
+
+    it &quot;only capitalizes the first letter of a multi-word string&quot; do
+      capitalize(&quot;barack obama&quot;).should == &quot;Barack obama&quot;
+    end
+
+    it &quot;should capitalize every word (aka title case)&quot; do
+      titleize(&quot;barack obama&quot;).should == &quot;Barack Obama&quot;
+    end
+  end
+
+end</pre>
+  </div>
+</div>
+</div>
+    <div class="footer"><a href="http://testfirst.org">TestFirst.org</a></div>
+  </body>
+</html>
