@@ -15,6 +15,12 @@
 #
 # `sum` takes an *array* of parameters and adds them all together
 #
+# # Warning
+#
+# You may not have enough knowledge yet to complete `sum`. You will probably
+# need to use **loops** (e.g. `while`) or **iterators** (e.g. `each`) to
+# get the tests to pass.
+#
 # # Bonus
 #
 # There are also some bonus exercises for when you finish the regular ones. The bonus round will help teach you test-driven *development*, not simply test-guided *learning*.
