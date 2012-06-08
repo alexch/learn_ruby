@@ -75,17 +75,21 @@ describe "Simon says" do
     end
   end
 
-  describe "capitalize and titleize" do
+  describe "titleize" do
     it "capitalizes a word" do
-      capitalize("obama").should == "Obama"
+      titleize("jaws").should == "Jaws"
     end
 
-    it "only capitalizes the first letter of a multi-word string" do
-      capitalize("barack obama").should == "Barack obama"
+    it "capitalizes every word (aka title case)" do
+      titleize("david copperfield").should == "David Copperfield"
     end
 
-    it "should capitalize every word (aka title case)" do
-      titleize("barack obama").should == "Barack Obama"
+    it "doesn't capitalize 'little words' in a title" do
+      titleize("war and peace").should == "War and Peace"
+    end
+
+    it "does capitalize 'little words' at the start of a title" do
+      titleize("the bridge over the river kwai").should == "The Bridge over the River Kwai"
     end
   end
 

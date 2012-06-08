@@ -114,17 +114,21 @@ describe &quot;Simon says&quot; do
     end
   end
 
-  describe &quot;capitalize and titleize&quot; do
+  describe &quot;titleize&quot; do
     it &quot;capitalizes a word&quot; do
-      capitalize(&quot;obama&quot;).should == &quot;Obama&quot;
+      titleize(&quot;jaws&quot;).should == &quot;Jaws&quot;
     end
 
-    it &quot;only capitalizes the first letter of a multi-word string&quot; do
-      capitalize(&quot;barack obama&quot;).should == &quot;Barack obama&quot;
+    it &quot;capitalizes every word (aka title case)&quot; do
+      titleize(&quot;david copperfield&quot;).should == &quot;David Copperfield&quot;
     end
 
-    it &quot;should capitalize every word (aka title case)&quot; do
-      titleize(&quot;barack obama&quot;).should == &quot;Barack Obama&quot;
+    it &quot;doesn't capitalize 'little words' in a title&quot; do
+      titleize(&quot;war and peace&quot;).should == &quot;War and Peace&quot;
+    end
+
+    it &quot;does capitalize 'little words' at the start of a title&quot; do
+      titleize(&quot;the bridge over the river kwai&quot;).should == &quot;The Bridge over the River Kwai&quot;
     end
   end
 
