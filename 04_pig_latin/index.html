@@ -59,14 +59,14 @@ require &quot;pig_latin&quot;
 
 describe &quot;#translate&quot; do
 
-  it &quot;translates a simple word&quot; do
-    s = translate(&quot;nix&quot;)
-    s.should == &quot;ixnay&quot;
-  end
-
   it &quot;translates a word beginning with a vowel&quot; do
     s = translate(&quot;apple&quot;)
     s.should == &quot;appleay&quot;
+  end
+
+  it &quot;translates a word beginning with a consonant&quot; do
+    s = translate(&quot;nix&quot;)
+    s.should == &quot;ixnay&quot;
   end
 
   it &quot;translates two words&quot; do

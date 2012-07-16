@@ -21,14 +21,14 @@ require "pig_latin"
 
 describe "#translate" do
 
-  it "translates a simple word" do
-    s = translate("nix")
-    s.should == "ixnay"
-  end
-
   it "translates a word beginning with a vowel" do
     s = translate("apple")
     s.should == "appleay"
+  end
+
+  it "translates a word beginning with a consonant" do
+    s = translate("nix")
+    s.should == "ixnay"
   end
 
   it "translates two words" do

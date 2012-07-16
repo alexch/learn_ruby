@@ -32,34 +32,41 @@ describe Book do
     end
 
     describe 'should capitalize every word except...' do
-      it 'the' do
-        @book.title = "alexander the great"
-        @book.title.should == "Alexander the Great"
+      describe 'articles' do
+        specify 'the' do
+          @book.title = "alexander the great"
+          @book.title.should == "Alexander the Great"
+        end
+
+        specify 'a' do
+          @book.title = "to kill a mockingbird"
+          @book.title.should == "To Kill a Mockingbird"
+        end
+
+        specify 'an' do
+          @book.title = "to eat an apple a day"
+          @book.title.should == "To Eat an Apple a Day"
+        end
       end
 
-      it 'a' do
-        @book.title = "to kill a mockingbird"
-        @book.title.should == "To Kill a Mockingbird"
-      end
-
-      it 'an' do
-        @book.title = "to eat an apple a day"
-        @book.title.should == "To Eat an Apple a Day"
-      end
-
-      it 'and' do
+      specify 'conjunctions' do
         @book.title = "war and peace"
         @book.title.should == "War and Peace"
       end
+
+      specify 'prepositions' do
+        @book.title = "love in the time of cholera"
+        @book.title.should == "Love in the Time of Cholera"
+      end
     end
 
-    describe 'should always capitalize' do
-      it 'I' do
+    describe 'should always capitalize...' do
+      specify 'I' do
         @book.title = "what i wish i knew when i was 20"
         @book.title.should == "What I Wish I Knew When I Was 20"
       end
 
-      it 'the first word' do
+      specify 'the first word' do
         @book.title = "the man in the iron mask"
         @book.title.should == "The Man in the Iron Mask"
       end
