@@ -9,7 +9,8 @@
 # This is (a stripped down version of) an actual useful concept: a function that runs a block of code and then tells you how long it took to run.
 
 require "performance_monitor"
-require "time"
+
+require "time"  # loads up the Time.parse method -- do NOT create time.rb!
 
 describe "Performance Monitor" do
   before do
@@ -17,28 +18,32 @@ describe "Performance Monitor" do
   end
 
   it "takes about 0 seconds to run an empty block" do
-    measure do
-    end.should be_within(0.1).of(0)
+    elapsed_time = measure do
+    end
+    elapsed_time.should be_within(0.1).of(0)
   end
 
   it "takes exactly 0 seconds to run an empty block (with stubs)" do
     Time.stub(:now) { @eleven_am }
-    measure do
-    end.should == 0
+    elapsed_time = measure do
+    end
+    elapsed_time.should == 0
   end
 
   it "takes about 1 second to run a block that sleeps for 1 second" do
-    measure do
+    elapsed_time = measure do
       sleep 1
-    end.should be_within(0.1).of(1)
+    end
+    elapsed_time.should be_within(0.1).of(1)
   end
 
   it "takes exactly 1 second to run a block that sleeps for 1 second (with stubs)" do
     fake_time = @eleven_am
     Time.stub(:now) { fake_time }
-    measure do
+    elapsed_time = measure do
       fake_time += 60  # adds one minute to fake_time
-    end.should == 60
+    end
+    elapsed_time.should == 60
   end
 
   it "runs a block N times" do
@@ -53,9 +58,10 @@ describe "Performance Monitor" do
     run_times = [8,6,5,7]
     fake_time = @eleven_am
     Time.stub(:now) { fake_time }
-    measure(4) do
+    average_time = measure(4) do
       fake_time += run_times.pop
-    end.should == 6.5
+    end
+    average_time.should == 6.5
   end
 
   it "returns the average time when running a random number of times for random lengths of time" do
