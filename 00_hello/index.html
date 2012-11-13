@@ -170,6 +170,10 @@ end
 
 describe &quot;the greet function&quot; do
   it &quot;says hello to someone&quot; do
+    greet(&quot;Alice&quot;).should == &quot;Hello, Alice!&quot;
+  end
+
+  it &quot;says hello to someone else&quot; do
     greet(&quot;Bob&quot;).should == &quot;Hello, Bob!&quot;
   end
 end</pre>

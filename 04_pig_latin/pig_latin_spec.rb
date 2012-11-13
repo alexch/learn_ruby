@@ -27,8 +27,13 @@ describe "#translate" do
   end
 
   it "translates a word beginning with a consonant" do
-    s = translate("nix")
-    s.should == "ixnay"
+    s = translate("banana")
+    s.should == "ananabay"
+  end
+
+  it "translates a word beginning with two consonants" do
+    s = translate("cherry")
+    s.should == "errychay"
   end
 
   it "translates two words" do
@@ -36,13 +41,13 @@ describe "#translate" do
     s.should == "eatay iepay"
   end
 
-  it "translates a word with two consonants" do
-    s = translate("stupid")
-    s.should == "upidstay"
+  it "translates a word beginning with three consonants" do
+    translate("three").should == "eethray"
   end
 
-  it "gloms several consonants in a row" do
-    translate("three").should == "eethray"
+  it "counts 'sch' as a single phoneme" do
+    s = translate("school")
+    s.should == "oolschay"
   end
 
   it "counts 'qu' as a single phoneme" do
@@ -50,9 +55,9 @@ describe "#translate" do
     s.should == "ietquay"
   end
 
-  it "counts 'sch' as a single phoneme" do
-    s = translate("school")
-    s.should == "oolschay"
+  it "counts 'qu' as a consonant even when it's preceded by a consonant" do
+    s = translate("square")
+    s.should == "aresquay"
   end
 
   it "translates many words" do

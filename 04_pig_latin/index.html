@@ -65,8 +65,13 @@ describe &quot;#translate&quot; do
   end
 
   it &quot;translates a word beginning with a consonant&quot; do
-    s = translate(&quot;nix&quot;)
-    s.should == &quot;ixnay&quot;
+    s = translate(&quot;banana&quot;)
+    s.should == &quot;ananabay&quot;
+  end
+
+  it &quot;translates a word beginning with two consonants&quot; do
+    s = translate(&quot;cherry&quot;)
+    s.should == &quot;errychay&quot;
   end
 
   it &quot;translates two words&quot; do
@@ -74,13 +79,13 @@ describe &quot;#translate&quot; do
     s.should == &quot;eatay iepay&quot;
   end
 
-  it &quot;translates a word with two consonants&quot; do
-    s = translate(&quot;stupid&quot;)
-    s.should == &quot;upidstay&quot;
+  it &quot;translates a word beginning with three consonants&quot; do
+    translate(&quot;three&quot;).should == &quot;eethray&quot;
   end
 
-  it &quot;gloms several consonants in a row&quot; do
-    translate(&quot;three&quot;).should == &quot;eethray&quot;
+  it &quot;counts 'sch' as a single phoneme&quot; do
+    s = translate(&quot;school&quot;)
+    s.should == &quot;oolschay&quot;
   end
 
   it &quot;counts 'qu' as a single phoneme&quot; do
@@ -88,9 +93,9 @@ describe &quot;#translate&quot; do
     s.should == &quot;ietquay&quot;
   end
 
-  it &quot;counts 'sch' as a single phoneme&quot; do
-    s = translate(&quot;school&quot;)
-    s.should == &quot;oolschay&quot;
+  it &quot;counts 'qu' as a consonant even when it's preceded by a consonant&quot; do
+    s = translate(&quot;square&quot;)
+    s.should == &quot;aresquay&quot;
   end
 
   it &quot;translates many words&quot; do
