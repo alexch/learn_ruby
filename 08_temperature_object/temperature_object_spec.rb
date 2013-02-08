@@ -44,28 +44,28 @@ describe Temperature do
           Temperature.new(:f => 68).in_celsius.should == 20
         end
       end
+    end
 
-      describe "in degrees celsius" do
-        it "at 50 degrees" do
-          Temperature.new(:c => 50).in_celsius.should == 50
+    describe "in degrees celsius" do
+      it "at 50 degrees" do
+        Temperature.new(:c => 50).in_celsius.should == 50
+      end
+
+      describe "and correctly convert to fahrenheit" do
+        it "at freezing" do
+          Temperature.new(:c => 0).in_fahrenheit.should == 32
         end
 
-        describe "and correctly convert to fahrenheit" do
-          it "at freezing" do
-            Temperature.new(:c => 0).in_fahrenheit.should == 32
-          end
+        it "at boiling" do
+          Temperature.new(:c => 100).in_fahrenheit.should == 212
+        end
 
-          it "at boiling" do
-            Temperature.new(:c => 100).in_fahrenheit.should == 212
-          end
-
-          it "at body temperature" do
-            Temperature.new(:c => 37).in_fahrenheit.should be_within(0.1).of(98.6)
-            # Why do we need to use be_within here?
-            # See http://www.ruby-forum.com/topic/169330
-            # and http://groups.google.com/group/rspec/browse_thread/thread/f3ebbe3c313202bb
-            # Also, try "puts 0.5 - 0.4 - 0.1" -- pretty crazy, right?
-          end
+        it "at body temperature" do
+          Temperature.new(:c => 37).in_fahrenheit.should be_within(0.1).of(98.6)
+          # Why do we need to use be_within here?
+          # See http://www.ruby-forum.com/topic/169330
+          # and http://groups.google.com/group/rspec/browse_thread/thread/f3ebbe3c313202bb
+          # Also, try "puts 0.5 - 0.4 - 0.1" -- pretty crazy, right?
         end
       end
     end
