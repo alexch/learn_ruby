@@ -82,28 +82,28 @@ describe Temperature do
           Temperature.new(:f =&gt; 68).in_celsius.should == 20
         end
       end
+    end
 
-      describe &quot;in degrees celsius&quot; do
-        it &quot;at 50 degrees&quot; do
-          Temperature.new(:c =&gt; 50).in_celsius.should == 50
+    describe &quot;in degrees celsius&quot; do
+      it &quot;at 50 degrees&quot; do
+        Temperature.new(:c =&gt; 50).in_celsius.should == 50
+      end
+
+      describe &quot;and correctly convert to fahrenheit&quot; do
+        it &quot;at freezing&quot; do
+          Temperature.new(:c =&gt; 0).in_fahrenheit.should == 32
         end
 
-        describe &quot;and correctly convert to fahrenheit&quot; do
-          it &quot;at freezing&quot; do
-            Temperature.new(:c =&gt; 0).in_fahrenheit.should == 32
-          end
+        it &quot;at boiling&quot; do
+          Temperature.new(:c =&gt; 100).in_fahrenheit.should == 212
+        end
 
-          it &quot;at boiling&quot; do
-            Temperature.new(:c =&gt; 100).in_fahrenheit.should == 212
-          end
-
-          it &quot;at body temperature&quot; do
-            Temperature.new(:c =&gt; 37).in_fahrenheit.should be_within(0.1).of(98.6)
-            # Why do we need to use be_within here?
-            # See http://www.ruby-forum.com/topic/169330
-            # and http://groups.google.com/group/rspec/browse_thread/thread/f3ebbe3c313202bb
-            # Also, try &quot;puts 0.5 - 0.4 - 0.1&quot; -- pretty crazy, right?
-          end
+        it &quot;at body temperature&quot; do
+          Temperature.new(:c =&gt; 37).in_fahrenheit.should be_within(0.1).of(98.6)
+          # Why do we need to use be_within here?
+          # See http://www.ruby-forum.com/topic/169330
+          # and http://groups.google.com/group/rspec/browse_thread/thread/f3ebbe3c313202bb
+          # Also, try &quot;puts 0.5 - 0.4 - 0.1&quot; -- pretty crazy, right?
         end
       end
     end
