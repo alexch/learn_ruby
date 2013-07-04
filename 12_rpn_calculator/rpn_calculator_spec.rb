@@ -87,7 +87,7 @@ describe RPNCalculator do
     calculator.value.should == 2.0 * (3.0 / 4.0)
   end
 
-  it "resolves operator precedence unambiguously" do
+  it "resolves operator precedence unambiguously - attempt 1" do
     # 1 2 + 3 * => (1 + 2) * 3
     calculator.push(1)
     calculator.push(2)
@@ -95,7 +95,9 @@ describe RPNCalculator do
     calculator.push(3)
     calculator.times
     calculator.value.should == (1+2)*3
-
+  end
+  
+  it "resolves operator precedence unambiguously - attempt 2" do
     # 1 2 3 * + => 1 + (2 * 3)
     calculator.push(1)
     calculator.push(2)
