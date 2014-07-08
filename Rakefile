@@ -1,5 +1,8 @@
 # This Rakefile has all the right settings to run the tests inside each lab
-gem 'rspec', '~>2'
+
+# Little file edition to use RSpec 3.0.0 version ( last )
+gem 'rspec', '~>3'  # Use '~>2' to downgrade
+
 require 'rspec/core/rake_task'
 
 task :default => :spec
