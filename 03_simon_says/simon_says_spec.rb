@@ -89,7 +89,7 @@ describe "Simon says" do
     end
 
     it "does capitalize 'little words' at the start of a title" do
-      titleize("the bridge over the river kwai").should == "The Bridge over the River Kwai"
+      titleize("the bridge over the river kwai").should == "The Bridge Over the River Kwai"
     end
   end
 
