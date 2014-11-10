@@ -30,6 +30,6 @@ end
 def titleize(phrase)
 	exclusion_array = ["and", "or", "the", "over", "to", "the", "a", "but"]
 	phrase = phrase.split.map! { |word| exclusion_array.include?(word) ? word : word.capitalize }.join(' ')
-	phrase.sub!(/./) {|x| x.upcase }
+	phrase.sub!(/./) {|first_letter| first_letter.upcase }
 	phrase
 end
