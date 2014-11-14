@@ -69,7 +69,6 @@ describe Fixnum do
   end
 
   it "reads hundreds" do
-	pending
     expect(100.in_words).to eql('one hundred')
     expect(200.in_words).to eql('two hundred')
     expect(300.in_words).to eql('three hundred')
@@ -81,24 +80,20 @@ describe Fixnum do
   end
 
   it "reads thousands" do
-	pending
     expect(1000.in_words).to eql('one thousand')
     expect(32767.in_words).to eql('thirty two thousand seven hundred sixty seven')
     expect(32768.in_words).to eql('thirty two thousand seven hundred sixty eight')
   end
 
   it "reads millions" do
-	pending
     expect(10_000_001.in_words).to eql('ten million one')
   end
 
   it "reads billions" do
-	pending
     expect(1_234_567_890.in_words).to eql('one billion two hundred thirty four million five hundred sixty seven thousand eight hundred ninety')
   end
 
   it "reads trillions" do
-	pending
     expect(1_000_000_000_000.in_words).to eql('one trillion')
     expect(1_000_000_000_001.in_words).to eql('one trillion one')
     expect(1_888_259_040_036.in_words).to eql('one trillion eight hundred eighty eight billion two hundred fifty nine million forty thousand thirty six')

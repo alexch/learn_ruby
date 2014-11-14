@@ -4,13 +4,28 @@
 
 class Fixnum
 	def in_words
-		case self
+		generate_phrase(self)	
+	end
+
+
+	def generate_phrase(num)
+		case num
 		when 0..9
-			single_digit(self)	
+			single_digit(num)	
 		when 10..99
-			double_digit(self)
+			double_digit(num)
+		when 100..999
+			triple_digit(num)
+		when 1000..999999
+			thousands(num)
+		when 1_000_000..999_999_999
+			millions(num)
+		when 1_000_000_000..999_999_999_999
+			billions(num)
+		when 1_000_000_000_000..999_999_999_999_999
+			trillions(num)
 		end
-		
+
 	end
 
 	def single_digit(num)
@@ -102,8 +117,55 @@ class Fixnum
 		word
 	end
 
+	def triple_digit(num)
+		str = ''
+		hundreds = num - num%100
+		str = single_digit(hundreds/100) + " hundred"
+		if num%100 != 0
+			str.concat(' ' + double_digit(num%100))
+		end
+		str
+	end
 
+	def thousands(num)
+		str = ''
+		thousands = num - num%1000
+		str = generate_phrase(thousands/1000) + " thousand"
+		if num%1000 != 0
+			str.concat(' ' + generate_phrase(num%1000))
+		end
+		str
+	end
+	
+	def millions(num)
+		str = ''
+		millions = num - num%1_000_000
+		str = generate_phrase(millions/1_000_000) + " million"
+		if num%1_000_000 != 0
+			str.concat(' ' + generate_phrase(num%1_000_000))
+		end
+		str
+	end	
 
+	def billions(num)
+		str = ''
+		billions = num - num%1_000_000_000
+		str = generate_phrase(billions/1_000_000_000) + " billion"
+		if num%1_000_000_000 != 0
+			str.concat(' ' + generate_phrase(num%1_000_000_000))
+		end
+		str
+	end	
+
+	def trillions(num)
+		str = ''
+		trillions = num - num%1_000_000_000_000
+		str = generate_phrase(trillions/1_000_000_000_000) + " trillion"
+		if num%1_000_000_000 != 0
+			str.concat(' ' + generate_phrase(num%1_000_000_000_000))
+		end
+		str
+	end	
 
 end
 
