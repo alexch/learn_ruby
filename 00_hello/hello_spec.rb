@@ -113,20 +113,20 @@
 #       "Hello, #{who}!"
 #     end
 #
-require "hello"
+require_relative "hello"
 
 describe "the hello function" do
   it "says hello" do
-    hello.should == "Hello!"
+    expect(hello).to eql("Hello!")
   end
 end
 
 describe "the greet function" do
   it "says hello to someone" do
-    greet("Alice").should == "Hello, Alice!"
+    expect(greet("Alice")).to eql("Hello, Alice!")
   end
 
   it "says hello to someone else" do
-    greet("Bob").should == "Hello, Bob!"
+		expect(greet("Bob")).to eql("Hello, Bob!")
   end
 end

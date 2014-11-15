@@ -18,85 +18,85 @@
 # The number 4 is of class `FixNum` and it has methods on it.  Your challenge is to add an `in_words` method to `FixNum`.
 #
 
-require "in_words"
+require_relative "in_words"
 
 describe Fixnum do
 
   it "reads 0 to 9" do
-    0.in_words.should == 'zero'
-    1.in_words.should == 'one'
-    2.in_words.should == 'two'
-    3.in_words.should == 'three'
-    4.in_words.should == 'four'
-    5.in_words.should == 'five'
-    6.in_words.should == 'six'
-    7.in_words.should == 'seven'
-    8.in_words.should == 'eight'
-    9.in_words.should == 'nine'
+    expect(0.in_words).to eql('zero')
+    expect(1.in_words).to eql('one')
+    expect(2.in_words).to eql('two')
+    expect(3.in_words).to eql('three')
+    expect(4.in_words).to eql('four')
+    expect(5.in_words).to eql('five')
+    expect(6.in_words).to eql('six')
+    expect(7.in_words).to eql('seven')
+    expect(8.in_words).to eql('eight')
+    expect(9.in_words).to eql('nine')
   end
 
   it "reads 10 to 12" do
-    10.in_words.should == 'ten'
-    11.in_words.should == 'eleven'
-    12.in_words.should == 'twelve'
+    expect(10.in_words).to eql('ten')
+    expect(11.in_words).to eql('eleven')
+    expect(12.in_words).to eql('twelve')
   end
 
   it "reads teens" do
-    13.in_words.should == 'thirteen'
-    14.in_words.should == 'fourteen'
-    15.in_words.should == 'fifteen'
-    16.in_words.should == 'sixteen'
-    17.in_words.should == 'seventeen'
-    18.in_words.should == 'eighteen'
-    19.in_words.should == 'nineteen'
+    expect(13.in_words).to eql('thirteen')
+    expect(14.in_words).to eql('fourteen')
+    expect(15.in_words).to eql('fifteen')
+    expect(16.in_words).to eql('sixteen')
+    expect(17.in_words).to eql('seventeen')
+    expect(18.in_words).to eql('eighteen')
+    expect(19.in_words).to eql('nineteen')
   end
 
   it "reads tens" do
-    20.in_words.should == 'twenty'
-    30.in_words.should == 'thirty'
-    40.in_words.should == 'forty'
-    50.in_words.should == 'fifty'
-    60.in_words.should == 'sixty'
-    70.in_words.should == 'seventy'
-    80.in_words.should == 'eighty'
-    90.in_words.should == 'ninety'
+    expect(20.in_words).to eql('twenty')
+    expect(30.in_words).to eql('thirty')
+    expect(40.in_words).to eql('forty')
+    expect(50.in_words).to eql('fifty')
+    expect(60.in_words).to eql('sixty')
+    expect(70.in_words).to eql('seventy')
+    expect(80.in_words).to eql('eighty')
+    expect(90.in_words).to eql('ninety')
   end
 
   it "reads various other numbers less than 100" do
-    20.in_words.should == 'twenty'
-    77.in_words.should == 'seventy seven'
-    99.in_words.should == 'ninety nine'
+    expect(20.in_words).to eql('twenty')
+    expect(77.in_words).to eql('seventy seven')
+    expect(99.in_words).to eql('ninety nine')
   end
 
   it "reads hundreds" do
-    100.in_words.should == 'one hundred'
-    200.in_words.should == 'two hundred'
-    300.in_words.should == 'three hundred'
-    123.in_words.should == 'one hundred twenty three'
-    777.in_words.should == 'seven hundred seventy seven'
-    818.in_words.should == 'eight hundred eighteen'
-    512.in_words.should == 'five hundred twelve'
-    999.in_words.should == 'nine hundred ninety nine'
+    expect(100.in_words).to eql('one hundred')
+    expect(200.in_words).to eql('two hundred')
+    expect(300.in_words).to eql('three hundred')
+    expect(123.in_words).to eql('one hundred twenty three')
+    expect(777.in_words).to eql('seven hundred seventy seven')
+    expect(818.in_words).to eql('eight hundred eighteen')
+    expect(512.in_words).to eql('five hundred twelve')
+    expect(999.in_words).to eql('nine hundred ninety nine')
   end
 
   it "reads thousands" do
-    1000.in_words.should == 'one thousand'
-    32767.in_words.should == 'thirty two thousand seven hundred sixty seven'
-    32768.in_words.should == 'thirty two thousand seven hundred sixty eight'
+    expect(1000.in_words).to eql('one thousand')
+    expect(32767.in_words).to eql('thirty two thousand seven hundred sixty seven')
+    expect(32768.in_words).to eql('thirty two thousand seven hundred sixty eight')
   end
 
   it "reads millions" do
-    10_000_001.in_words.should == 'ten million one'
+    expect(10_000_001.in_words).to eql('ten million one')
   end
 
   it "reads billions" do
-    1_234_567_890.in_words.should == 'one billion two hundred thirty four million five hundred sixty seven thousand eight hundred ninety'
+    expect(1_234_567_890.in_words).to eql('one billion two hundred thirty four million five hundred sixty seven thousand eight hundred ninety')
   end
 
   it "reads trillions" do
-    1_000_000_000_000.in_words.should == 'one trillion'
-    1_000_000_000_001.in_words.should == 'one trillion one'
-    1_888_259_040_036.in_words.should == 'one trillion eight hundred eighty eight billion two hundred fifty nine million forty thousand thirty six'
+    expect(1_000_000_000_000.in_words).to eql('one trillion')
+    expect(1_000_000_000_001.in_words).to eql('one trillion one')
+    expect(1_888_259_040_036.in_words).to eql('one trillion eight hundred eighty eight billion two hundred fifty nine million forty thousand thirty six')
   end
 
 end
