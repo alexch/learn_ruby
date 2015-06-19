@@ -36,7 +36,7 @@ describe Dictionary do
   it "doesn't cheat when checking whether a given keyword exists" do
     @d.include?('fish').should be false # if the method is empty, this test passes with nil returned
     @d.add('fish')
-    @d.include?('fish').should be_true # confirms that it actually checks
+    @d.include?('fish').should be true # confirms that it actually checks
     @d.include?('bird').should be false # confirms not always returning true after add
   end
 
