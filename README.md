@@ -13,7 +13,7 @@ Basically, you will fork this repository and then clone it onto your local compu
 
 To get started, jump into the `/00_hello` directory and view the `hello_spec.rb` file.  The comments at the top will kick things off.
 
-Basically, this is "error-driven development"... you'll keep running tests, hitting error messages, fixing those messages, running more tests...  It is meant to not only test your Ruby skills but also get you comfortable seeing big scary looking stack traces and error messages.  Most of the development you do at first will be
+Basically, this is "error-driven development"... you'll keep running tests, hitting error messages, fixing those messages, running more tests...  It is meant to not only test your Ruby skills but also get you comfortable seeing big scary looking stack traces and error messages.  Most of the development you do at first will be just like this.  In fact, most of *all* development is error-driven.  So get comfortable with it!
 
 
 ### Finishing Up
