@@ -2,9 +2,9 @@ class Temperature
   def initialize(opt = {})
     @temp = opt
     if @temp.has_key?(:f)
-      @temp[:c] = ftoc(@temp[:f])
+      @temp[:c] = Temperature.ftoc(@temp[:f])
     elsif @temp.has_key?(:c)
-      @temp[:f] = ctof(@temp[:c])
+      @temp[:f] = Temperature.ctof(@temp[:c])
     end
   end
 
@@ -24,11 +24,11 @@ class Temperature
     Temperature.new(f: f)
   end
 
-  def ftoc(f)
+  def self.ftoc(f)
     ((f - 32.0) * 5.0 / 9.0)
   end
 
-  def ctof(c)
+  def self.ctof(c)
     ((9.0 / 5.0) * c + 32.0)
   end
 
