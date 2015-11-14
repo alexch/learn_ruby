@@ -1,4 +1,4 @@
-Test First Ruby
+Test First Ruby -- RSpec 3 Edition
 ==========
 
 See [testfirst.org/learn_ruby](http://testfirst.org/learn_ruby#install) for more information about how this will work.
