@@ -15,7 +15,7 @@ describe "Timer" do
   end
 
   it "should initialize to 0 seconds" do
-    @timer.seconds.should == 0
+    expect(@timer.seconds).to eq(0)
   end
 
   describe 'time_string' do
