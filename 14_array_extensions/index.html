@@ -51,25 +51,25 @@ describe Array do
 
   describe &quot;#sum&quot; do
     it &quot;has a #sum method&quot; do
-      [].should respond_to(:sum)
+      expect([]).to respond_to(:sum)
     end
 
     it &quot;should be 0 for an empty array&quot; do
-      [].sum.should == 0
+      expect([].sum).to eq(0)
     end
 
     it &quot;should add all of the elements&quot; do
-      [1,2,4].sum.should == 7
+      expect([1,2,4].sum).to eq(7)
     end
   end
 
   describe '#square' do
     it &quot;does nothing to an empty array&quot; do
-      [].square.should == []
+      expect([].square).to eq([])
     end
 
     it &quot;returns a new array containing the squares of each element&quot; do
-      [1,2,3].square.should == [1,4,9]
+      expect([1,2,3].square).to eq([1,4,9])
     end
   end
 
@@ -77,7 +77,7 @@ describe Array do
     it &quot;squares each element of the original array&quot; do
       array = [1,2,3]
       array.square!
-      array.should == [1,4,9]
+      expect(array).to eq([1,4,9])
     end
   end
 

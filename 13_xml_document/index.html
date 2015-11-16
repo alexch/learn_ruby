@@ -62,57 +62,57 @@ describe XmlDocument do
   end
 
   it &quot;renders an empty tag&quot; do
-    @xml.hello.should == &quot;&lt;hello/&gt;&quot;
+    expect(@xml.hello).to eq(&quot;&lt;hello/&gt;&quot;)
   end
 
   it &quot;renders a tag with attributes&quot; do
-    @xml.hello(:name =&gt; 'dolly').should == &quot;&lt;hello name='dolly'/&gt;&quot;
+    expect(@xml.hello(:name =&gt; 'dolly')).to eq(&quot;&lt;hello name='dolly'/&gt;&quot;)
   end
 
   it &quot;renders a randomly named tag&quot; do
     tag_name = (1..8).map{|i| ('a'..'z').to_a[rand(26)]}.join
-    @xml.send(tag_name).should == &quot;&lt;#{tag_name}/&gt;&quot;
+    expect(@xml.send(tag_name)).to eq(&quot;&lt;#{tag_name}/&gt;&quot;)
   end
 
   it &quot;renders block with text inside&quot; do
-    @xml.hello do
+    expect(@xml.hello do
       &quot;dolly&quot;
-    end.should == &quot;&lt;hello&gt;dolly&lt;/hello&gt;&quot;
+    end).to eq(&quot;&lt;hello&gt;dolly&lt;/hello&gt;&quot;)
   end
 
   it &quot;nests one level&quot; do
-    @xml.hello do
+    expect(@xml.hello do
       @xml.goodbye
-    end.should == &quot;&lt;hello&gt;&lt;goodbye/&gt;&lt;/hello&gt;&quot;
+    end).to eq(&quot;&lt;hello&gt;&lt;goodbye/&gt;&lt;/hello&gt;&quot;)
   end
 
   it &quot;nests several levels&quot; do
     xml = XmlDocument.new
-    xml.hello do
+    expect(xml.hello do
       xml.goodbye do
         xml.come_back do
           xml.ok_fine(:be =&gt; &quot;that_way&quot;)
         end
       end
-    end.should == &quot;&lt;hello&gt;&lt;goodbye&gt;&lt;come_back&gt;&lt;ok_fine be='that_way'/&gt;&lt;/come_back&gt;&lt;/goodbye&gt;&lt;/hello&gt;&quot;
+    end).to eq(&quot;&lt;hello&gt;&lt;goodbye&gt;&lt;come_back&gt;&lt;ok_fine be='that_way'/&gt;&lt;/come_back&gt;&lt;/goodbye&gt;&lt;/hello&gt;&quot;)
   end
 
   it &quot;indents&quot; do
     @xml = XmlDocument.new(true)
-    @xml.hello do
+    expect(@xml.hello do
       @xml.goodbye do
         @xml.come_back do
           @xml.ok_fine(:be =&gt; &quot;that_way&quot;)
         end
       end
-    end.should ==
+    end).to eq(
     &quot;&lt;hello&gt;\n&quot; +
     &quot;  &lt;goodbye&gt;\n&quot; +
     &quot;    &lt;come_back&gt;\n&quot; +
     &quot;      &lt;ok_fine be='that_way'/&gt;\n&quot; +
     &quot;    &lt;/come_back&gt;\n&quot; +
     &quot;  &lt;/goodbye&gt;\n&quot; +
-    &quot;&lt;/hello&gt;\n&quot;
+    &quot;&lt;/hello&gt;\n&quot;)
   end
 end</pre>
   </div>

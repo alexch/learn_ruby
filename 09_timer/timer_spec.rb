@@ -15,7 +15,7 @@ describe "Timer" do
   end
 
   it "should initialize to 0 seconds" do
-    @timer.seconds.should == 0
+    expect(@timer.seconds).to eq(0)
   end
 
   describe 'time_string' do
@@ -47,13 +47,13 @@ describe "Timer" do
   #
   # describe 'padded' do
   #   it 'pads zero' do
-  #     @timer.padded(0).should == '00'
+  #     expect(@timer.padded(0)).to eq('00')
   #   end
   #   it 'pads one' do
-  #     @timer.padded(1).should == '01'
+  #     expect(@timer.padded(1)).to eq('01')
   #   end
   #   it "doesn't pad a two-digit number" do
-  #     @timer.padded(12).should == '12'
+  #     expect(@timer.padded(12)).to eq('12')
   #   end
   # end
 

@@ -62,52 +62,52 @@ describe Book do
   describe 'title' do
     it 'should capitalize the first letter' do
       @book.title = &quot;inferno&quot;
-      @book.title.should == &quot;Inferno&quot;
+      expect(@book.title).to eq(&quot;Inferno&quot;)
     end
 
     it 'should capitalize every word' do
       @book.title = &quot;stuart little&quot;
-      @book.title.should == &quot;Stuart Little&quot;
+      expect(@book.title).to eq(&quot;Stuart Little&quot;)
     end
 
     describe 'should capitalize every word except...' do
       describe 'articles' do
         specify 'the' do
           @book.title = &quot;alexander the great&quot;
-          @book.title.should == &quot;Alexander the Great&quot;
+          expect(@book.title).to eq(&quot;Alexander the Great&quot;)
         end
 
         specify 'a' do
           @book.title = &quot;to kill a mockingbird&quot;
-          @book.title.should == &quot;To Kill a Mockingbird&quot;
+          expect(@book.title).to eq(&quot;To Kill a Mockingbird&quot;)
         end
 
         specify 'an' do
           @book.title = &quot;to eat an apple a day&quot;
-          @book.title.should == &quot;To Eat an Apple a Day&quot;
+          expect(@book.title).to eq(&quot;To Eat an Apple a Day&quot;)
         end
       end
 
       specify 'conjunctions' do
         @book.title = &quot;war and peace&quot;
-        @book.title.should == &quot;War and Peace&quot;
+        expect(@book.title).to eq(&quot;War and Peace&quot;)
       end
 
       specify 'prepositions' do
         @book.title = &quot;love in the time of cholera&quot;
-        @book.title.should == &quot;Love in the Time of Cholera&quot;
+        expect(@book.title).to eq(&quot;Love in the Time of Cholera&quot;)
       end
     end
 
     describe 'should always capitalize...' do
       specify 'I' do
         @book.title = &quot;what i wish i knew when i was 20&quot;
-        @book.title.should == &quot;What I Wish I Knew When I Was 20&quot;
+        expect(@book.title).to eq(&quot;What I Wish I Knew When I Was 20&quot;)
       end
 
       specify 'the first word' do
         @book.title = &quot;the man in the iron mask&quot;
-        @book.title.should == &quot;The Man in the Iron Mask&quot;
+        expect(@book.title).to eq(&quot;The Man in the Iron Mask&quot;)
       end
     end
   end

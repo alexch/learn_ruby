@@ -55,27 +55,27 @@ require &quot;simon_says&quot;
 describe &quot;Simon says&quot; do
   describe &quot;echo&quot; do
     it &quot;should echo hello&quot; do
-      echo(&quot;hello&quot;).should == &quot;hello&quot;
+      expect(echo(&quot;hello&quot;)).to eq(&quot;hello&quot;)
     end
 
     it &quot;should echo bye&quot; do
-      echo(&quot;bye&quot;).should == &quot;bye&quot;
+      expect(echo(&quot;bye&quot;)).to eq(&quot;bye&quot;)
     end
   end
 
   describe &quot;shout&quot; do
     it &quot;should shout hello&quot; do
-      shout(&quot;hello&quot;).should == &quot;HELLO&quot;
+      expect(shout(&quot;hello&quot;)).to eq(&quot;HELLO&quot;)
     end
 
     it &quot;should shout multiple words&quot; do
-      shout(&quot;hello world&quot;).should == &quot;HELLO WORLD&quot;
+      expect(shout(&quot;hello world&quot;)).to eq(&quot;HELLO WORLD&quot;)
     end
   end
 
   describe &quot;repeat&quot; do
     it &quot;should repeat&quot; do
-      repeat(&quot;hello&quot;).should == &quot;hello hello&quot;
+      expect(repeat(&quot;hello&quot;)).to eq(&quot;hello hello&quot;)
     end
 
     # Wait a second! How can you make the &quot;repeat&quot; method
@@ -83,52 +83,52 @@ describe &quot;Simon says&quot; do
     #
     # Hint: *default values*
     it &quot;should repeat a number of times&quot; do
-      repeat(&quot;hello&quot;, 3).should == &quot;hello hello hello&quot;
+      expect(repeat(&quot;hello&quot;, 3)).to eq(&quot;hello hello hello&quot;)
     end
   end
 
   describe &quot;start_of_word&quot; do
     it &quot;returns the first letter&quot; do
-      start_of_word(&quot;hello&quot;, 1).should == &quot;h&quot;
+      expect(start_of_word(&quot;hello&quot;, 1)).to eq(&quot;h&quot;)
     end
 
     it &quot;returns the first two letters&quot; do
-      start_of_word(&quot;Bob&quot;, 2).should == &quot;Bo&quot;
+      expect(start_of_word(&quot;Bob&quot;, 2)).to eq(&quot;Bo&quot;)
     end
 
     it &quot;returns the first several letters&quot; do
       s = &quot;abcdefg&quot;
-      start_of_word(s, 1).should == &quot;a&quot;
-      start_of_word(s, 2).should == &quot;ab&quot;
-      start_of_word(s, 3).should == &quot;abc&quot;
+      expect(start_of_word(s, 1)).to eq(&quot;a&quot;)
+      expect(start_of_word(s, 2)).to eq(&quot;ab&quot;)
+      expect(start_of_word(s, 3)).to eq(&quot;abc&quot;)
     end
   end
 
   describe &quot;first_word&quot; do
     it &quot;tells us the first word of 'Hello World' is 'Hello'&quot; do
-      first_word(&quot;Hello World&quot;).should == &quot;Hello&quot;
+      expect(first_word(&quot;Hello World&quot;)).to eq(&quot;Hello&quot;)
     end
 
     it &quot;tells us the first word of 'oh dear' is 'oh'&quot; do
-      first_word(&quot;oh dear&quot;).should == &quot;oh&quot;
+      expect(first_word(&quot;oh dear&quot;)).to eq(&quot;oh&quot;)
     end
   end
 
   describe &quot;titleize&quot; do
     it &quot;capitalizes a word&quot; do
-      titleize(&quot;jaws&quot;).should == &quot;Jaws&quot;
+      expect(titleize(&quot;jaws&quot;)).to eq(&quot;Jaws&quot;)
     end
 
     it &quot;capitalizes every word (aka title case)&quot; do
-      titleize(&quot;david copperfield&quot;).should == &quot;David Copperfield&quot;
+      expect(titleize(&quot;david copperfield&quot;)).to eq(&quot;David Copperfield&quot;)
     end
 
     it &quot;doesn't capitalize 'little words' in a title&quot; do
-      titleize(&quot;war and peace&quot;).should == &quot;War and Peace&quot;
+      expect(titleize(&quot;war and peace&quot;)).to eq(&quot;War and Peace&quot;)
     end
 
     it &quot;does capitalize 'little words' at the start of a title&quot; do
-      titleize(&quot;the bridge over the river kwai&quot;).should == &quot;The Bridge over the River Kwai&quot;
+      expect(titleize(&quot;the bridge over the river kwai&quot;)).to eq(&quot;The Bridge over the River Kwai&quot;)
     end
   end
 

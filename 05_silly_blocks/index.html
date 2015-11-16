@@ -54,28 +54,28 @@ describe &quot;some silly block functions&quot; do
       result = reverser do
         &quot;hello&quot;
       end
-      result.should == &quot;olleh&quot;
+      expect(result).to eq(&quot;olleh&quot;)
     end
 
     it &quot;reverses each word in the string returned by the default block&quot; do
       result = reverser do
         &quot;hello dolly&quot;
       end
-      result.should == &quot;olleh yllod&quot;
+      expect(result).to eq(&quot;olleh yllod&quot;)
     end
   end
 
   describe &quot;adder&quot; do
     it &quot;adds one to the value returned by the default block&quot; do
-      adder do
+      expect(adder do
         5
-      end.should == 6
+      end).to eq(6)
     end
 
     it &quot;adds 3 to the value returned by the default block&quot; do
-      adder(3) do
+      expect(adder(3) do
         5
-      end.should == 8
+      end).to eq(8)
     end
   end
 
@@ -85,7 +85,7 @@ describe &quot;some silly block functions&quot; do
       repeater do
         block_was_executed = true
       end
-      block_was_executed.should == true
+      expect(block_was_executed).to eq(true)
     end
 
     it &quot;executes the default block 3 times&quot; do
@@ -93,7 +93,7 @@ describe &quot;some silly block functions&quot; do
       repeater(3) do
         n += 1
       end
-      n.should == 3
+      expect(n).to eq(3)
     end
 
     it &quot;executes the default block 10 times&quot; do
@@ -101,7 +101,7 @@ describe &quot;some silly block functions&quot; do
       repeater(10) do
         n += 1
       end
-      n.should == 10
+      expect(n).to eq(10)
     end
 
   end

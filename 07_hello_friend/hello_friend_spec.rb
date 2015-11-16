@@ -40,7 +40,7 @@
 #
 #     'Friend says hello' FAILED
 #     expected: "Hello!",
-#          got: nil (using ==)
+#          got: nil (compared using ==)
 #     ./friend_spec.rb:5:
 #
 # This means that there is a method, but it's not returning anything! ("nil" is the Ruby way of saying "not anything".)
@@ -61,7 +61,7 @@
 #
 #     'Friend says hello' FAILED
 #     expected: "Hello!",
-#          got: "whuh?" (using ==)
+#          got: "whuh?" (compared using ==)
 #     ./friend_spec.rb:5:
 #
 # Correct this by changing "whuh?" to "Hello!". Save it. Run the test again.

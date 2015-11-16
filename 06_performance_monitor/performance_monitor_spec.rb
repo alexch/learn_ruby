@@ -24,7 +24,7 @@ describe "Performance Monitor" do
   end
 
   it "takes exactly 0 seconds to run an empty block (with stubs)" do
-    Time.stub(:now) { @eleven_am }
+    allow(Time).to receive(:now) { @eleven_am }
     elapsed_time = measure do
     end
     expect(elapsed_time).to eq(0)
@@ -39,7 +39,7 @@ describe "Performance Monitor" do
 
   it "takes exactly 1 second to run a block that sleeps for 1 second (with stubs)" do
     fake_time = @eleven_am
-    Time.stub(:now) { fake_time }
+    allow(Time).to receive(:now) { fake_time }
     elapsed_time = measure do
       fake_time += 60  # adds one minute to fake_time
     end
@@ -57,7 +57,7 @@ describe "Performance Monitor" do
   it "returns the average time, not the total time, when running multiple times" do
     run_times = [8,6,5,7]
     fake_time = @eleven_am
-    Time.stub(:now) { fake_time }
+    allow(Time).to receive(:now) { fake_time }
     average_time = measure(4) do
       fake_time += run_times.pop
     end
@@ -66,7 +66,7 @@ describe "Performance Monitor" do
 
   it "returns the average time when running a random number of times for random lengths of time" do
     fake_time = @eleven_am
-    Time.stub(:now) { fake_time }
+    allow(Time).to receive(:now) { fake_time }
     number_of_times = rand(10) + 2
     average_time = measure(number_of_times) do
       delay = rand(10)
