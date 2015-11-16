@@ -61,46 +61,46 @@ describe &quot;#translate&quot; do
 
   it &quot;translates a word beginning with a vowel&quot; do
     s = translate(&quot;apple&quot;)
-    s.should == &quot;appleay&quot;
+    expect(s).to eq(&quot;appleay&quot;)
   end
 
   it &quot;translates a word beginning with a consonant&quot; do
     s = translate(&quot;banana&quot;)
-    s.should == &quot;ananabay&quot;
+    expect(s).to eq(&quot;ananabay&quot;)
   end
 
   it &quot;translates a word beginning with two consonants&quot; do
     s = translate(&quot;cherry&quot;)
-    s.should == &quot;errychay&quot;
+    expect(s).to eq(&quot;errychay&quot;)
   end
 
   it &quot;translates two words&quot; do
     s = translate(&quot;eat pie&quot;)
-    s.should == &quot;eatay iepay&quot;
+    expect(s).to eq(&quot;eatay iepay&quot;)
   end
 
   it &quot;translates a word beginning with three consonants&quot; do
-    translate(&quot;three&quot;).should == &quot;eethray&quot;
+    expect(translate(&quot;three&quot;)).to eq(&quot;eethray&quot;)
   end
 
   it &quot;counts 'sch' as a single phoneme&quot; do
     s = translate(&quot;school&quot;)
-    s.should == &quot;oolschay&quot;
+    expect(s).to eq(&quot;oolschay&quot;)
   end
 
   it &quot;counts 'qu' as a single phoneme&quot; do
     s = translate(&quot;quiet&quot;)
-    s.should == &quot;ietquay&quot;
+    expect(s).to eq(&quot;ietquay&quot;)
   end
 
   it &quot;counts 'qu' as a consonant even when it's preceded by a consonant&quot; do
     s = translate(&quot;square&quot;)
-    s.should == &quot;aresquay&quot;
+    expect(s).to eq(&quot;aresquay&quot;)
   end
 
   it &quot;translates many words&quot; do
     s = translate(&quot;the quick brown fox&quot;)
-    s.should == &quot;ethay ickquay ownbray oxfay&quot;
+    expect(s).to eq(&quot;ethay ickquay ownbray oxfay&quot;)
   end
 
   # Test-driving bonus:

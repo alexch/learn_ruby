@@ -77,7 +77,7 @@ end
 
 <pre><code>'Friend says hello' FAILED
 expected: "Hello!",
-     got: nil (using ==)
+     got: nil (compared using ==)
 ./friend_spec.rb:5:
 </code></pre>
 
@@ -100,7 +100,7 @@ end
 
 <pre><code>'Friend says hello' FAILED
 expected: "Hello!",
-     got: "whuh?" (using ==)
+     got: "whuh?" (compared using ==)
 ./friend_spec.rb:5:
 </code></pre>
 
@@ -136,11 +136,11 @@ require &quot;friend&quot;
 
 describe Friend do
   it &quot;says hello&quot; do
-    Friend.new.greeting.should == &quot;Hello!&quot;
+    expect(Friend.new.greeting).to eq(&quot;Hello!&quot;)
   end
 
   it &quot;says hello to someone&quot; do
-    Friend.new.greeting(&quot;Bob&quot;).should == &quot;Hello, Bob!&quot;
+    expect(Friend.new.greeting(&quot;Bob&quot;)).to eq(&quot;Hello, Bob!&quot;)
   end
 end</pre>
   </div>

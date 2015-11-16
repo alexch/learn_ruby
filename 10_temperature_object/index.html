@@ -62,44 +62,44 @@ describe Temperature do
   describe &quot;can be constructed with an options hash&quot; do
     describe &quot;in degrees fahrenheit&quot; do
       it &quot;at 50 degrees&quot; do
-        Temperature.new(:f =&gt; 50).in_fahrenheit.should == 50
+        expect(Temperature.new(:f =&gt; 50).in_fahrenheit).to eq(50)
       end
 
       describe &quot;and correctly convert to celsius&quot; do
         it &quot;at freezing&quot; do
-          Temperature.new(:f =&gt; 32).in_celsius.should == 0
+          expect(Temperature.new(:f =&gt; 32).in_celsius).to eq(0)
         end
 
         it &quot;at boiling&quot; do
-          Temperature.new(:f =&gt; 212).in_celsius.should == 100
+          expect(Temperature.new(:f =&gt; 212).in_celsius).to eq(100)
         end
 
         it &quot;at body temperature&quot; do
-          Temperature.new(:f =&gt; 98.6).in_celsius.should == 37
+          expect(Temperature.new(:f =&gt; 98.6).in_celsius).to eq(37)
         end
 
         it &quot;at an arbitrary temperature&quot; do
-          Temperature.new(:f =&gt; 68).in_celsius.should == 20
+          expect(Temperature.new(:f =&gt; 68).in_celsius).to eq(20)
         end
       end
     end
 
     describe &quot;in degrees celsius&quot; do
       it &quot;at 50 degrees&quot; do
-        Temperature.new(:c =&gt; 50).in_celsius.should == 50
+        expect(Temperature.new(:c =&gt; 50).in_celsius).to eq(50)
       end
 
       describe &quot;and correctly convert to fahrenheit&quot; do
         it &quot;at freezing&quot; do
-          Temperature.new(:c =&gt; 0).in_fahrenheit.should == 32
+          expect(Temperature.new(:c =&gt; 0).in_fahrenheit).to eq(32)
         end
 
         it &quot;at boiling&quot; do
-          Temperature.new(:c =&gt; 100).in_fahrenheit.should == 212
+          expect(Temperature.new(:c =&gt; 100).in_fahrenheit).to eq(212)
         end
 
         it &quot;at body temperature&quot; do
-          Temperature.new(:c =&gt; 37).in_fahrenheit.should be_within(0.1).of(98.6)
+          expect(Temperature.new(:c =&gt; 37).in_fahrenheit).to be_within(0.1).of(98.6)
           # Why do we need to use be_within here?
           # See http://www.ruby-forum.com/topic/169330
           # and http://groups.google.com/group/rspec/browse_thread/thread/f3ebbe3c313202bb
@@ -116,13 +116,13 @@ describe Temperature do
   describe &quot;can be constructed via factory methods&quot; do
 
     it &quot;in degrees celsius&quot; do
-      Temperature.from_celsius(50).in_celsius.should == 50
-      Temperature.from_celsius(50).in_fahrenheit.should == 122
+      expect(Temperature.from_celsius(50).in_celsius).to eq(50)
+      expect(Temperature.from_celsius(50).in_fahrenheit).to eq(122)
     end
 
     it &quot;in degrees fahrenheit&quot; do
-      Temperature.from_fahrenheit(50).in_fahrenheit.should == 50
-      Temperature.from_fahrenheit(50).in_celsius.should == 10
+      expect(Temperature.from_fahrenheit(50).in_fahrenheit).to eq(50)
+      expect(Temperature.from_fahrenheit(50).in_celsius).to eq(10)
     end
 
   end
@@ -142,23 +142,23 @@ describe Temperature do
   describe &quot;Temperature subclasses&quot; do
     describe &quot;Celsius subclass&quot; do
       it &quot;is constructed in degrees celsius&quot; do
-        Celsius.new(50).in_celsius.should == 50
-        Celsius.new(50).in_fahrenheit.should == 122
+        expect(Celsius.new(50).in_celsius).to eq(50)
+        expect(Celsius.new(50).in_fahrenheit).to eq(122)
       end
 
       it &quot;is a Temperature subclass&quot; do
-        Celsius.new(0).should be_a(Temperature)
+        expect(Celsius.new(0)).to be_a(Temperature)
       end
     end
 
     describe &quot;Fahrenheit subclass&quot; do
       it &quot;is constructed in degrees fahrenheit&quot; do
-        Fahrenheit.new(50).in_fahrenheit.should == 50
-        Fahrenheit.new(50).in_celsius.should == 10
+        expect(Fahrenheit.new(50).in_fahrenheit).to eq(50)
+        expect(Fahrenheit.new(50).in_celsius).to eq(10)
       end
 
       it &quot;is a Temperature subclass&quot; do
-        Fahrenheit.new(0).should be_a(Temperature)
+        expect(Fahrenheit.new(0)).to be_a(Temperature)
       end
     end
   end

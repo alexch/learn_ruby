@@ -51,7 +51,7 @@
 
 <p>You should see an error. <strong>Don't get scared!</strong> Try to read it and figure out what the computer wants to tell you. Somewhere on the first line it should say something like</p>
 
-<pre><code>no such file to load -- test-first-teaching/hello/hello (LoadError)
+<pre><code>cannot load such file -- test-first-teaching/hello/hello (LoadError)
 </code></pre>
 
 <p>That means that it is looking for a file called <code>hello.rb</code> and can't find it.</p>
@@ -73,7 +73,7 @@
 Failures:
 
   1) the hello function says hello
-     Failure/Error: hello.should == "Hello!"
+     Failure/Error: expect(hello).to eq("Hello!")
      NameError:
        undefined local variable or method `hello' for #&lt;RSpec::Core::ExampleGroup::Nested_1:0x000001009b8808&gt;
      # ./hello/hello_spec.rb:5:in `block (2 levels) in &lt;top (required)&gt;'
@@ -99,9 +99,9 @@ end
 Failures:
 
   1) the hello function says hello
-     Failure/Error: hello().should == "Hello!"
+     Failure/Error: expect(hello).to eq("Hello!")
        expected: "Hello!"
-            got: nil (using ==)
+            got: nil (compared using ==)
      # ./hello/hello_spec.rb:5:in `block (2 levels) in &lt;top (required)&gt;'
 </code></pre>
 
@@ -123,9 +123,9 @@ end
 <p>Now you should see an error like this:</p>
 
 <pre><code>1) the hello function says hello
-   Failure/Error: hello().should == "Hello!"
+   Failure/Error: expect(hello).to eq("Hello!")
      expected: "Hello!"
-          got: "whuh?" (using ==)
+          got: "whuh?" (compared using ==)
    # ./hello/hello_spec.rb:5:in `block (2 levels) in &lt;top (required)&gt;'
 </code></pre>
 
@@ -164,17 +164,17 @@ end
 
 describe &quot;the hello function&quot; do
   it &quot;says hello&quot; do
-    hello.should == &quot;Hello!&quot;
+    expect(hello).to eq(&quot;Hello!&quot;)
   end
 end
 
 describe &quot;the greet function&quot; do
   it &quot;says hello to someone&quot; do
-    greet(&quot;Alice&quot;).should == &quot;Hello, Alice!&quot;
+    expect(greet(&quot;Alice&quot;)).to eq(&quot;Hello, Alice!&quot;)
   end
 
   it &quot;says hello to someone else&quot; do
-    greet(&quot;Bob&quot;).should == &quot;Hello, Bob!&quot;
+    expect(greet(&quot;Bob&quot;)).to eq(&quot;Hello, Bob!&quot;)
   end
 end</pre>
   </div>

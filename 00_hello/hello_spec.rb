@@ -16,7 +16,7 @@
 #
 # You should see an error. **Don't get scared!** Try to read it and figure out what the computer wants to tell you. Somewhere on the first line it should say something like
 #
-#     no such file to load -- test-first-teaching/hello/hello (LoadError)
+#     cannot load such file -- test-first-teaching/hello/hello (LoadError)
 #
 # That means that it is looking for a file called `hello.rb` and can't find it.
 #
@@ -36,7 +36,7 @@
 #     Failures:
 #
 #       1) the hello function says hello
-#          Failure/Error: hello.should == "Hello!"
+#          Failure/Error: expect(hello).to eq("Hello!")
 #          NameError:
 #            undefined local variable or method `hello' for #<RSpec::Core::ExampleGroup::Nested_1:0x000001009b8808>
 #          # ./hello/hello_spec.rb:5:in `block (2 levels) in <top (required)>'
@@ -60,9 +60,9 @@
 #     Failures:
 #
 #       1) the hello function says hello
-#          Failure/Error: hello().should == "Hello!"
+#          Failure/Error: expect(hello).to eq("Hello!")
 #            expected: "Hello!"
-#                 got: nil (using ==)
+#                 got: nil (compared using ==)
 #          # ./hello/hello_spec.rb:5:in `block (2 levels) in <top (required)>'
 #
 # This means that while it found the file, and it found the function, it's not returning anything! ("nil" is the Ruby way of saying "not anything".)
@@ -82,9 +82,9 @@
 # Now you should see an error like this:
 #
 #     1) the hello function says hello
-#        Failure/Error: hello().should == "Hello!"
+#        Failure/Error: expect(hello.to eq("Hello!")
 #          expected: "Hello!"
-#               got: "whuh?" (using ==)
+#               got: "whuh?" (compared using ==)
 #        # ./hello/hello_spec.rb:5:in `block (2 levels) in <top (required)>'
 #
 # Correct this by changing "whuh?" to "Hello!". Save it. Run the test again.
