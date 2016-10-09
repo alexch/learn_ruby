@@ -16,27 +16,27 @@ require "simon_says"
 describe "Simon says" do
   describe "echo" do
     it "should echo hello" do
-      echo("hello").should == "hello"
+      expect(echo("hello")).to eq( "hello")
     end
 
     it "should echo bye" do
-      echo("bye").should == "bye"
+      expect( echo("bye")).to eq( "bye")
     end
   end
 
   describe "shout" do
     it "should shout hello" do
-      shout("hello").should == "HELLO"
+      expect(shout("hello")).to eq("HELLO")
     end
 
     it "should shout multiple words" do
-      shout("hello world").should == "HELLO WORLD"
+      expect(shout("hello world")).to eq( "HELLO WORLD")
     end
   end
 
   describe "repeat" do
     it "should repeat" do
-      repeat("hello").should == "hello hello"
+      expect( repeat("hello")).to eq( "hello hello")
     end
 
     # Wait a second! How can you make the "repeat" method

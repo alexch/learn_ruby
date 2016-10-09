@@ -92,10 +92,10 @@ require "friend"
 
 describe Friend do
   it "says hello" do
-    Friend.new.greeting.should == "Hello!"
+    expect(Friend.new.greeting).to eql( "Hello!")
   end
 
   it "says hello to someone" do
-    Friend.new.greeting("Bob").should == "Hello, Bob!"
+    expect(Friend.new.greeting("Bob")).to eql("Hello, Bob!")
   end
 end

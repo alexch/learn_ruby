@@ -113,20 +113,24 @@
 #       "Hello, #{who}!"
 #     end
 #
+
+
 require "hello"
+
+
 
 describe "the hello function" do
   it "says hello" do
-    hello.should == "Hello!"
+    expect( hello).to eq("Hello!")
   end
 end
 
 describe "the greet function" do
-  it "says hello to someone" do
-    greet("Alice").should == "Hello, Alice!"
+  it "says hello to Alice:" do
+    expect(greet("Alice")).to eq("Hello, Alice!")
   end
 
-  it "says hello to someone else" do
-    greet("Bob").should == "Hello, Bob!"
+  it "says hello to Bob" do
+    expect(greet("Bob")).to eq( "Hello, Bob!")
   end
 end
