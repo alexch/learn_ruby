@@ -78,7 +78,6 @@ end
 # write tests and code for the following:
 
 describe "#multiply" do
-
   it "multiplies two numbers" do
     multiply(10, 5).should == 50
   end
@@ -86,7 +85,6 @@ describe "#multiply" do
   it "multiplies several numbers" do
     multiply(5, 10, 15).should == 750
   end
-
 end
 
 describe "#power" do

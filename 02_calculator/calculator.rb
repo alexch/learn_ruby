@@ -9,3 +9,7 @@ end
 def sum(arr)
     arr.inject(0, :+)
 end
+
+def multiply(*numbers)
+    numbers.inject(1, :*)
+end
