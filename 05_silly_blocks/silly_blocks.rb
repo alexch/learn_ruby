@@ -4,6 +4,6 @@ def reverser
   }.join(" ")
 end
 
-def adder
-
+def adder(num = 1)
+  yield + num
 end
