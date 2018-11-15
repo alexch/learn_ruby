@@ -4,7 +4,7 @@ def translate(phrase)
 	
 	doVowel = proc { |word| word.concat("ay") if vowels.match(word[0]) }
 
-	phrase = phrase.split.map do |word|
+	phrase = phrase.split.map { |word|
 		doVowel.call(word)
 		while consonants.match(word[0])
 			if word[0..1] == "qu"
@@ -18,6 +18,5 @@ def translate(phrase)
 			end
 		end
 		word
-	end
-	phrase.join(' ')
+	}.join(" ")
 end
