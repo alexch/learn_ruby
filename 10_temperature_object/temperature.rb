@@ -1,13 +1,16 @@
 class Temperature
-  def initialize(options = {})
-    @options = options
+  def initialize(options)
+    @celsius    = options[:c]
+    @fahrenheit = options[:f]
   end
 
   def in_fahrenheit
-    @options[:f] = 50
+    return @fahrenheit unless @fahrenheit.nil?
+    @celsius.to_f * 9/5 + 32
   end
 
   def in_celsius
-    @options[:f] = (@options[:f] - 32) * 5.0/9.0
+    return @celsius unless @celsius.nil?
+    (@fahrenheit.to_f - 32) * 5/9
   end
 end
