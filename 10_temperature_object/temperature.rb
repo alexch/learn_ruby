@@ -22,3 +22,15 @@ class Temperature
     self.new(:f => temp)
   end
 end
+
+class Celsius < Temperature
+  def initialize(celsius)
+    @celsius = celsius
+  end
+end
+
+class Fahrenheit < Temperature
+  def initialize(fahrenheit)
+    @fahrenheit = fahrenheit
+  end
+end
