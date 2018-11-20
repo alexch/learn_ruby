@@ -14,4 +14,8 @@ class Dictionary
   def keywords
     entries.keys
   end
+
+  def include?(keyword)
+    entries.has_key?(keyword)
+  end
 end
