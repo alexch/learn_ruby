@@ -12,7 +12,7 @@ class Dictionary
   end
 
   def keywords
-    entries.keys
+    entries.keys.sort
   end
 
   def include?(keyword)
