@@ -18,4 +18,9 @@ class Dictionary
   def include?(keyword)
     entries.has_key?(keyword)
   end
+
+  def find(word)
+    return {} if entries.empty?
+    entries.select { |key, value| key.start_with?(word) }
+  end
 end
