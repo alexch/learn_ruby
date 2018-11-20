@@ -23,4 +23,8 @@ class Dictionary
     return {} if entries.empty?
     entries.select { |key, value| key.start_with?(word) }
   end
+
+  def printable
+    keywords.map { |key| %{[#{key}] "#{entries[key]}"} }.join("\n")
+  end
 end
