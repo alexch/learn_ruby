@@ -18,7 +18,6 @@ class Dictionary
   end
 
   def find(word)
-    return {} if entries.empty?
     entries.select { |key, value| key.start_with?(word) }
   end
 
