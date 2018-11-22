@@ -10,16 +10,15 @@ class Temperature
   end
 
   def in_celsius
-    return @celsius unless @celsius.nil?
-    (@fahrenheit.to_f - 32) * 5/9
+    @celsius.nil? ? (@fahrenheit.to_f - 32) * 5/9 : @celsius
   end
 
   def self.from_celsius(temp)
-    self.new(:c => temp)
+    new(:c => temp)
   end
 
   def self.from_fahrenheit(temp)
-    self.new(:f => temp)
+    new(:f => temp)
   end
 end
 
