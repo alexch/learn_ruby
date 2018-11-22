@@ -1,14 +1,12 @@
 class Dictionary
-  def entries
-    @entries ||= {}
+  attr_reader :entries
+
+  def initialize
+    @entries = {}
   end
 
-  def add(hash)
-    if hash.is_a? Hash
-      entries.merge!(hash)
-    else # input is a String
-      entries[hash] = nil
-    end 
+  def add(entry)
+    entry.is_a?(Hash) ? entries.merge!(entry) : entries[entry] = nil  
   end
 
   def keywords
