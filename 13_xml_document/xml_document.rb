@@ -1,32 +1,40 @@
 class XmlDocument
-  def initialize(indented=false)
+  def initialize(pretty=false)
     @xml = ""
-    @indented = indented
+    @pretty = pretty
     @level = 0
   end
 
   def method_missing(method, attributes = {}, &block)
-    @xml =''
+    @xml = ""
     tag = method.to_s
-    attributes_string = ""
-
-    attributes.each { |k, v| attributes_string += " #{k}='#{v}'" }
-    @xml += "<#{tag + attributes_string}>"
+ 
+    append_tag_to_xml(tag, attributes)
 
     if block_given?
-      format if @indented
+      indent if @pretty
       @xml += "#{yield}</#{tag}>"
-      format(true) if @indented
+      indent(true) if @pretty
     else
-      @xml.gsub!(/>$/, "/>")
-      format(true) if @indented
+      format_to_self_closing
     end
     @xml
   end
 
-  def format(end_tag=false)
+  def indent(end_tag=false)
     @level += 1 unless end_tag
     @level -= 1 if end_tag && @level > 0
     @xml += "\n" + "  " * @level
+  end
+
+  def append_tag_to_xml(tag, attributes)
+    attributes_string = ""
+    attributes.each { |k, v| attributes_string += " #{k}='#{v}'" }
+    @xml += "<#{tag + attributes_string}>"
+  end
+
+  def format_to_self_closing
+    @xml.gsub!(/>/, "/>")
+    indent(true) if @pretty
   end
 end
