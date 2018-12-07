@@ -13,6 +13,6 @@ class XmlDocument
     tag_builder.with_content(yield) if block_given?
     tag_builder.prettify if @pretty
 
-    tag_builder.result
+    tag_builder.build
   end
 end

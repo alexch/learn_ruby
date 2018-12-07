@@ -12,40 +12,40 @@ class TagBuilder
   end
 
   def prettify
-    @prettify = true
+    @pretty = true
   end
 
-  def result
+  def build
     tokens = []
     tokens << "<#{@name}"
-
-    unless @attributes.nil?
-      tokens << @attributes.map { |k, v| " #{k}='#{v}'" }
-    end
+    tokens << @attributes.map { |k, v| " #{k}='#{v}'" }
 
     if @content.nil?
       tokens << '/>'
     else
-      tokens << '>'
-      content = @content
-      
-      if @prettify
-        tokens << "\n"
-
-        content = content.split("\n")
-          .map { |line| "  #{line}" }
-          .join("\n")
-
-        tokens << content << "\n"
-      else
-        tokens << content   
-      end
-
-      
-      tokens << "</#{@name}>"
-      tokens << "\n" if @prettify
+      tokens << add_content
     end
-
     tokens.join
+  end
+
+  private
+  def add_content
+    tokens = []
+    tokens << '>' << format(@content) << "</#{@name}>"
+    tokens << "\n" if @pretty
+    tokens
+  end
+
+  def format(content)
+    tokens = []
+    unless @pretty
+      tokens << content  
+    else
+      pretty_content = content.split("\n")
+        .map { |line| "  #{line}" }
+        .join("\n")
+      tokens << "\n" << pretty_content << "\n"
+    end
+    tokens
   end
 end 
