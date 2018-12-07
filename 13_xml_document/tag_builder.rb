@@ -31,19 +31,19 @@ class TagBuilder
       
       if @prettify
         tokens << "\n"
-        
+
         content = content.split("\n")
           .map { |line| "  #{line}" }
           .join("\n")
+
+        tokens << content << "\n"
+      else
+        tokens << content   
       end
 
-      tokens << content
-      
-      if @prettify
-        tokens << "\n"
-      end
       
       tokens << "</#{@name}>"
+      tokens << "\n" if @prettify
     end
 
     tokens.join
