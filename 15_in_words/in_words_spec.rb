@@ -21,7 +21,6 @@
 require "in_words"
 
 describe Fixnum do
-
   it "reads 0 to 9" do
     0.in_words.should == 'zero'
     1.in_words.should == 'one'
