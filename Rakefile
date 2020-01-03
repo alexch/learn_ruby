@@ -1,5 +1,5 @@
 # This Rakefile has all the right settings to run the tests inside each lab
-gem 'rspec', '~>2'
+gem 'rspec', '~>3'
 require 'rspec/core/rake_task'
 
 task :default => :spec
